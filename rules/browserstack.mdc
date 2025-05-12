@@ -1,0 +1,100 @@
+# Analyze the user message and select needed Browserstack project, folder informations and upload files to Browserstack.
+
+When a chat message is sent and it contains "testleri browsertack'e ekle" run the following steps:
+
+  1. Analyze the user message and select correct project and folder informations.
+  2. If user wants to create test case on Browserstack, you will have test case information. Use that informations ("Title", "Owner", "Priority", "Test Type", "Automation Status", "Step", "Expected Result")
+  3. Use `browserstack mcp` to create Browserstack files.
+
+# Project Informations:
+
+    "projects": [
+        {
+            "name": "MindBehind",
+            "identifier": "PR-35"
+        },
+        {
+            "name": "Demo Project 1",
+            "identifier": "PR-32"
+        },
+        {
+            "name": "Optimus",
+            "identifier": "PR-31"
+        },
+        {
+            "name": "Devops",
+            "identifier": "PR-30"
+        },
+        {
+            "name": "Paracetamol",
+            "identifier": "PR-23"
+        },
+        {
+            "name": "Demo Team",
+            "identifier": "PR-22"
+        },
+        {
+            "name": "ByteMasters",
+            "identifier": "PR-21"
+        },
+        {
+            "name": "Minerva",
+            "identifier": "PR-20",
+            "folder":{
+                "name": "AI Cases",
+                "identifier": "9828469"
+            }
+        },
+        {
+            "name": "Griffin",
+            "identifier": "PR-19"
+        },
+        {
+            "name": "Design System",
+            "identifier": "PR-17"
+        },
+        {
+            "name": "QMechanics",
+            "identifier": "PR-16"
+        },
+        {
+            "name": "Dataforce",
+            "identifier": "PR-15"
+        },
+        {
+            "name": "Mobile App",
+            "identifier": "PR-14"
+        },
+        {
+            "name": "Atrium",
+            "identifier": "PR-13"
+        },
+        {
+            "name": "Contech",
+            "identifier": "PR-12"
+        },
+        {
+            "name": "Vikings",
+            "identifier": "PR-11"
+        },
+        {
+            "name": "PirateSquad",
+            "identifier": "PR-10"
+        },
+        {
+            "name": "Kraken",
+            "identifier": "PR-9"
+        },
+        {
+            "name": "Valorem",
+            "identifier": "PR-8"
+        },
+        {
+            "name": "System Rules and Board",
+            "identifier": "PR-5"
+        },
+        {
+            "name": "Scalability",
+            "identifier": "PR-4"
+        }
+    ]
