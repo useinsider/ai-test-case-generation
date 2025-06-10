@@ -1,10 +1,15 @@
 # Analyze the user message and select needed Browserstack project, folder informations and upload files to Browserstack.
 
-When a chat message is sent and it contains "testleri browsertack'e ekle" run the following steps:
+When a chat message is sent and it contains "Add the test scenarios that you create to Browserstack." run the following steps:
 
-  1. Analyze the user message and select correct project and folder informations.
-  2. If user wants to create test case on Browserstack, you will have test case information. Use that informations ("Title", "Owner", "Priority", "Test Type", "Automation Status", "Step", "Expected Result")
-  3. Use `browserstack mcp` to create Browserstack files.
+
+  1. Extract the Jira issue key from the message (e.g., SD-120661).
+  2. Extract project name from message line starting with "Project Name:" (e.g. "Project Name: Minerva").
+  3. Extract folder name from message line starting with "Folder Name:" (e.g. "Folder Name: AI Cases").
+  4. If user wants to create test case on Browserstack, you will have test case information. Use that informations ("Title", "Owner", "Priority", "Test Type", "Automation Status", "Step", "Expected Result").
+  5. **Create subfolder inside the target folder with Jira issue key as subfolder name.**
+  6. **Create test case files inside that subfolder.**
+  7. Use `browserstack mcp` to create Browserstack files.
 
 # Project Informations:
 
