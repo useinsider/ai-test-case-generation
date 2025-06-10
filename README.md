@@ -1,18 +1,31 @@
-# AI Test Case Generation Rules
+# Test Case Generation Workflow
 
-This repository contains a collection of rules and guidelines for AI-powered test case generation. These rules help in creating structured, consistent, and comprehensive test cases.
+This repository contains the workflow and rules for generating test cases and managing them in BrowserStack Test Management.
 
-## Rules Overview
+## Project Structure
 
-- `browserstack.mdc`: Rules for Browserstack project management and test case upload
-- `case-structure.mdc`: Standard test case structure and formatting rules
-- `jira-figma.mdc`: Rules for generating test cases based on Jira tickets and Figma designs
+The workspace is organized to handle test case generation from multiple sources:
+- Jira tickets
+- Figma designs
+- Confluence documentation
 
-## Directory Structure
+## Test Case Generation Rules
 
-```
-├── rules/
-│   ├── browserstack.mdc
-│   ├── case-structure.mdc
-│   └── jira-figma.mdc
-```
+### Trigger Conditions
+1. When message contains "Create test scenarios for" with a Jira Task ID (e.g., PA-12345)
+2. When message contains "Add the test scenarios that you create to BrowserStack"
+
+### Information Sources
+- Jira Task Description
+- Figma Design Analysis (if URL provided)
+- Confluence Documentation (if URL provided)
+
+
+### User Prompt Examples:
+    Create test scenarios for {JIRA_TASK_ID}.
+
+    Figma url:  @{FIGMA_URL}
+
+    Add the test scenarios that you create to Browserstack.
+    Project Name: {PROJECT_NAME}
+    Folder Name: {FOLDER_NAME}
