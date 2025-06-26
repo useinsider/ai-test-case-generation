@@ -8,6 +8,7 @@ The workspace is organized to handle test case generation from multiple sources:
 - Jira tickets
 - Figma designs
 - Confluence documentation
+- Product Informations 
 
 ## Test Case Generation Rules
 
