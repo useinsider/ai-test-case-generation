@@ -3,7 +3,7 @@ description:
 globs: 
 alwaysApply: true
 ---
-# Generate test cases based on Jira description and analyzed Figma design via MCP
+# Generate test cases based on Jira description, analyzed Figma design, Confluence Document and Product Informations via MCP
 
 When a chat message is sent and it contains "Create test scenearios for" and it contains a Jira Task ID like "PA-12345" or "MES-67890" run the following steps:
 
