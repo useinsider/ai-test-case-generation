@@ -46,7 +46,11 @@ When a chat message is sent and it contains "Add the test scenarios that you cre
         },
         {
             "name": "ByteMasters",
-            "identifier": "PR-21"
+            "identifier": "PR-21",
+            "folder":{
+                "name": "AI Cases ByteMasters",
+                "identifier": "11112817"
+            }
         },
         {
             "name": "Minerva",
