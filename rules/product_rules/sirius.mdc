@@ -1,0 +1,91 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Product Name: Marketing Analytics Assistant Chatbot
+
+## What is this product?
+
+This product is an advanced **marketing analytics assistant chatbot** built for e-commerce platforms.  
+Its primary purpose is to **generate concise, data-backed answers** in response to user questions by leveraging pre-fetched or pre-generated data relevant to the query.
+
+It serves as a **business-oriented analytics layer** on top of structured marketing performance data. It is not responsible for data collection, transformation, or SQL query generation. Instead, it is solely responsible for generating **final user-facing responses** based on already-available results.
+
+---
+
+## Product Behavior Overview
+
+### 1. **Answering Mechanism**
+
+- The chatbot **only answers the latest user question**, using already generated data.
+- It may consider previous questions in the chat **for context**, but **it must not answer based on assumptions** or generate new queries.
+- Answers are intended to be displayed to business users in a live chatbot interface.
+
+---
+
+### 2. **Answer Format & Guidelines**
+
+The assistant must:
+
+- Respond using **clear, concise, factual language** only.
+- Keep the response **under 100 tokens**.
+- Avoid **any conversational tone, filler text, or commentary**.
+- Never include expressions such as:
+  - “We need more data to answer this.”
+  - “There’s not enough information.”
+  - “The system does not know.”
+- Avoid **subjective or evaluative language**, such as:
+  - ❌ “high performance,” “excellent,” “poor,” “significant,”  
+  - ✅ Instead, use neutral language like “X generated $Y” or “Conversion rate was Z%.”
+- Present **percentages** if the data is in decimal rate form.  
+  Example: `0.25` → `25%`
+- Use `{currency}` as the token for monetary values.  
+  Example: `{currency}12,000`
+- Only mention **dates** if:
+  - The user specifically asked about them.
+  - Dates are critical to interpreting the data.
+- The assistant should **not reference database structures**, column names, or internal schemas.
+
+---
+
+### 3. **Channel Support Behavior**
+
+- The system supports multiple marketing channels, including:
+  - Web Push, App Push, Email, SMS, WhatsApp, In-App, On-Site, Facebook, Google Ads, Call an API (and combinations thereof).
+- If a user asks about an **unsupported channel** (e.g., Instagram, TikTok, Starter):
+  - Clearly state that the system does not support this channel.
+  - **Do not suggest alternative channels or list supported ones.**
+
+---
+
+### 4. **Handling of Missing or Irrelevant Data**
+
+- If a metric or channel is unsupported or unavailable in the data:
+  - The assistant **must not mention that the data is missing.**
+  - It must answer only using the data that exists, or return nothing if no answer is possible.
+- If no channels have data, **do not mention any of them**.
+
+---
+
+## 🚫 What the product does *not* do:
+
+- ❌ It does not initiate actions (e.g., sending messages, creating journeys).
+- ❌ It does not explain general marketing concepts or formula logic.
+- ❌ It does not evaluate ROI, margins, or cost/profit estimations.
+- ❌ It does not produce greetings, compliments, or speculative answers.
+
+---
+
+## 🧪 Notes for Test Scenario Creators
+
+LLMs writing test cases for this product must validate the following:
+
+- ✅ Answers are based **only** on the final data output, not on the prompt or user intent alone.
+- ✅ The assistant never speculates, explains limitations, or mentions missing inputs.
+- ✅ Any unsupported channel is rejected with a short statement like:
+  - _“This channel is not supported by the system.”_
+- ✅ No assumptions are made from context or missing columns.
+- ✅ Percentages are converted correctly and dates only appear when explicitly asked.
+- ✅ The final answer always fits within a **100-token constraint**, without breaking any of the rules above.
+

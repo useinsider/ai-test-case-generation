@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
 ## Test Case Rules
 
 Each manual test case must follow the structure below:

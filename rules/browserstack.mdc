@@ -1,17 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # Analyze the user message and select needed Browserstack project, folder informations and upload files to Browserstack.
 
 When a chat message is sent and it contains "Add the test scenarios that you create to Browserstack." run the following steps:
 
-
   1. Extract the Jira issue key from the message (e.g., SD-120661).
   2. Extract project name from message line starting with "Project Name:" (e.g. "Project Name: Minerva").
   3. Extract folder name from message line starting with "Folder Name:" (e.g. "Folder Name: AI Cases").
-  4. If user wants to create test case on Browserstack, you will have test case information. Use that informations ("Title", "Owner", "Priority", "Test Type", "Automation Status", "Step", "Expected Result").
-  5. **Create subfolder inside the target folder with Jira issue key as subfolder name.**
-  6. **Create test case files inside that subfolder.**
-  7. Use `browserstack mcp` to create Browserstack files.
+  4. If user wants to create test case on Browserstack, you will have test case information. Use that information ("Title", "Owner", "Priority", "Test Type", "Automation Status", "Step", "Expected Result").
+  5. You can find the target folder using `Project Informations` list. Match the Project Name and Folder Name with the correct identifiers.
+  6. **Create a subfolder inside the target folder with the Jira issue key as the subfolder name.**
+      - Example: If the Jira issue key is `SD-120661`, create a subfolder named `SD-120661` inside the target folder.
+  7. **Create test case files inside that subfolder.**
+  8. Use `browserstack mcp` to create Browserstack files.
 
-# Project Informations:
+## Project Identifiers:
 
     "projects": [
         {
@@ -45,7 +51,7 @@ When a chat message is sent and it contains "Add the test scenarios that you cre
         {
             "name": "Minerva",
             "identifier": "PR-20",
-            "folder":{
+            "folder": {
                 "name": "AI Cases",
                 "identifier": "9828469"
             }
