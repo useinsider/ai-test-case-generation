@@ -22,10 +22,12 @@ The workspace is organized to handle test case generation from multiple sources:
 
 
 ### User Prompt Examples:
-    Create test scenarios for {JIRA_TASK_ID}.
+    Create test scenarios for Jira Task PA-30945
 
-    Figma url:  @{FIGMA_URL}
-
+    Product Information: @sirius.mdc
+    
     Add the test scenarios that you create to Browserstack.
-    Project Name: {PROJECT_NAME}
-    Folder Name: {FOLDER_NAME}
+    
+    Read the @browserstack.mdc file to get identifiers informations.
+    Project Name: Minerva
+    Folder Name: AI Cases
