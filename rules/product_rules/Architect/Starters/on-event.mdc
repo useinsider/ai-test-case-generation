@@ -1,0 +1,119 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# On Event Starter
+
+## What is On Event?
+
+The **On Event Starter** allows users to enter a journey when they perform a specific action (event) in real-time. It supports actions across all platforms including web, mobile app, and offline sources.
+
+It is ideal for time-sensitive scenarios where immediate engagement is needed after a user action.
+
+---
+
+## What is an Event?
+
+An **Event** represents a user action on a website, mobile app, or offline environment.
+
+**Common event examples**:
+- Visiting a product or cart page  
+- Adding an item to the cart  
+- Completing a purchase  
+- Submitting a form
+
+Events are used to:
+- Track user behavior  
+- Create detailed audience segments
+
+---
+
+## How It Works
+
+- The journey is triggered when a user performs the selected event.
+- A user enters the journey only once per event occurrence (unless repeated triggers are configured).
+- You can narrow the entry condition by selecting multiple event parameters and values.
+- Date-type parameters are **not** supported.
+
+---
+
+## Additional Segmentation
+
+You can enhance targeting by combining the event trigger with additional segments.
+
+**Segment types supported**:
+- Standard
+- Predictive
+- RFM
+- Saved segments
+- Language-independent targeting is recommended (e.g., "All Languages")
+
+**Example**:  
+Trigger → "Viewed Cart Page"  
+Segment → "High Purchase Intent" users
+
+---
+
+## Best Practices & Tips
+
+- Always consider using "All Languages" when language information may be missing.
+- Use event parameters to further filter the audience (e.g., product category = Electronics).
+- On Event Starter is ideal for real-time, behavior-based journeys.
+
+---
+
+## Usage Examples
+
+- Welcome journeys  
+- Cart abandonment  
+- Product viewed but not purchased  
+- Post-purchase engagement  
+- Lead generation flows  
+- Channel-based triggers (e.g., email opened)
+
+---
+
+## Requirements
+
+To use On Event Starter effectively, ensure the following are set up:
+
+- Insider Tag and SDK integration must be completed.
+- Events must be actively sent from the relevant source (web, app, or API).
+- Event definitions must be available and configured in the system.
+
+---
+
+## Troubleshooting
+
+- Issues may arise from missing event definitions or inactive SDK/tag.
+- Refer to the dedicated troubleshooting guide in Confluence.
+
+---
+
+## Resources
+
+- [Default Events – Confluence](mdc:#)
+- [Standard Segments – Confluence](mdc:#)
+- [Saved Segments – Confluence](mdc:#)
+- [Email Engagement Segments – Confluence](mdc:#)
+
+## Visual Examples
+
+### 1. Default View  
+When the On Event node is first added to the Canvas, this is the initial interface:  
+!@on-event-default-view
+
+---
+
+### 2. Additional Segments Opened  
+Clicking "Add Condition" allows you to define extra filters such as user attributes or segments:  
+!@oegments
+
+---
+
+### 3. Example Filter – City = Ankara  
+This configuration waits for the `cart_page_viewed` event, but only for users located in Ankara
+
+
+

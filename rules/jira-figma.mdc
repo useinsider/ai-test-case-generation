@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # Generate test cases based on Jira description and analyzed Figma design via MCP
 
 When a chat message is sent and it contains "test senaryosu oluştur" and it contains a Jira Task ID like "PA-12345" or "MES-67890" and it contains a "Figma url" run the following steps:

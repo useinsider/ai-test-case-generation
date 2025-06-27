@@ -1,0 +1,47 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Wait for Event
+
+## What is Wait for Event?
+
+The **Wait for Event** element pauses a user's progress in a journey until a specific **event** is performed.  
+It ensures that the user takes a desired action before moving forward.
+
+This is ideal for scenarios where a **confirmation, interaction, or trigger event** is required.
+
+---
+
+## How It Works
+
+- When the user reaches this element, Architect starts listening for the configured event.
+- Once the event is performed by the user, they immediately continue to the next journey step.
+- If the event does **not** happen, the user stays paused — or may be routed elsewhere depending on the journey design.
+
+---
+
+## Use Cases
+
+- Wait for the user to add an item to the cart:  
+  → Event: `add_to_cart`
+- Wait until the user opens a notification or email:  
+  → Event: `notification_opened` or `email_opened`
+- Wait until the user submits a form or completes a goal:  
+  → Event: `form_submission`
+
+---
+
+## Best Practices & Tips
+
+- Use for **action-dependent journeys**, especially when timing is critical (e.g., post-notification, retargeting).
+- Combine with **timeouts** and **alternate paths** in case the event doesn’t occur in a set period.
+- Ensure the event is well-integrated and tracked across all platforms (web, mobile, offline, etc.).
+
+---
+
+## Resources
+
+- [Wait for Event – Confluence](#)
+- [Event Configuration Guide – Confluence](#)

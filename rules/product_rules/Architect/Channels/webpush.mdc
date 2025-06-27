@@ -1,0 +1,242 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Web Push Element Guide
+
+## What is Web Push?
+
+Web push notifications are **actionable messages** sent from a website to a visitor’s device via the browser.
+
+- Contextual, timely, and personalized
+- Appear immediately on the screen
+- Reside in the device's notification panel
+
+## How Web Push Works
+
+Before sending, the system checks if the user is reachable.
+
+- If reachable: message is sent while the user is online
+- If not reachable: user is dropped from the flow
+- If no added title, description and message link, web push element doesnt save and throws toaster  (Toaster: Fill in all required fields to continue.)
+
+### Reachability Conditions
+
+User must meet the following:
+
+- `wpo: true`
+- `wpt`, `wp_token_data`, `wp_browser`, `wpl` ≠ null
+
+Delivery is **not attempted** if:
+
+- No token is present
+- Token is expired
+- Notifications not allowed
+- `gdpr_optin` is false
+
+If browser is offline, notification is queued.  
+Notifications have a **TTL (Time To Live)**. After TTL expires, undelivered notifications are discarded.
+
+---
+
+## Web Push Structure
+
+### 1. Create a Journey
+
+- Go to Architect
+- Click “Start From Scratch”
+- Add any starter
+- Save the starter
+
+### 2. Add Web Push Element
+
+- Click the `+` icon
+- Choose **Web Push** under **Channels**
+- Click the added **Web Push** Element 
+
+### 3. Set Push Icon
+
+Options:
+
+- Default Icon from Inone Settings
+- Custom Icon (max `1024x768px`)
+- Dynamic Image (e.g., last abandoned product)
+
+> Use high-resolution images
+
+### 4. Compose Title and Description
+
+- Add title and message body
+- Use AI Assistant to generate text
+- Support for dynamic content and fallback values
+- Emojis supported
+
+
+### 5. Add Message Link
+
+Options:
+
+- **Custom Link** (valid, secure)
+- **Dynamic Link** (based on recent Default/Custom Attributes, Event Parameter, Recommendation, Product Catalog Attribute(if added product starter on canvas), Call an api Response(if added call an api element and response value before web push element))
+
+> Always include fallback URLs
+
+### 6. Configure UTM Parameters
+
+Required:
+
+- `utm_source`
+- `utm_medium`
+- `utm_campaign`
+
+Optional:
+
+- `utm_term`
+- `utm_content`
+
+**Example:**
+
+https://partner.com?utm_source=Insider_Web_Push&utm_medium=Web_Push&utm_campaign=Fathers_Day_Campaign
+
+> Manual UTM overrides values from settings
+
+### 7. Add Action Buttons
+
+- Max 2 buttons
+- Each can link to:
+  - Custom URL
+  - Dynamic Link (with fallback)
+
+> UTM tags apply to both links and buttons
+
+### 8. Add Rich Push Image (Optional)
+
+Requirements:
+
+- Max resolution: `1024x512px`
+- Recommended: `720x360px` (2:1)
+- Max size: `500KB`
+- Must be HTTPS if dynamic
+
+### 9. Preview Your Message
+
+- View on Chrome, Firefox, iOS, Android
+- Toggle compact/expanded view
+- **Preview as User**:
+  - Search by email, phone, or profile ID
+  - Reset preview using hover controls
+
+### 10. Enable Send Time Optimization
+
+- Sends when user is most active
+- Ideal for behavioral triggers
+- Enabling also bypasses channel frequency capping
+
+### 11. Bypass Channel Frequency Capping
+
+- Ensures delivery even if capping is reached
+- If capping limit hit, user proceeds to next step
+
+### 12. Configure TTL (Time to Live)
+
+- Controls how long a notification stays queued
+- Important for time-sensitive offers
+- TTL should match or be less than the next step’s wait time
+
+### 13. Test the Notification
+
+- Use **Test Message** button
+- Note: Dynamic content won’t resolve in test mode
+
+### 14. Rename Channel Name (Optional)
+
+- Rename from the top-right of the element
+
+### 15. Save the Configuration
+
+> No autosave – **Click Save manually**
+
+### 16. Web Push Visibility on Canvas
+
+- After filling in all required fields (title, description, and message link), click the **Save** button to save the Web Push element.
+- Once saved, you will be redirected to the **Canvas** page.
+- On the Canvas, the Web Push element appears as **filled**, and the **title field** becomes visible.
+- If the **Preview** button on the Canvas is clicked, a **preview** of the Web Push will be generated using the provided content.
+
+
+
+---
+
+## Live Actions
+
+Keep users in the journey based on action:
+
+- On Click
+- On View
+- On Close
+- Default: On Send
+
+> Users stay in step up to 30 days
+
+---
+
+## Tips and Best Practices
+
+- Use **Check Reachability** before sending Web Push
+- Add **Dynamic Images** (e.g., abandoned item thumbnails)
+
+---
+
+## Check User Interaction
+
+To branch based on user action:
+
+1. Add a **Wait Element**
+2. Add **Check Interaction**
+
+---
+
+## Analytics
+
+### Metrics per element:
+
+- Sent
+- Clicks
+- CTR
+- Conversions
+- Conversion Rate
+- Revenue
+
+### Live Stats (after launch):
+
+- **Arrived**: Users entered the step
+- **Reachable**: Users eligible for push
+- **Dropped**: Not reachable
+- **Proceeded**: Moved on after inaction
+
+---
+
+## Final Testing Steps
+
+1. Create a Journey ("Start From Scratch")
+2. Add any starter and Web Push
+3. If push isn’t enabled, a warning appears
+4. Fill in:
+   - Title
+   - Description
+   - Icon
+5. Launch from top right
+
+### Make sure these attributes exist:
+
+- `wpo: true`
+- `wpt`, `wp_token_data`, `wp_browser`, `wpl` ≠ null
+- Opt-in via partner site (user in UCD)
+
+### Verify:
+
+- Network tab: look for `"store"` request
+- localStorage: check `ins-journey-camp-*`
+- Use Live Stats or Web Push Analytics to monitor
+

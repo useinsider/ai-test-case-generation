@@ -1,0 +1,51 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+    # Check Reachability
+
+    ## What is Check Reachability?
+
+    The **Check Reachability** element checks whether a user is reachable via specific communication channels such as Email, SMS, Push, or WhatsApp.
+
+    It helps optimize journeys by preventing message attempts to unreachable users and offering fallback paths.
+
+    ---
+
+    ## How It Works
+
+    - When a user reaches this element, Architect verifies if they can be reached via the selected channel(s).
+    - If the user is reachable via any of the selected channels, they proceed down one path.
+    - If not, they are routed to an alternate path.
+
+    Supported channels include:
+    - 📧 Email
+    - 📱 SMS
+    - 🔔 Web Push
+    - 📲 App Push
+    - 💬 WhatsApp
+
+    ---
+
+    ## Use Cases
+
+    - Ensure email reachability before sending a campaign message.
+    - Avoid push attempts for users who haven’t opted in to push notifications.
+    - Route unreachable users to a fallback channel (e.g., web push instead of SMS).
+    - Personalize flows based on preferred or available channels.
+
+    ---
+
+    ## Best Practices
+
+    - Always use this check before critical communication steps to avoid bounce or delivery errors.
+    - Design fallback journeys for users who are not reachable on the intended channel.
+    - Combine with **Next Best Channel** to dynamically choose the most effective option.
+
+    ---
+
+    ## Resources
+
+    - [Check Reachability – Confluence](mdc:#)
+    - [Channel Configuration Guide – Confluence](mdc:#)

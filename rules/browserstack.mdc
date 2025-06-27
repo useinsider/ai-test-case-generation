@@ -1,3 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
 # Analyze the user message and select needed Browserstack project, folder informations and upload files to Browserstack.
 
 When a chat message is sent and it contains "testleri browsertack'e ekle" run the following steps:

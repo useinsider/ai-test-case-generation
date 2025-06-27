@@ -1,0 +1,52 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Check Interaction
+
+## What is Check Interaction?
+
+The **Check Interaction** element evaluates whether a user has interacted with a specific message or action in the journey.
+
+It helps personalize the flow based on real-time user engagement such as opening an email, clicking a notification, or replying to an SMS.
+
+---
+
+## How It Works
+
+- When a user reaches this element, Architect checks their interaction with a prior channel message or campaign.
+- Based on the result, users are routed into separate paths:
+  - ✅ **Interacted** (e.g., opened, clicked, replied)
+  - ❌ **Not Interacted**
+
+Supported interactions include:
+- Email Open or Click
+- Push Notification Open or Click
+- SMS Reply
+- WhatsApp Response
+
+---
+
+## Use Cases
+
+- After sending an email, check if it was opened — and follow up accordingly.
+- Detect if a user clicked a push notification, and only proceed if they did.
+- Check for SMS replies before sending additional messages.
+- Separate users into engaged vs. unengaged segments for follow-up logic.
+
+---
+
+## Best Practices & Tips
+
+- Combine with **Wait** elements to give users time to interact before checking.
+- Use this element to create reminder paths for unresponsive users.
+- Design fallback content for users who didn’t engage with the original message.
+- Always define both paths (Yes/No) to maintain journey continuity.
+
+---
+
+## Resources
+
+- [Check Interaction – Confluence](mdc:#)
+- [Engagement Metrics & Channel Tracking – Confluence](mdc:#)

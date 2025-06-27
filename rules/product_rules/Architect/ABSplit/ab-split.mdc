@@ -1,0 +1,55 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# A/B Split
+
+## What is A/B Split?
+
+The **A/B Split** element is used to randomly distribute users into two or more branches within a journey.
+
+Each branch represents a variation of the experience (e.g., different message content, channels, timing).  
+The distribution is controlled by customizable percentage ratios.
+
+---
+
+## How It Works
+
+- When a user reaches the A/B Split element, they are randomly assigned to one of the available paths based on the configured ratios.
+- Each path can trigger unique actions, channels, or content.
+- This enables controlled experimentation and performance comparison between branches.
+
+---
+
+## Use Cases
+
+- Compare the effectiveness of two different **email subject lines**.
+- Test **SMS vs. Push Notification** as a communication channel.
+- Evaluate the impact of **different discounts or incentives**.
+- Optimize journey structure by analyzing user behavior across branches.
+
+---
+
+## Configuration
+
+- You can create **2 to 4 paths** (A, B, C, D).
+- Each path must have an associated **percentage** (e.g., 25%, 25%, 25%, 25%).
+- Percentages must add up to **100%**.
+
+---
+
+## Best Practices
+
+- Label each path clearly to track and analyze outcomes.
+- Ensure each variation has meaningful differences for better insights.
+- Regularly review branch performance to identify the most effective journey design.
+- Combine with **reporting tools** to measure metrics like CTR, conversion, and revenue impact.
+
+---
+
+## Visual Example
+User Flow:
+                     ┌───── A: SMS + 10% Discount
+Start ───▶ A/B Split
+                     └───── B: Email + 5% Discount

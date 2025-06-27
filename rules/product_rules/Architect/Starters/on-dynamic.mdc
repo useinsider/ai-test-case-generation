@@ -1,0 +1,91 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# On Dynamic Date Starter
+
+## What is On Dynamic Date?
+
+The **On Dynamic Date Starter** allows users to enter a journey based on a **date-type attribute or event parameter**.  
+It’s ideal for time-based targeting such as birthdays, anniversaries, subscription expirations, or post-purchase follow-ups.
+
+It supports user data from web, mobile, CRM API, and static lists.  
+Even if the user acts on different platforms, the most recent data is used.
+
+---
+
+## How It Works
+
+- By default, journeys are triggered **daily at 01:00 UTC+0**.
+- You can customize the **time zone** and **trigger frequency**.
+- You can choose either:
+  - A **date-type attribute** (e.g., Birthday)
+  - Or an **event parameter** with date format (e.g., Flight Date)
+
+---
+
+## Additional Segmentation
+
+Use segments to narrow down the audience for more precise targeting.
+
+**Supported segment types**:
+- Standard
+- Predictive
+- Predefined
+- Integrated
+- RFM
+- Saved Segments
+
+**Example**:  
+Trigger → Birthday = Today  
+Segment → High discount interest users
+
+---
+
+## Best Practices & Tips
+
+- **Repeat Annually**: Ignore year value — ideal for birthdays, anniversaries.
+- **Before the Date**: Trigger journeys before the selected date (e.g., send promo 7 days before subscription ends).
+- **After the Date**: Trigger journeys after the selected date (e.g., send reminder X days after last purchase).
+- **Constant Event Parameter**: Use the parameter (like flight date) dynamically in journey content (e.g., flight reminders).
+
+---
+
+## Usage Examples
+
+- Birthday or anniversary greetings
+- Pre-expiration engagement for subscriptions
+- Sending email X days after purchase
+- Reminder for upcoming flight or reservation
+
+---
+
+## Requirements
+
+To use this starter correctly:
+
+- Insider Tag & SDK must be integrated
+- System rules must be defined
+- Date-type attribute or event parameters must exist and be active
+- Events must be sent from web, mobile app, or API
+
+---
+
+## Troubleshooting
+
+- If the journey doesn't trigger:
+  - Ensure the date field is in proper format
+  - Check trigger time zone and schedule
+  - Confirm attribute/event data is sent to Insider correctly
+  - Check that the user matches the date condition on trigger day
+
+---
+
+## Resources
+
+- [On Dynamic Date Starter – Confluence](mdc:#)
+- [Event vs Attribute – Confluence](mdc:#)
+- [Default Events – Confluence](mdc:#)
+- [Standard Segments – Confluence](mdc:#)
+- [Birthday Journeys – Confluence](mdc:#)
