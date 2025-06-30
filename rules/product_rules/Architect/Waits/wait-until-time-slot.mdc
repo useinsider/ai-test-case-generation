@@ -1,0 +1,44 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Wait Until a Time Slot
+
+## What is Wait Until a Time Slot?
+
+The **Wait Until a Time Slot** element pauses a user's journey until a specific time window (e.g., 10:00–11:00) is reached.  
+Once the window begins, all users waiting in this element proceed to the next step **simultaneously**.
+
+This is useful for synchronizing actions for large user groups — like campaigns or batch notifications.
+
+---
+
+## How It Works
+
+- When a user reaches this element, they are paused until the next matching time slot.
+- At the start of that time slot, all waiting users continue together to the next journey element.
+- Time slots can be configured based on your local time zone and operational needs.
+
+---
+
+## Use Cases
+
+- Sending a campaign email to **850,000 users** exactly at **10:00 AM**.
+- Launching a flash sale notification at a predefined hour.
+- Encouraging users to take action during a narrow promotional window.
+
+---
+
+## Best Practices & Tips
+
+- Ideal for **large segments** where synchronized delivery improves performance or clarity.
+- Reduces variability in user timing and helps **coordinate mass actions**.
+- Combine with **Channel** elements (e.g., email, push) for impactful broadcast moments.
+
+---
+
+## Resources
+
+- [Wait Until a Time Slot – Confluence](#)
+- [Timed Campaign Strategies – Confluence](#)

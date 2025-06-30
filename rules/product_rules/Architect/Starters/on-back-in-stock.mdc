@@ -1,0 +1,76 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# On Back in Stock Starter
+
+## What is On Back in Stock?
+
+The **On Back in Stock Starter** triggers a journey when a product that was previously out of stock becomes available again, and the user has previously interacted with that product.
+
+Stock updates are tracked across all platforms including web, mobile app, and offline product databases.  
+This starter is ideal for **real-time re-engagement campaigns** targeting product interest.
+
+---
+
+## How It Works
+
+- The user must have performed a selected event (e.g., product view, add to cart, add to favorites) for a specific product.
+- When that product comes back in stock, the journey is triggered automatically.
+- The **Product ID (`pid`)** event parameter is required to associate the event with the product.
+
+**Note**: Stock condition is binary — "in stock" or "out of stock". Quantity is **not** used in the trigger logic.
+
+---
+
+## Filtering & Segmentation
+
+### 🔹 Event Filters (Optional)
+- Filter users by specific events or event parameters (e.g., exclude category = Clearance).
+
+### 🔹 Product Attribute Filters
+- Filter based on product category, brand, price range, or other attributes.
+
+### 🔹 Audience Segmentation
+- Add segments based on:
+  - Purchase probability
+  - RFM status
+  - Saved, predefined, predictive, or integrated segments
+
+---
+
+## Usage Examples
+
+- Users who viewed a product that’s now back in stock
+- Users who added a product to cart or favorites, and it’s now available
+- Users who subscribed to a stock alert for a product
+- Sending alerts for newly restocked bestsellers
+
+---
+
+## Requirements
+
+To use this starter:
+
+- ✅ **Product Catalog Integration** must be enabled (Clickstream, XML feed, or Catalog API)
+- ✅ Insider Tag & SDK must be active
+- ✅ System rules must be defined and events properly tracked
+- ✅ `pid` parameter must be included in relevant events
+
+---
+
+## Best Practices & Tips
+
+- Use "All Languages" to ensure maximum audience inclusion
+- Avoid using **Wait** element in time-sensitive restock alerts
+- Stock amount is not checked; only **stock status** is considered (`in_stock = true`)
+- Combine filters and segments to create focused retargeting flows
+
+---
+
+## Resources
+
+- [On Back in Stock Starter – Confluence](#)
+- [Product Feed Integration – Confluence](#)
+- [Saved & Predictive Segments – Confluence](#)

@@ -1,0 +1,158 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Email Channel
+
+## What is Email?
+
+Email is a communication channel within the Insider platform used to deliver personalized emails to users as part of a journey. It communicates with users directly via their verified email addresses.
+
+---
+
+## Key Features
+
+* **Personalization**
+  Email content can be customized using dynamic fields such as name, surname, campaign code, and product name.
+
+* **Trigger and Automation**
+  Emails can be sent automatically based on journey flow steps or specific user actions (e.g., cart abandonment, registration completion).
+
+* **Delivery and Reporting**
+  Track delivery status, open rates, click-throughs, and engagement metrics in real time.
+
+* **Channel Fallback**
+  If users are not reachable via email, fallback to SMS or Push Notifications can be configured.
+
+---
+
+## Use Cases
+
+* **Promotional Campaigns**
+  Bulk announcements like discounts, promotions, and holiday greetings.
+
+* **Reminders**
+  Cart abandonment follow-ups, registration completion prompts, appointment reminders.
+
+* **Time-Sensitive Messages**
+  Real-time alerts and urgent call-to-action messages.
+
+---
+
+## Technical Notes & Tips
+
+* **Email Address Validation**
+  Users must have a valid and verified email address to receive messages.
+
+* **Custom Templates**
+  Use HTML or visual editor templates enriched with branding and media.
+
+* **Reachability Check**
+  Ensure email channel eligibility before sending.
+
+* **Regulatory Compliance**
+  Ensure compliance with GDPR, KVKK, and local data privacy laws.
+
+---
+
+## Integration & Management
+
+* Integration with an email service provider is required.
+* Campaign scheduling, audience segmentation, and message content are managed through the journey Canvas.
+
+---
+
+## HTML Editor
+
+### What is the HTML Editor?
+
+The **HTML Editor** is an advanced editor in the Insider platform that allows users to create email and content layouts directly using HTML code. It is ideal for building highly customized, brand-aligned, and responsive designs.
+
+### Key Features
+
+* **Direct Coding**
+  Write custom HTML and CSS code to design emails with full control.
+
+* **Personalization**
+  Easily integrate dynamic fields and user-specific content directly into the code.
+
+* **Preview Mode**
+  View how the HTML renders across different devices before sending.
+
+* **Template Support**
+  Upload or paste existing HTML templates into the editor.
+
+* **Responsive Design**
+  Ensure content displays properly on both desktop and mobile.
+
+* **Media Management**
+  Embed and manage images or files using the platform’s media manager.
+
+### How to Use
+
+1. Select **HTML Editor** when creating an email.
+2. Write or paste your HTML and CSS code.
+3. Add personalization tokens (e.g., `{{first_name}}`).
+4. Use the preview tool to review your content.
+5. Send a test email.
+6. Save and publish when ready.
+
+### Tips
+
+* Use the HTML Editor for advanced design control and branding needs.
+* Always test responsiveness across devices and email clients.
+* Start with imported HTML templates for efficiency.
+
+---
+
+## Drag and Drop Editor
+
+### What is the Drag and Drop Editor?
+
+The **Drag and Drop Editor** is a visual design tool in the Insider platform for creating email content without coding. It’s designed for ease-of-use and speed in building responsive email layouts.
+
+### Key Features
+
+* **Visual Editor**
+  Add content blocks like text, images, buttons, social links, and dividers using drag-and-drop functionality.
+
+* **Preview Mode**
+  Check how your content appears on desktop and mobile devices.
+
+* **Personalization**
+  Add dynamic fields to tailor content for each user.
+
+* **Pre-built Templates**
+  Start from existing layouts or build from scratch.
+
+* **Responsive Design**
+  All content adjusts automatically to device screen sizes.
+
+* **Media Management**
+  Upload, organize, and insert images and files.
+
+### How to Use
+
+1. Choose **Drag and Drop Editor** while setting up email content.
+2. Drag content blocks from the sidebar into the canvas.
+3. Customize each block’s text, style, colors, or images.
+4. Insert personalization fields as needed.
+5. Preview the design and send a test email.
+6. Save and launch your message.
+
+### Tips
+
+* Use pre-built templates to accelerate campaign creation.
+* No coding needed—ideal for marketers and non-developers.
+* Always preview mobile responsiveness before publishing.
+
+---
+
+## Resources
+
+* [Email – Confluence](#)
+* [Email Best Practices – Confluence](#)
+* [Template Design Guidelines – Confluence](#)
+* [How to Use HTML Editor – Confluence](#)
+* [How to Use Drag and Drop Editor – Confluence](#)

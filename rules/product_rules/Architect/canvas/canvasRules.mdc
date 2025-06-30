@@ -1,0 +1,133 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Canvas Rules
+To create a new journey, click on the Create journey button and click on the Next button. Then it directs us to the template page. To create a new journey on this page, click on Start from stratch and a blank canvas page appears. The first element should always start with the starter, so the first element should always be the starter, click on the Select Starter button and the starter dropdown will appear when meCanvas is first opened.
+## Element Order in Action Menu
+### After Starter Element
+1. Wait
+2. Channel
+3. Action
+4. Check
+5. A/B Split
+6. Next Best Channel
+### After Wait Element
+1. Check
+2. Channel
+3. Action
+4. A/B Split
+5. Next Best Channel
+### After Check Conditions Element
+1. Channel
+2. Action
+3. Check
+4. Wait
+5. A/B Split
+6. Next Best Channel
+### After Check Reachability Element
+1. Channel
+2. Action
+3. Check
+4. Wait
+5. A/B Split
+6. Next Best Channel
+### After Check for Event Element
+1. Channel
+2. Action
+3. Check
+4. Wait
+5. A/B Split
+6. Next Best Channel
+### After Channel Element
+1. Wait
+2. Check
+3. Channel
+4. Action
+5. A/B Split
+6. Next Best Channel
+### After Action Element
+1. Wait
+2. Check
+3. Channel
+4. Action
+5. A/B Split
+6. Next Best Channel
+### After A/B Split Element
+1. Channel
+2. Action
+3. Check
+4. Wait
+5. A/B Split
+6. Next Best Channel
+## General Rules
+### Wait Elements
+- Two same wait elements cannot be added consecutively
+- Wait until a Time Slot and Wait for Some Time cannot be added consecutively
+- When reconnection occurs, the same wait rules apply according to element order
+### Journey Requirements
+- At least 1 action or channel element is required to launch the journey
+- Every path after the A/B split element should end with a channel
+- After the check element, there should be at least one action or channel element in one of the paths
+- There should be at least one element in every single path of the check condition element except not matching path
+### Element Modification Rules
+- NBC and A/B split elements cannot be changed to another, only can be removed
+- Channels and actions can be changed to other channels and action elements
+- If NBC is used, channels under NBC paths can only be changed into other channels, not actions
+- NBC cannot be copied and pasted
+- Wait elements can be changed into wait elements only
+- Check elements can be changed into other check elements only
+### NBC (Next Best Channel) Rules
+- Only channels (except Facebook Custom Audiences and Google Ads Customer Match), wait elements, or A/B split can be used as the first item of an NBC Branch
+- When one channel is added under one NBC path, the same channel cannot be added to other paths
+### Live Actions and Stats
+- Live actions after channels are different for every element
+- Live-action for onsite and in-app should be on-view as default, for other channels it's on-send
+- Go to stats button is disabled with tooltip when:
+  - No channel in the journey
+  - Only call an API or Facebook but no other channel
+  - Only action elements but no channels
+### Branching Elements
+Types:
+- Check Conditions
+- Check Reachability
+- Check Interactions
+- A/B Split
+- Next Best Channel
+### Reconnection Rules
+- Undo and Redo are disabled in reconnection state
+- Adding elements is disabled in reconnection state
+- Cannot break connection if related to another connected path
+- Branching elements cannot be added to paths afterward if already connected
+- Cannot delete the only element in a reconnected path
+- New paths after branching elements are automatically connected to connected paths
+### Journey Status and Editing
+- Everything on non-launched journeys can be edited
+- For Active, Test Dry Run, or Sunset status:
+  - Can edit content of elements while journey runs after clicking "edit flow"
+  - Journey analytics don't reset on edit flow
+  - Flow cannot be edited via add, remove, change, copy, paste actions
+- Track User is available for Active, Test, Passive, and Sunset journeys
+### Channel Preview Rules
+Channel preview is disabled if:
+- No channel in the journey
+- Channels present but no content to preview
+- Only API or Facebook or action elements present
+### Path Requirements
+- Each path's last element should be a channel or action element except for negative paths
+- If paths under different check elements are reconnected:
+  - New paths won't be reconnected by default
+  - Can only reconnect to merged paths
+### Toaster Notifications
+Shown when:
+- Journey name exceeds 255 characters
+- Journey name box is left blank
+- Journey name changed to existing name
+- Various starter element change scenarios
+### Element Labels
+- Check condition with 2 paths: "Matching - Not Matching"
+- Check Reachability labels depend on channel selection
+- Non-draft status empty paths end with specific states:
+  - Not matching path: "Completed"
+  - Not reachable path: "Dropped"
