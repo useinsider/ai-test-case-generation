@@ -1,0 +1,41 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Generate test cases based on Jira description, analyzed Figma design, Confluence Document and Product Informations via MCP
+
+When a chat message is sent and it contains "Create test scenearios for" and it contains a Jira Task ID like "PA-12345" or "MES-67890" run the following steps:
+
+  1. Extract Jira Task ID (e.g., PA-12345) from the message and store it as `jiraId`.
+  2. If the message contains a Figma URL, extract Figma File ID (e.g., FIG-12345) from the message and store it as `figmaId`.
+  3. If the message contains a Confluence URL, extract and store it as `confluenceUrl`.
+  4. If the message contains a Product Information, read the related product information and store that information as `productInformation`.
+  5. Use `mcp` to fetch the Jira description for `jiraId` and store it in `jiraDescription`.
+  6. If the message contains a Figma url, use `mcp` to fetch the analyzed Figma design for `figmaId` and store it in `figmaAnalysis`.
+  7. If the message contains a Conflunce url, use `mcp` to fetch the content of the Confluence page and store it as `confluenceContent`.
+  8. Read the contents of the [case-structure.mdc](mdc:.cursor/rules/case-structure.mdc) into a variable called `testRules`.
+  9. Be sure that you have the all informations to generate test case. (jiraDescription, testRules, If figmaAnalysis is present, If confluenceContent is present, If productInformation is present)
+  10. Append the following text to the end of the original message:
+
+    """
+    Jira Task Description:
+    {{jiraDescription}}
+
+    {{#if figmaAnalysis}}
+    Figma Design Analysis:
+    {{figmaAnalysis}}
+
+    {{#if confluenceContent}}
+    Confluence Documentation:
+    {{confluenceContent}}
+
+    {{#if productInformation}}
+    Product Information:
+    {{productInformation}}
+
+    Test Rules:
+    {{testRules}}
+    """
+
+  - Ask the assistant to generate test cases based on the full message
