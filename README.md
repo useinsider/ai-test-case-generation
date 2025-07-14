@@ -23,12 +23,16 @@ The workspace is organized to handle test case generation from multiple sources:
 
 
 ### User Prompt Examples:
-    Create test scenarios for Jira Task PA-30945
-
-    Product Information: @sirius.mdc
+    Create test scenarios for Jira Task SD-121382
+    
+    Read the description of Jira TaskSD-121382
+    
+    Product Information: @canvasRules.mdc , @canvasTools.mdc
+    
+    Read @browserstack.mdc
+    
+    Generate test scenarios with these informations.
     
     Add the test scenarios that you create to Browserstack.
-    
-    Read the @browserstack.mdc file to get identifiers informations.
     Project Name: Minerva
-    Folder Name: AI Cases
+    Folder Name: AI Cases 
