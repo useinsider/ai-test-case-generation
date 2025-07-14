@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # On Attribute Change Starter
 
@@ -86,8 +86,8 @@ To use this starter:
 
 ## Resources
 
-- [On Attribute Change Starter – Confluence](#)
-- [Default Events & Attributes – Confluence](#)
-- [Standard Segments – Confluence](#)
-- [Saved Segments – Confluence](#)
-- [Email Engagement Segments – Confluence](#)
+- [On Attribute Change Starter – Confluence](mdc:#)
+- [Default Events & Attributes – Confluence](mdc:#)
+- [Standard Segments – Confluence](mdc:#)
+- [Saved Segments – Confluence](mdc:#)
+- [Email Engagement Segments – Confluence](mdc:#)

@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # Email Channel
 
@@ -151,8 +151,8 @@ The **Drag and Drop Editor** is a visual design tool in the Insider platform for
 
 ## Resources
 
-* [Email – Confluence](#)
-* [Email Best Practices – Confluence](#)
-* [Template Design Guidelines – Confluence](#)
-* [How to Use HTML Editor – Confluence](#)
-* [How to Use Drag and Drop Editor – Confluence](#)
+* [Email – Confluence](mdc:#)
+* [Email Best Practices – Confluence](mdc:#)
+* [Template Design Guidelines – Confluence](mdc:#)
+* [How to Use HTML Editor – Confluence](mdc:#)
+* [How to Use Drag and Drop Editor – Confluence](mdc:#)

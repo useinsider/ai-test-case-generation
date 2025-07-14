@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # On Back in Stock Starter
 
@@ -71,6 +71,6 @@ To use this starter:
 
 ## Resources
 
-- [On Back in Stock Starter – Confluence](#)
-- [Product Feed Integration – Confluence](#)
-- [Saved & Predictive Segments – Confluence](#)
+- [On Back in Stock Starter – Confluence](mdc:#)
+- [Product Feed Integration – Confluence](mdc:#)
+- [Saved & Predictive Segments – Confluence](mdc:#)

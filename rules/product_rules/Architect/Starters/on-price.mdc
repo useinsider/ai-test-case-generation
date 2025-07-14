@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # On Price Drop Starter
 
@@ -81,6 +81,6 @@ To use this starter:
 
 ## Resources
 
-- [On Price Drop Starter – Confluence](#)
-- [Constant Price Drop Attributes – Confluence](#)
-- [Product Catalog Integration – Confluence](#)
+- [On Price Drop Starter – Confluence](mdc:#)
+- [Constant Price Drop Attributes – Confluence](mdc:#)
+- [Product Catalog Integration – Confluence](mdc:#)

@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # Canvas Rules
 To create a new journey, click on the Create journey button and click on the Next button. Then it directs us to the template page. To create a new journey on this page, click on Start from stratch and a blank canvas page appears. The first element should always start with the starter, so the first element should always be the starter, click on the Select Starter button and the starter dropdown will appear when meCanvas is first opened.

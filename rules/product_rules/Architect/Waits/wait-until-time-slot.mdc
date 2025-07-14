@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # Wait Until a Time Slot
 
@@ -40,5 +40,5 @@ This is useful for synchronizing actions for large user groups — like campaign
 
 ## Resources
 
-- [Wait Until a Time Slot – Confluence](#)
-- [Timed Campaign Strategies – Confluence](#)
+- [Wait Until a Time Slot – Confluence](mdc:#)
+- [Timed Campaign Strategies – Confluence](mdc:#)

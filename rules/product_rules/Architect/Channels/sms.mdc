@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # SMS Channel
 
@@ -67,6 +67,6 @@ It is often used for time-sensitive, personalized, or transactional notification
 
 ## Resources
 
-- [SMS – Confluence](#)
-- [Check Reachability – Confluence](#)
-- [SMS Best Practices – Confluence](#)
+- [SMS – Confluence](mdc:#)
+- [Check Reachability – Confluence](mdc:#)
+- [SMS Best Practices – Confluence](mdc:#)
