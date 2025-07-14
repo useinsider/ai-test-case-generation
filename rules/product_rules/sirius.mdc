@@ -1,13 +1,7 @@
 ---
-<<<<<<< HEAD
-description:
-globs:
-alwaysApply: false
----
-=======
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Product Name: Marketing Analytics Assistant Chatbot
 

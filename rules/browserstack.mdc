@@ -11,18 +11,41 @@ When a chat message is sent and it contains "Add the test scenarios that you cre
   2. Extract project name from message line starting with "Project Name:" (e.g. "Project Name: Minerva").
   3. Extract folder name from message line starting with "Folder Name:" (e.g. "Folder Name: AI Cases").
   4. If user wants to create test case on Browserstack, you will have test case information. Use that information ("Title", "Owner", "Priority", "Test Type", "Automation Status", "Step", "Expected Result").
-  5. You can find the target folder using `Project Informations` list. Match the Project Name and Folder Name with the correct identifiers.
+  
+  5. **Match the Project Name and Folder Name with the correct identifiers:**
+      - Check the provided Project Name and Folder Name against the `projects` list.
+      - Extract the corresponding `identifier` values for both Project and Folder.
+      - For "Minerva" project and "AI Cases" folder, the identifiers are:
+          - Project Identifier: `PR-20`
+          - Folder Identifier: `9828469`
+
   6. **Create a subfolder inside the target folder with the Jira issue key as the subfolder name.**
-      - Example: If the Jira issue key is `SD-120661`, create a subfolder named `SD-120661` inside the target folder.
+      - Example: If the Jira issue key is `PA-30766`, create a subfolder named `PA-30766` inside the target folder.
+  
   7. **Create test case files inside that subfolder.**
-  8. Use `browserstack mcp` to create Browserstack files.
+      - Use the Jira issue key to name the subfolder and store the test case files there.
+  
+  8. **Use `browserstack mcp` to create Browserstack files.**
+      - Use the `identifier` values to create and upload test cases to the correct project and folder in Browserstack.
 
 ## Project Identifiers:
 
     "projects": [
         {
-            "name": "MindBehind",
-            "identifier": "PR-35"
+            "name": "Minerva",
+            "identifier": "PR-20",
+            "folder": {
+                "name": "AI Cases",
+                "identifier": "9828469"
+            }
+        },
+        {
+            "name": "ByteMasters",
+            "identifier": "PR-21",
+            "folder": {
+                "name": "AI Cases ByteMasters",
+                "identifier": "11112817"
+            }
         },
         {
             "name": "Demo Project 1",
@@ -33,83 +56,11 @@ When a chat message is sent and it contains "Add the test scenarios that you cre
             "identifier": "PR-31"
         },
         {
-            "name": "Devops",
-            "identifier": "PR-30"
-        },
-        {
-            "name": "Paracetamol",
-            "identifier": "PR-23"
-        },
-        {
-            "name": "Demo Team",
-            "identifier": "PR-22"
-        },
-        {
-            "name": "ByteMasters",
-            "identifier": "PR-21",
-            "folder":{
-                "name": "AI Cases ByteMasters",
-                "identifier": "11112817"
-            }
-        },
-        {
-            "name": "Minerva",
-            "identifier": "PR-20",
-            "folder": {
-                "name": "AI Cases",
-                "identifier": "9828469"
-            }
-        },
-        {
             "name": "Griffin",
             "identifier": "PR-19"
         },
         {
-            "name": "Design System",
-            "identifier": "PR-17"
-        },
-        {
-            "name": "QMechanics",
-            "identifier": "PR-16"
-        },
-        {
-            "name": "Dataforce",
-            "identifier": "PR-15"
-        },
-        {
-            "name": "Mobile App",
-            "identifier": "PR-14"
-        },
-        {
-            "name": "Atrium",
-            "identifier": "PR-13"
-        },
-        {
-            "name": "Contech",
-            "identifier": "PR-12"
-        },
-        {
-            "name": "Vikings",
-            "identifier": "PR-11"
-        },
-        {
-            "name": "PirateSquad",
-            "identifier": "PR-10"
-        },
-        {
-            "name": "Kraken",
-            "identifier": "PR-9"
-        },
-        {
-            "name": "Valorem",
-            "identifier": "PR-8"
-        },
-        {
             "name": "System Rules and Board",
             "identifier": "PR-5"
-        },
-        {
-            "name": "Scalability",
-            "identifier": "PR-4"
         }
     ]
