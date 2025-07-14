@@ -25,7 +25,7 @@ The workspace is organized to handle test case generation from multiple sources:
 ### User Prompt Examples:
     Create test scenarios for Jira Task SD-121382
     
-    Read the description of Jira TaskSD-121382
+    Read the description of Jira Task SD-121382
     
     Product Information: @canvasRules.mdc , @canvasTools.mdc
     
