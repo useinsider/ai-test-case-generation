@@ -1,10 +1,4 @@
 ---
-<<<<<<< HEAD
-description:
-globs:
-alwaysApply: false
----
-=======
 description: 
 globs: 
 alwaysApply: false
