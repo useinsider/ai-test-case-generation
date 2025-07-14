@@ -1,0 +1,48 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Wait for Attribute
+
+## What is Wait for Attribute?
+
+The **Wait for Attribute** element holds users in a journey until a specific **attribute** is set to a desired value.  
+It enables dynamic control over the user flow based on user data updates.
+
+This element is ideal when waiting for a user action or system update that changes a tracked attribute.
+
+---
+
+## How It Works
+
+- When a user reaches this element, Architect waits for a specific attribute to match a defined value.
+- Once the condition is met, the user proceeds to the next step in the journey.
+- If the attribute does not match the expected value, the user remains paused.
+- Depending on the configuration, users can either wait indefinitely or be diverted to an alternate path.
+
+---
+
+## Use Cases
+
+- Wait for a user to verify their email:  
+  → `email_verified` = `true`
+- Wait until a user completes a task:  
+  → `task_completed` = `true`
+- Wait until a subscription tier changes:  
+  → `subscription_level` = `Premium`
+
+---
+
+## Best Practices & Tips
+
+- Use when user **input or confirmation** is expected before proceeding.
+- Combine with branching logic to direct users who do **not** meet the condition within a reasonable time.
+- Ensure the attribute is reliably updated in real-time (via SDK, API, or user behavior).
+
+---
+
+## Resources
+
+- [Wait for Attribute – Confluence](mdc:#)
+- [Attribute-based Targeting – Confluence](mdc:#)

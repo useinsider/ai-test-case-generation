@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Check API Response
+
+## What is Check API Response?
+
+The **Check API Response** element allows the journey to evaluate the result of an API call and make routing decisions based on the response.
+
+It enables **dynamic personalization** and **external system integration** by branching the journey depending on the API’s output.
+
+---
+
+## How It Works
+
+- When a user reaches this element, Architect checks the response of a previously defined API call.
+- The system evaluates the response content based on preconfigured conditions (e.g., value equals, contains, success/failure).
+- Users are then routed:
+  - ✅ **If condition is met** → Proceed down one path.
+  - ❌ **If condition is not met** → Proceed down an alternate path.
+
+---
+
+## Use Cases
+
+- Check if a user’s **payment was approved** before continuing.
+- Verify **stock availability** or **delivery eligibility** via a third-party service.
+- Validate **CRM or loyalty system status** before offering benefits.
+- Confirm **registration or form submission** success before sending follow-ups.
+
+---
+
+## Best Practices & Tips
+
+- Ensure API calls are **idempotent** and consistently structured.
+- Use **fallback branches** for failed or missing responses to keep the journey reliable.
+- Combine with a **Wait** element if you expect delayed responses or polling.
+- Monitor timeout behavior to avoid user stalling.
+
+---
+
+## Example
+
+```json
+{
+  "status": "success",
+  "membership_level": "gold"
+}

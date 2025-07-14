@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Check Conditions
+
+## What is Check Conditions?
+
+The **Check Conditions** element adds logic to a journey by evaluating whether a user meets certain predefined rules.
+
+It enables personalized flows by routing users differently depending on their attributes, actions, or segment memberships.
+
+---
+
+## How It Works
+
+- When the user reaches this element, Architect checks the specified condition(s):
+  - Has a certain event occurred?
+  - Does a user attribute have a specific value?
+  - Is the user part of a specific segment?
+- If the condition is met, the user follows one path.
+- If not, they are directed down an alternate path.
+
+You can define multiple conditions and combine them using logical operators (**AND / OR**).
+
+---
+
+## Use Cases
+
+- Check if a user completed a purchase before sending a follow-up message.
+- Route high-value users differently based on their RFM score.
+- Send different messages depending on whether the user opted in for SMS or Email.
+- Show different promotions to users in different predictive segments.
+
+---
+
+## Tips & Best Practices
+
+- Combine multiple condition types for advanced logic: event + attribute + segment.
+- Use **negation logic** for "is not" or "does not contain" checks.
+- Ensure your event tracking and segment setup is up-to-date and reliable.
+- Use for branching logic, A/B testing conditions, or re-engagement funnels.
+
+---
+
+## Resources
+
+- [Check Conditions – Confluence](mdc:#)
+- [Journey Logic Best Practices – Confluence](mdc:#)

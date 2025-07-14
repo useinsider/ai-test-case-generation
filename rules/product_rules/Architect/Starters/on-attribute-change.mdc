@@ -1,0 +1,93 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# On Attribute Change Starter
+
+## What is On Attribute Change?
+
+The **On Attribute Change Starter** allows users to enter a journey when the value of a specific user attribute changes.
+
+It supports changes tracked in real-time across all platforms: website, mobile app, CRM, and offline sources.
+
+This starter is ideal for triggering personalized journeys **as soon as user data updates**.
+
+---
+
+## What is an Attribute?
+
+An **Attribute** is a property or status associated with a user.  
+Examples include:
+- Birthday  
+- Age  
+- Last Purchase Amount  
+- Opt-in status  
+- Last Viewed Product Name
+
+---
+
+## How It Works
+
+- The journey is triggered when the selected attribute value changes.
+- Supported types: `string`, `number`, `boolean`
+- Trigger Operators:
+  - `changes`: Triggers when the attribute receives any new value or changes
+  - `changes to`: Triggers only when the attribute changes to a **specific new value**
+  - `changes from`: Triggers when the attribute changes **from a specific value** to something else
+- Note: Attributes set **during user creation** do not trigger the journey — the change must happen after creation.
+
+---
+
+## Additional Segmentation
+
+You can refine targeting by combining the attribute change with user segmentation.
+
+**Supported segment types**:
+- Predefined Segments
+- Standard Segments
+- Predictive Segments
+- Integrated Segments
+- RFM
+- Saved Segments
+
+**Example**:  
+Trigger → `Opt-in Status changes to TRUE`  
+Segment → Users with High Purchase Probability
+
+---
+
+## Usage Examples
+
+- Trigger journey when a user updates their opt-in status
+- Start a flow when CRM pushes a new user status
+- Respond when loyalty tier or membership level changes
+
+---
+
+## Requirements
+
+To use this starter:
+
+- ✅ Insider Tag & SDK must be installed and active
+- ✅ System rules must be defined
+- ✅ Attribute values must be actively sent from web, mobile, or offline data sources
+- ✅ Custom attributes must be created and synced if needed
+
+---
+
+## Best Practices & Tips
+
+- Use “All Languages” setting when user language data might be missing
+- Choose On Attribute Change for real-time personalization
+- Combine with RFM or Predictive segments for smarter targeting
+
+---
+
+## Resources
+
+- [On Attribute Change Starter – Confluence](mdc:#)
+- [Default Events & Attributes – Confluence](mdc:#)
+- [Standard Segments – Confluence](mdc:#)
+- [Saved Segments – Confluence](mdc:#)
+- [Email Engagement Segments – Confluence](mdc:#)

@@ -1,0 +1,58 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Architect: Product Overview
+
+Architect is a behavioral automation product developed by Insider.
+
+It allows Insider’s partners (e.g., Adidas) to track user behavior on their websites and automatically send personalized messages based on predefined rules. The ultimate goal is to increase conversions and drive revenue by delivering the right message at the right time.
+
+---
+
+## What is a Journey?
+
+A Journey is a visual flow of actions and decisions that define how a user is engaged based on their behavior.
+
+Journeys are created inside a visual editor called **Canvas**. In this editor, users can build flows using modular components called **Elements**.
+
+### The Canvas Interface
+
+Canvas is a drag-and-drop interface where elements like Starters, Waits, and Channels are placed and connected to form a journey flow.
+
+It provides a clear, real-time representation of how users will move through the automation logic.
+
+---
+
+## Element Categories
+
+Each journey is built by connecting one or more of the following element types:
+
+- **Starter**: Determines how a user enters the journey (e.g., event triggered, attribute matched).
+- **Wait**: Delays the flow by time or until a specific condition is met.
+- **Check**: Adds branching logic based on behavior or user data.
+- **Channel**: Specifies how a message is delivered (Email, SMS, Web Push, etc.).
+- **Action**: Performs backend updates or tracks internal activity.
+- **A/B Split**: Splits user traffic randomly into multiple paths for testing.
+- **Next Best Channel**: Dynamically chooses the most effective communication channel.
+
+
+---
+
+## Example Use Case
+
+> A user adds items to their cart but doesn’t complete checkout.
+
+**Architect Flow:**
+1. Starter: "Cart Abandonment"
+2. Wait: 2 hours
+3. Condition: "User has not completed checkout"
+4. Channel: "Send SMS with discount code"
+5. ABSplit : Distribute some users to path a and some to path b
+
+---
+
+## Who Uses Architect?
+
+- **Growth teams**, **CRM managers**, and **marketers** from partner brands use Architect to automate user journeys and improve conversion rates.

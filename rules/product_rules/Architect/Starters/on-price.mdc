@@ -1,0 +1,86 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# On Price Drop Starter
+
+## What is On Price Drop?
+
+The **On Price Drop Starter** triggers a journey when the price of a specific product decreases and the user has previously interacted with that product.
+
+Price changes are tracked across all platforms: web, mobile app, and offline product feeds.  
+This starter is ideal for **real-time, conversion-focused** campaigns.
+
+---
+
+## How It Works
+
+- The user must have performed a selected event (e.g., product view, add to cart, add to favorites) **on a specific product**.
+- If that product’s price drops by a defined amount or percentage, the journey is triggered automatically.
+- The price drop is detected through the **Product Feed system**.
+- The event must include a **`pid` (Product ID)** parameter — it is required to link the user interaction to the specific product.
+
+---
+
+## Additional Filtering & Segmentation
+
+### 🔹 Event Filters (optional)
+- Narrow targeting based on specific user actions and event parameters.
+
+### 🔹 Product Attribute Filters
+- Filter by product category, currency, stock quantity, original price, etc.
+
+### 🔹 Audience Segmentation
+- Add segments based on:
+  - Purchase probability
+  - RFM status
+  - Saved or predefined segments
+
+---
+
+## Usage Examples
+
+- Users who viewed a product but didn’t purchase, and the price dropped
+- Price dropped on a product in the user’s cart
+- Price dropped on a product in the user’s favorites list
+- Alerting users subscribed to a price alert
+- Offering coupons to users who purchased a product before the price drop
+
+---
+
+## Requirements
+
+To use this starter:
+
+- ✅ **Product Catalog Integration**: via Clickstream, XML feed, or Catalog API
+- ✅ **Insider Tag & SDK** integration must be complete
+- ✅ System rules must be defined
+- ✅ Events must be sent from relevant platforms
+- ✅ `pid` parameter must be included in the relevant events
+
+---
+
+## Best Practices & Tips
+
+- Use "All Languages" to avoid language-based targeting gaps.
+- Combine product filters and audience segmentation for precision.
+- Do not use Wait element in urgent, price-sensitive scenarios.
+- Use **Constant Price Drop Attributes** to personalize message content (e.g., new price, original price, % drop).
+
+---
+
+## FAQs
+
+- Price **increase** cannot be used as a trigger.
+- Stock availability is used only in filtering, not during message delivery.
+- If multiple products drop in price, only **one** can be displayed per message.
+- For price alert scenarios, a **custom event and `pid`** are required.
+
+---
+
+## Resources
+
+- [On Price Drop Starter – Confluence](mdc:#)
+- [Constant Price Drop Attributes – Confluence](mdc:#)
+- [Product Catalog Integration – Confluence](mdc:#)

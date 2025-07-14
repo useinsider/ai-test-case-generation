@@ -1,0 +1,333 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Element Management
+
+## Add Element Functionality
+
+**Definition:** Adds a new element between existing elements.  
+**Location:** On the flow connectors (rods) between elements.  
+
+**Rules:**
+- Cannot add the same type of Wait elements consecutively.
+- A **Wait Until a Time Slot** element cannot be added after a **Wait for Some Time** element.
+- **Next Best Channel** cannot be added between elements.
+- For branchable elements (Check Elements, A/B Split, Next Best Channel), a path must be selected.
+
+---
+
+## Copy/Paste Element Functionality
+
+**Definition:** Copy and paste elements with their content and settings.  
+**Location:** Top-right corner of each element.
+
+**Supported Operations:**
+- Copies the element with all its settings and content.
+- Allows pasting into any point in the journey.
+
+**Limitations:**
+- "Next Best Channel" cannot be copied.
+- When pasting branchable elements, a path selection is required.
+- Branchable elements (with 2+ paths) cannot be pasted into a reconnected area.
+
+---
+
+## Change Element Functionality
+
+**Definition:** Allows changing the type of an element without deleting it.  
+**Location:** Top-right corner of each element.
+
+**Supported Changes:**
+- Channels → Channels or Action elements
+- Check elements → Check elements
+- Wait elements → Wait elements
+- Starter elements → Starter elements
+
+**Limitations:**
+- A/B Split and Next Best Channel cannot be changed.
+- Path selection is required for multi-branch elements.
+
+---
+
+## Delete Element Functionality
+
+**Definition:** Deletes an element from the journey.  
+**Location:** Top-right corner of each element.
+
+**Behavior:**
+- Path selection is required when deleting branchable elements.
+- Connections are automatically restructured.
+- If a branchable element has an attached element after reconnecting, it cannot be deleted.
+
+---
+
+## Reconnect Paths Functionality
+
+**Definition:** Allows merging/reconnecting paths after branchable elements to simplify journeys.  
+**Location:** Plus (+) icon on connector paths after branchable elements.
+
+**Purpose:**
+- Reduces redundancy by reconnecting split branches into one.
+- Prevents repeating messages/conditions.
+- Simplifies horizontal and vertical journey readability.
+
+**Branchable Elements:**
+- Check Conditions
+- Check Reachability
+- Check Interactions
+- A/B Split
+- Next Best Channel
+
+**Use Case Example:**
+4 paths after Check Reachability (e.g., Web Push, App Push, Email) → Reconnect → Add one shared Check Conditions.
+
+**Reconnect Options:**
+- **Connect to a Single Path**: Reconnect one path to another. Not allowed if the target path is empty.
+- **Merge All**: Merges all paths after a single branchable element. Enabled depending on click location.
+
+**How to Use:**
+1. Add a branchable element.
+2. Add elements on each path.
+3. Click the "+" icon between elements.
+4. Choose reconnect type and confirm.
+5. Cancel with “Cancel” or ESC.
+
+**Breaking Connection:**
+- Use `X` between paths to break all.
+- Use `X` on left/right to remove specific connections.
+- Earlier connections can't be broken if dependent merges exist.
+- After merging: assign or delete post-merge elements.
+
+**Limitations:**
+- Undo/Redo disabled during reconnect.
+- Cannot add elements while reconnecting.
+- Cannot add branchables to already connected paths.
+- Cannot delete a sole element in a merged path – break connection first.
+- New merged paths must contain at least one element.
+- Drag/drop disabled in Check Conditions once connected.
+
+---
+
+## Navigation Tools
+
+### Undo/Redo Functionality
+**Definition:** Undo or redo recent actions.  
+**Location:** Top-left of Canvas.
+
+**Properties:**
+- Unlimited undo/redo
+- Works per page/session
+
+---
+
+### Zoom Control Functionality
+**Definition:** Controls zoom level.  
+**Location:** Bottom-right of Canvas.
+
+**Methods:**
+- Zoom buttons
+- Pinch gesture
+- Ctrl + Mouse wheel
+- Two-finger trackpad
+
+---
+
+### Minimap Functionality
+**Definition:** Shows journey overview with color-coded elements.  
+**Location:** Bottom-right of Canvas.
+
+**Color Coding:**
+- Green: Starter
+- Yellow: Wait
+- Purple: Check
+- Blue: Channel
+- Light Blue: Action
+- Orange: Next Best Channel
+- Red: A/B Split
+
+---
+
+### Fullscreen Mode
+**Definition:** Opens Canvas in fullscreen.  
+**Location:** Bottom-right or `Ctrl + F`.
+
+---
+
+## Version Control
+
+### Version History
+**Definition:** Shows journey version history.  
+**Location:** Top bar of Canvas.
+
+**Tracked Info:**
+- Actions: Add/Edit/Delete
+- Affected elements
+- Timestamp
+- User details
+
+**System Actions:**
+- Dry runs disabled after 2 days
+- Sunset after 6 months post-publish
+- Journeys paused when coupons expire
+
+---
+
+## Validation & Optimization
+
+### Validation Errors
+
+**Definition:** Launch-time validations to ensure journeys meet technical and business requirements.  
+**Location:** Top bar and Launch button.
+
+**Key Validation Rules:**
+- **Check Hierarchy**: Ensures the journey structure is valid. Requires developer support for correction.
+- **Missing Element Content**: Ensures required elements (e.g., Action, Wait, A/B Split) contain valid and complete content.
+- **Price Drop / Back In Stock Policy**: Verifies that predictive starter integrations are properly configured and active.
+- **Wishlist Rule**: Validates that dynamic wishlist attributes are set and enabled in the system.
+- **Invalid Email Sender**: Ensures sender email addresses are correctly configured in the system.
+- **Invalid Check Interaction**: Confirms that interaction definitions are valid and properly set.
+- **Repeated / Invalid Wait Elements**: Prevents consecutive or logically conflicting wait elements.
+- **Missing Channels in NBC**: Ensures each Next Best Channel branch includes a valid messaging or API action.
+- **Duplicated NBC Elements**: Avoids channel duplication within NBC branches.
+- **Invalid A/B Split Under NBC**: Each A/B split must match the structure of the corresponding NBC path.
+- **Expired Coupons**: Blocks the use of coupons that are expired or deactivated.
+- **Invalid Dynamic Content**: Validates that dynamic content matches expected format (UCD).
+- **Invalid Last Element**: The final element in every journey path must be a channel or action.
+- **Empty Paths / Invalid Connections**: Paths should not lead to unconfigured or empty elements.
+- **Deprecated Elements**: Prevents use of outdated components (e.g., legacy contact list updaters).
+- **Auto Winner with No Messaging**: A/B auto-winner must include at least one message channel.
+- **Invalid Google Audience**: Verifies that selected Google Ads audiences exist (via API check).
+- **Engagement Probability Limits**: Confirms sufficient engagement data is available for NBC algorithms.
+- **Unsubscribe Link Issues**: Ensures unsubscribe configurations in emails meet system requirements.
+- **Missing Facebook Ad Account**: Ensures Facebook elements are linked to an active ad account.
+
+---
+
+### Journey Optimizer
+**Definition:** Suggests improvements for performance.  
+**Location:** Top bar and journey list.
+
+**Priority Levels:**
+- Red: Critical
+- Yellow: Important
+- Blue: Minor
+
+**Optimization Areas:**
+- Element placement
+- Wait durations
+- Reachability
+- Performance
+- Coupon/certificate usage
+
+
+---
+
+### Journey Optimizer
+**Definition:** Suggests improvements for performance.  
+**Location:** Top bar and journey list.
+
+**Priority Levels:**
+- Red: Critical
+- Yellow: Important
+- Blue: Minor
+
+**Optimization Areas:**
+- Element placement
+- Wait durations
+- Reachability
+- Performance
+- Coupon/certificate usage
+
+---
+
+### Performance Alerts
+**Definition:** System alerts for journey health.  
+**Location:** Performance Alerts section.
+
+**Triggers:**
+- Coupon code shortages
+- Drop rate > 40%
+- No entries in 2 days
+- >30% API failures
+- <50 sends/views in 10 days
+- Expired push certificates
+- Journey scheduled after coupon expiry
+
+---
+
+## Preview Features
+
+### Starter Preview
+**Definition:** Simulates starter conditions.  
+**Location:** 3-dot menu on Starter.
+
+---
+
+### Channel Preview
+**Definition:** Shows Onsite, In-App, Email content previews.  
+**Location:** Bottom-right of Canvas.
+
+**Limitations:** May fail for JavaScript/CSS-dependent content.
+
+---
+
+### Check Conditions Preview
+**Definition:** Simulates condition evaluations.  
+**Location:** On path labels.
+
+---
+
+## Template Management
+
+### Save as Template
+**Definition:** Saves journey as reusable template.  
+**Location:** Journey name dropdown.
+
+**Properties:**
+- Add name/description
+- Saved to Template Library
+
+---
+
+### Template Tips & Tricks
+**Definition:** Shows optimization tips.  
+**Visible In:** Draft mode.
+
+---
+
+## Maximum Duration Calculator
+
+**Definition:** Calculates total journey time.  
+**Location:** Bottom-right of Canvas.
+
+**Wait Elements:**
+- Wait for Some Time → Fixed
+- Wait Until Time Slot → Timezone
+- Wait for Event → Timeout-based
+- Wait for Attribute → Timeout-based
+
+---
+
+## Tips & Tricks Button
+
+**Definition:** Shows template-specific suggestions.  
+**Location:** Top-right bar.
+
+**Properties:**
+- Appears if template exists in journey
+- Shows helpful insights
+- Red dot disappears once clicked
+
+---
+
+## Search Button
+
+**Definition:** Search within a journey.  
+**Location:** Top-right bar.
+
+**Properties:**
+- Ideal for large journeys
+- Lists element IDs & contents
+- Click to scroll to element

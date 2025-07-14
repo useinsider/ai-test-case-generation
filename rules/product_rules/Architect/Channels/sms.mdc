@@ -1,0 +1,72 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# SMS Channel
+
+## What is SMS?
+
+**SMS** is a communication channel used within Insider’s Architect platform to send short text messages directly to a user’s mobile phone number.
+
+It is often used for time-sensitive, personalized, or transactional notifications that require high visibility.
+
+---
+
+## Key Features
+
+- **Personalization**  
+  Use dynamic fields (e.g., name, discount code) to customize SMS content for each user.
+
+- **Trigger-Based Automation**  
+  Send SMS messages automatically at specific steps in the journey or in response to user actions (e.g., cart abandonment, registration).
+
+- **Delivery & Reporting**  
+  Track message delivery status and user engagement (e.g., link clicks) in real time.
+
+- **Alternative Channel Support**  
+  Use SMS as a fallback when users are unreachable via other channels like email or push.
+
+---
+
+## Use Cases
+
+- **Promotional Campaigns**  
+  Announce sales, discounts, or special events to large user segments.
+
+- **Reminders**  
+  Send action-based messages like cart abandonment alerts, appointment reminders, or form completion nudges.
+
+- **Time-Sensitive Notifications**  
+  For urgent updates or limited-time offers that require immediate visibility.
+
+---
+
+## Technical Notes & Tips
+
+- **Valid Phone Numbers**  
+  Users must have a valid and verified mobile phone number to receive SMS.
+
+- **Character Limits**  
+  A single SMS is typically limited to 160 characters. Longer messages may be split into multiple SMS.
+
+- **Reachability Check**  
+  Ensure the user is eligible to receive SMS before sending (can be automated via Check Reachability).
+
+- **Compliance**  
+  Adhere to GDPR, KVKK, and local SMS marketing regulations for consent and content.
+
+---
+
+## Integration & Management
+
+- SMS sending requires integration with an approved **SMS service provider**.
+- Message scheduling, audience targeting, and content configuration are managed directly through the **Canvas** journey flow.
+
+---
+
+## Resources
+
+- [SMS – Confluence](mdc:#)
+- [Check Reachability – Confluence](mdc:#)
+- [SMS Best Practices – Confluence](mdc:#)

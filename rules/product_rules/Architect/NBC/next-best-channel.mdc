@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Next Best Channel
+
+## What is Next Best Channel?
+
+**Next Best Channel** is an intelligent element that determines the most effective communication channel to reach a user based on their availability and engagement history.
+
+It ensures that the user receives the message through the channel they are most likely to engage with — automatically optimizing communication.
+
+---
+
+## How It Works
+
+- When a user reaches this element, Architect checks:
+  - Which channels the user is **reachable** on (Email, SMS, Web Push, App Push, WhatsApp).
+  - Which channel has shown **better performance** for that user (based on previous behavior).
+- The message is sent through the **best-performing reachable channel**.
+- If delivery via the first channel fails, Architect can **fallback** to secondary channels (if configured).
+
+---
+
+## Use Cases
+
+- Maximize engagement by sending messages via the **most effective channel**.
+- Reach users even when their primary contact method is unavailable.
+- Personalize communication strategies based on **channel preference and interaction data**.
+
+---
+
+## Best Practices
+
+- Define fallback channels to ensure message delivery even if the first attempt fails.
+- Combine with personalization rules to fine-tune message content per channel.
+- Monitor reporting to understand which channels are performing better per segment.
+
+---
+
+## Example
+User reaches → Next Best Channel:
+
+1)Reachable via: SMS, Email, App Push
+
+2)SMS has highest open rate → Message sent via SMS
+
+3)If SMS fails → fallback to App Push

@@ -1,0 +1,98 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# On Past Behavior Starter
+
+## What is On Past Behavior?
+
+The **On Past Behavior Starter** allows users to enter a journey based on their **past actions or attributes**, such as events performed, purchases made, or segment membership.
+
+It supports data coming from web, mobile app, static segments (CSV uploads), or **Upsert User Data API**.  
+Even if the user acts on different platforms, the most recent behavior or updated attribute is used.
+
+---
+
+## How It Works
+
+- Runs based on a defined **Trigger Frequency** (minimum 60 minutes).
+- Journey evaluations happen every 15 minutes: at 8, 23, 38, and 53 minutes past the hour.
+- A maximum of **200,000 users** can enter a journey per trigger cycle.
+- For large audiences, use the **"Wait Until a Time Slot"** element to spread load and prevent delivery bursts.
+- Estimated and exact audience counts are shown before journey activation.
+
+---
+
+## Reachability Check
+
+- Users **not reachable on the first Channel step** will not enter the journey.
+- Improves reporting accuracy and reduces drop rates.
+- Use **“Get Exact Audience”** to preview audience size.
+- Reachability is based on **OR logic**: user must be reachable via **at least one channel** in the first step.
+- This check does **not apply** to API, Onsite, or In-App channels.
+
+---
+
+## Best Practices & Tips
+
+- Use “All Languages” option when language data might be missing.
+- Combine **event and attribute filters** for precise targeting.
+- Predefined segments can be used without additional filtering.
+- Static segments (uploads) are fully supported.
+- Segment filtering based on reachability is also available.
+
+---
+
+## Usage Examples
+
+- Users who haven't purchased in the last 30 days
+- High discount interest users
+- Users who visited the app on specific dates
+- Lead form submitters who haven't purchased
+- Hibernating or loyal user candidates
+- Users with high purchase probability
+
+---
+
+## Requirements
+
+To use this starter correctly:
+
+- Insider Tag & SDK must be properly integrated.
+- Events and attributes must be defined and active in the system.
+- Data must be sent via web, mobile app, CSV, or API.
+
+---
+
+## Event vs Attribute
+
+- **Event**: User action (e.g., product page view, cart addition)
+- **Attribute**: User property (e.g., age, birthday, opt-in status, last purchase amount)
+
+---
+
+## Troubleshooting
+
+- If no users are entering the journey, check:
+  - Trigger frequency setting
+  - Audience segment size
+  - Channel reachability
+  - Attribute availability
+- For more, refer to the [On Past Behavior Troubleshooting – Confluence](mdc:#)
+
+---
+
+## Resources
+
+- [Default Events – Confluence](mdc:#)
+- [Saved Segments – Confluence](mdc:#)
+- [Standard Segments – Confluence](mdc:#)
+- [Predefined Segments – Confluence](mdc:#)
+- [Reachability Rules – Confluence](mdc:#)
+
+## Visual Examples
+
+### 1. Default View  
+When the On Event node is first added to the Canvas, this is the initial interface:  
+!@on-event-behavior

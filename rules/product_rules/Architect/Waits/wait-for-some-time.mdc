@@ -1,0 +1,62 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Wait for Some Time
+
+## What is Wait for Some Time?
+
+The **Wait for Some Time** element delays the user's progress in a journey for a predefined duration.  
+It’s used to **pause the flow** before taking the next action — ideal for creating spaced-out interactions.
+
+The wait duration can be adjusted based on your business goals, message timing strategy, or user behavior expectations.
+
+---
+
+## How It Works
+
+- When a user reaches this Wait element, the countdown begins.
+- After the defined time elapses, the user moves to the next step in the journey.
+- You can set the wait time in minutes, hours, or days.
+
+---
+
+## Time Limitations
+
+- ✅ **Minimum wait time**: 10 minutes  
+  (to allow time for attribute and event updates)
+- ✅ **Maximum per element**: 3 months  
+- ✅ **Total journey wait time**: 6 months  
+- 🚫 Two same-type wait elements **cannot be placed consecutively**.
+
+---
+
+## Usage Examples
+
+- Wait 15 minutes after a cart is abandoned to check if it’s still abandoned.
+- Wait 1 day after an email is opened to send a follow-up.
+- Wait 1 hour after a user signs up to trigger a welcome message.
+
+---
+
+## How to Configure
+
+1. In the Canvas, click the **"+"** button and select **Wait for Some Time**.
+2. Set the desired duration (e.g., 30 minutes, 1 day).
+3. Click Save and return to the journey flow.
+
+---
+
+## Best Practices & Tips
+
+- After pausing a journey, you can **adjust the wait time** — only new users will follow the new timing after restart.
+- Don’t stack this element back-to-back to avoid flow issues.
+- Choose wait times based on natural user behavior (e.g., decision cycles, time to open an email).
+
+---
+
+## Resources
+
+- [Wait for Some Time – Confluence](mdc:#)
+- [Journey Configuration Best Practices – Confluence](mdc:#)
