@@ -46,21 +46,5 @@ When a chat message is sent and it contains "Add the test scenarios that you cre
                 "name": "AI Cases ByteMasters",
                 "identifier": "11112817"
             }
-        },
-        {
-            "name": "Demo Project 1",
-            "identifier": "PR-32"
-        },
-        {
-            "name": "Optimus",
-            "identifier": "PR-31"
-        },
-        {
-            "name": "Griffin",
-            "identifier": "PR-19"
-        },
-        {
-            "name": "System Rules and Board",
-            "identifier": "PR-5"
         }
     ]
