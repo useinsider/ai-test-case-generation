@@ -11,7 +11,7 @@ When a chat message is sent and it contains "Create test scenearios for" and it 
   2. If the message contains a Figma URL, extract Figma File ID (e.g., FIG-12345) from the message and store it as `figmaId`.
   3. If the message contains a Confluence URL, extract and store it as `confluenceUrl`.
   4. If the message contains a Product Information, read the related product information and store that information as `productInformation`.
-  5. Use `mcp` to fetch the Jira description for `jiraId` and store it in `jiraDescription`.
+  5. Use `mcp-atlassian` to fetch the Jira description for `jiraId` and store it in `jiraDescription`.
   6. If the message contains a Figma url, use `mcp` to fetch the analyzed Figma design for `figmaId` and store it in `figmaAnalysis`.
   7. If the message contains a Conflunce url, use `mcp` to fetch the content of the Confluence page and store it as `confluenceContent`.
   8. Read the contents of the [case-structure.mdc](mdc:.cursor/rules/case-structure.mdc) into a variable called `testRules`.
