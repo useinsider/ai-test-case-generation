@@ -35,7 +35,7 @@ When a chat message is sent and it contains "Add the test scenarios that you cre
             "name": "Minerva",
             "identifier": "PR-20",
             "folder": {
-                "name": "AI Cases",
+                "name": "AI Cases Minerva",
                 "identifier": "9828469"
             }
         },
@@ -46,5 +46,117 @@ When a chat message is sent and it contains "Add the test scenarios that you cre
                 "name": "AI Cases ByteMasters",
                 "identifier": "11112817"
             }
-        }
+        },
+        {
+            "name": "MindBehind",
+            "identifier": "PR-35",
+            "folder": {
+                "name": "AI Cases MindBehind",
+                "identifier": "11371749"
+            }
+        },
+        {
+            "name": "Paracetamol",
+            "identifier": "PR-23",
+            "folder": {
+                "name": "AI Cases Paracetamol",
+                "identifier": "12707575"
+            }
+        },
+        {
+            "name": "Griffin",
+            "identifier": "PR-19",
+            "folder": {
+                "name": "AI Cases Griffin",
+                "identifier": "12707624"
+            }
+        },
+        {
+            "name": "Design System",
+            "identifier": "PR-17",
+            "folder": {
+                "name": "AI Cases Design System",
+                "identifier": "12707677"
+            }
+        },
+        {
+            "name": "QMechanics",
+            "identifier": "PR-16",
+            "folder": {
+                "name": "AI Cases QMechanics",
+                "identifier": "12707687"
+            }
+        },
+        {
+            "name": "Dataforce",
+            "identifier": "PR-15",
+            "folder": {
+                "name": "AI Cases Dataforce",
+                "identifier": "12707699"
+            }
+        },
+        {
+            "name": "Mobile App",
+            "identifier": "PR-14",
+            "folder": {
+                "name": "AI Cases Mobile App",
+                "identifier": "12707706"
+            }
+        },
+        {
+            "name": "Atrium",
+            "identifier": "PR-13",
+            "folder": {
+                "name": "AI Cases Atrium",
+                "identifier": "12707790"
+            }
+        },
+        {
+            "name": "Contech",
+            "identifier": "PR-12",
+            "folder": {
+                "name": "AI Cases Contech",
+                "identifier": "12707830"
+            }
+        },
+        {
+            "name": "Vikings",
+            "identifier": "PR-11",
+            "folder": {
+                "name": "AI Cases Vikings",
+                "identifier": "12707833"
+            }
+        },
+        {
+            "name": "PirateSquad",
+            "identifier": "PR-10",
+            "folder": {
+                "name": "AI Cases PirateSquad",
+                "identifier": "12707848"
+            }
+        },
+        {
+            "name": "Kraken",
+            "identifier": "PR-9",
+            "folder": {
+                "name": "AI Cases Kraken",
+                "identifier": "12707857"
+            }
+        },
+        {
+            "name": "Valorem",
+            "identifier": "PR-8",
+            "folder": {
+                "name": "AI Cases Valorem",
+                "identifier": "12707858"
+            }
+        },
+        {
+            "name": "Scalability",
+            "identifier": "PR-4",
+            "folder": {
+                "name": "AI Cases Scalability",
+                "identifier": "12454430"
+            }
+        },
     ]
