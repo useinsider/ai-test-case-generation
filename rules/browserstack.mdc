@@ -15,7 +15,7 @@ When a chat message is sent and it contains "Add the test scenarios that you cre
   5. **Match the Project Name and Folder Name with the correct identifiers:**
       - Check the provided Project Name and Folder Name against the `projects` list.
       - Extract the corresponding `identifier` values for both Project and Folder.
-      - For "Minerva" project and "AI Cases" folder, the identifiers are:
+      - For "Minerva" project and "AI Cases Minerva" folder, the identifiers are:
           - Project Identifier: `PR-20`
           - Folder Identifier: `9828469`
 
