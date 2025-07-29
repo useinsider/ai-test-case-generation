@@ -31,10 +31,11 @@ You must include at least one test step.
 
 ### Example:
 
-**Title**: Login with valid credentials  
-**Owner**: leyla@useinsider.com 
-**Priority**: High  
-**Test Type**: Regression  
+**Title**: Login with valid credentials
+**Owner**: leyla@useinsider.com
+**Priority**: High
+**Test Type**: Regression
+
 **Automation Status**: Not Automated
 **Tags**: ai-test-case-generation
 
