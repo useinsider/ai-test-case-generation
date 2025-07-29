@@ -8,6 +8,7 @@ The workspace is organized to handle test case generation from multiple sources:
 - Jira tickets
 - Figma designs
 - Confluence documentation
+- Product Informations 
 
 ## Test Case Generation Rules
 
@@ -22,10 +23,16 @@ The workspace is organized to handle test case generation from multiple sources:
 
 
 ### User Prompt Examples:
-    Create test scenarios for {JIRA_TASK_ID}.
-
-    Figma url:  @{FIGMA_URL}
-
+    Create test scenarios for Jira Task SD-121382
+    
+    Read the description of Jira Task SD-121382
+    
+    Product Information: @canvasRules.mdc , @canvasTools.mdc
+    
+    Read @browserstack.mdc
+    
+    Generate test scenarios with these informations.
+    
     Add the test scenarios that you create to Browserstack.
-    Project Name: {PROJECT_NAME}
-    Folder Name: {FOLDER_NAME}
+    Project Name: Minerva
+    Folder Name: AI Cases 
