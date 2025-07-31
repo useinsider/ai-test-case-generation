@@ -18,6 +18,8 @@ If the Product Information field contains any MDC file from `Architect/Channels/
 2. **Step 2**: Select "Channel" category and add {{CHANNEL_NAME}} element and enter it
    **Expected Result**: {{CHANNEL_NAME}} element is added to the canvas after the starter
 
+3. **Step 3**: Enter {{CHANNEL_NAME}} element
+   **Expected Result**: {{CHANNEL_NAME}} inner page appears 
 
 ## Channel Name Mapping:
 - If `email.mdc` is referenced → Add "Email" channel element
