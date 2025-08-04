@@ -1,0 +1,145 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# App Push Notification Guide
+
+## What is App Push?
+
+App Push notifications are messages sent to mobile users, even when the app is not active. They include a **title**, **body**, and optionally **rich media**.
+
+- Sent without requiring the app to be open  
+- Ideal for time-sensitive, important updates  
+- Drive user action (e.g., conversion, engagement)
+
+## How It Works
+
+Before sending, the system checks **user reachability**.
+
+### Reachability Conditions  
+User must meet **all** of the following:
+
+- `mpo` = true (App Push Opt-in)  
+- `mpt` is not null (App Push Token exists)  
+- `gdpr` = true (GDPR Opt-in)
+
+### Delivery is **not attempted** if:
+
+- `mpt` is missing or null  
+- App is uninstalled  
+- Notifications disabled in device settings  
+- `gdpr` is false
+
+## App Push Structure
+### Integration
+- SDK must be integrated with your mobile app  
+- iOS/Android certificates must be valid and uploaded in **Mobile App Settings**
+### 1. Create a Journey
+- Go to Architect
+- Click “Start From Scratch”
+- Add any starter
+- Save the starter
+### 2. Add App Push Element
+- Click the `+` icon
+- Choose **App Push** under **Channels**
+- Click the added **App Push** Element 
+### 3. Compose Title and Description
+- Add title and message body
+- Use AI Assistant to generate text
+- Support for dynamic content and fallback values
+- Emojis supported
+### 4. Add Message Link
+Options:
+- **Custom Link** (valid, secure)
+- **Dynamic Link** (based on recent Default/Custom Attributes, Event Parameter, Recommendation, Product Catalog Attribute(if added product starter on canvas), Call an api Response(if added call an api element and response value before app push element))
+> Always include fallback URLs
+- If no added title, description and message link, app push element doesnt save and throws toaster  (Toaster: Fill in all required fields to continue.)
+### 5. Configure UTM Parameters
+Required:
+- `utm_source`
+- `utm_medium`
+- `utm_campaign`
+Optional:
+- `utm_term`
+- `utm_content`
+**Example:**
+https://partner.com?utm_source=Insider_App_Push&utm_medium=App_Push&utm_campaign=Fathers_Day_Campaign
+> Manual UTM overrides values from settings
+### 6. Add Deep Link Buttons
+- Each can link to:
+  - Key-Value Pair
+  - URL Scheme
+  - External Browser URL
+  - Internal Browser URL
+  - JSON
+> UTM tags apply to both links and buttons
+### 7. Add Rich Message (Optional)
+Requirements:
+- Max resolution: `1024x512px`
+- Recommended: `1024x512px`
+- Max size: `2MB`
+- Must be HTTPS if dynamic
+### 8. Preview Your Message
+- View on iOS, Android
+- Toggle compact/expanded view
+- **Preview as User**:
+  - Search by email, phone, or profile ID
+  - Reset preview using hover controls
+### 9. Enable Send Time Optimization
+- Sends when user is most active
+- Ideal for behavioral triggers
+- Enabling also bypasses channel frequency capping
+### 10. Bypass Channel Frequency Capping
+- Ensures delivery even if capping is reached
+- If capping limit hit, user proceeds to next step
+### 11. Test the Notification
+- Use **Test Message** button
+- Note: Dynamic content won’t resolve in test mode
+### 12. Rename Channel Name (Optional)
+- Rename from the top-right of the element
+### 13. Save the Configuration
+> No autosave – **Click Save manually**
+### 14. App Push Visibility on Canvas
+- After filling in all required fields (title, description, and message link), click the **Save** button to save the App Push element.
+- Once saved, you will be redirected to the **Canvas** page.
+- On the Canvas, the App Push element appears as **filled**, and the **title field** becomes visible.
+- If the **Preview** button on the Canvas is clicked, a **preview** of the App Push will be generated using the provided content.
+
+---
+## Tips and Best Practices
+- Use **Check Reachability** before sending App Push
+- Add **Dynamic Images** (e.g., abandoned item thumbnails)
+---
+## Check User Interaction
+To branch based on user action:
+1. Add a **Wait Element**
+2. Add **Check Interaction**
+--
+## Analytics & Monitoring
+### App Push Metrics:
+- Sent  
+- Delivered  
+- Clicks  
+- CTR  
+- Conversions  
+- Revenue
+### Live Stats:
+- **Arrived**: Reached the App Push element  
+- **Reachable**: Eligible for delivery  
+- **Dropped**: Not reachable  
+- **Proceeded**: Continued after inaction (Live Action logic)
+---
+## Use Cases
+- Boost mobile app adoption  
+- Announce promotions or updates  
+- Cart/Browse abandonment  
+- Post-purchase updates  
+- Welcome messages for new users  
+- Re-engage inactive users  
+---
+## Key Features
+- **Live Actions**: Wait up to 30 days for click  
+- **Check Interaction**: Branch logic by user action  
+- **Send Time Optimization**: Deliver when user is most active  
+- **Bypass Frequency Capping**: Ensure delivery in journeys
