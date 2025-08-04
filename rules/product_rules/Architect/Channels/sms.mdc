@@ -3,70 +3,151 @@ description:
 globs: 
 alwaysApply: false
 ---
-# SMS Channel
 
-## What is SMS?
+# SMS Channel – Comprehensive Overview
 
-**SMS** is a communication channel used within Insider’s Architect platform to send short text messages directly to a user’s mobile phone number.
+## 🎯 What is SMS?
+**Short Messaging Service** – A service for sending text messages to mobile devices.
 
-It is often used for time-sensitive, personalized, or transactional notifications that require high visibility.
-
----
-
-## Key Features
-
-- **Personalization**  
-  Use dynamic fields (e.g., name, discount code) to customize SMS content for each user.
-
-- **Trigger-Based Automation**  
-  Send SMS messages automatically at specific steps in the journey or in response to user actions (e.g., cart abandonment, registration).
-
-- **Delivery & Reporting**  
-  Track message delivery status and user engagement (e.g., link clicks) in real time.
-
-- **Alternative Channel Support**  
-  Use SMS as a fallback when users are unreachable via other channels like email or push.
+- 99% open rate  
+- 90% read within 3 minutes  
+- One of the channels in the Architect platform  
+- Direct communication with users via personal phone numbers
 
 ---
 
-## Use Cases
+## ⚙️ How It Works
 
-- **Promotional Campaigns**  
-  Announce sales, discounts, or special events to large user segments.
+### Sending Mechanism
+- One-to-one sending (not bulk) – one message per user  
+- Personalized content creation  
+- Delivery within 1 minute  
+- 160-character limit (messages exceeding this are charged as 2 SMS)
 
-- **Reminders**  
-  Send action-based messages like cart abandonment alerts, appointment reminders, or form completion nudges.
+### Reachability Checks
+Before sending, the following conditions are checked:
 
-- **Time-Sensitive Notifications**  
-  For urgent updates or limited-time offers that require immediate visibility.
-
----
-
-## Technical Notes & Tips
-
-- **Valid Phone Numbers**  
-  Users must have a valid and verified mobile phone number to receive SMS.
-
-- **Character Limits**  
-  A single SMS is typically limited to 160 characters. Longer messages may be split into multiple SMS.
-
-- **Reachability Check**  
-  Ensure the user is eligible to receive SMS before sending (can be automated via Check Reachability).
-
-- **Compliance**  
-  Adhere to GDPR, KVKK, and local SMS marketing regulations for consent and content.
+- ❌ No phone number  
+- ❌ Not in E.164 format  
+- ❌ SMS Opt-in is `false`  
+- ❌ SMS Opt-out is `true`  
+- ❌ GDPR Opt-in is `false`
 
 ---
 
-## Integration & Management
+## 🛠️ Setup Requirements
 
-- SMS sending requires integration with an approved **SMS service provider**.
-- Message scheduling, audience targeting, and content configuration are managed directly through the **Canvas** journey flow.
+### Integration
+- Phone numbers and opt-in data must be transferred to Insider  
+- Sender Name registration must be completed  
+- Opt-out requirements must be met  
+- SMS & RCS Settings must be completed  
+
+### Creating SMS in Journey
+1. Add SMS Element – Select SMS from the "+" button on the Canvas  
+2. Write SMS Text – Use GSM 7-bit alphabet  
+3. UTM Parameters – For Google Analytics tracking  
+4. Content Preview – iOS/Android preview options  
+5. Silent Hours – Schedule delivery at appropriate hours  
+6. Send Time Optimization – Determine optimal sending time  
+7. Frequency Capping – Control message frequency  
+8. Testing – Test on real devices  
+9. Saving – **Manual save required**
 
 ---
 
-## Resources
+## 📝 Content Features
 
-- [SMS – Confluence](mdc:#)
-- [Check Reachability – Confluence](mdc:#)
-- [SMS Best Practices – Confluence](mdc:#)
+### Dynamic Content
+- Personalization: `User attributes`, `event parameters`  
+- Fallback values: Alternative content for empty values  
+- Coupon codes: Preloaded coupon lists  
+- Emoji support: Add via copy-paste
+
+### Link Management
+- URL shortening  
+- Tracking parameters – For click analytics  
+- UTM parameters – For external tool tracking
+
+---
+
+## 🕐 Time Management
+
+### Silent Hours
+Deliver messages at appropriate hours based on local time zones. Three options:
+
+- Send at an appropriate time  
+- Do not send after silent hours  
+- Bypass silent hours  
+
+### Send Time Optimization
+- Send at optimal time  
+- Enable based on use case  
+- Not suitable for cart/browse abandonment flows
+
+---
+
+## 📊 Analytics & Tracking
+
+### SMS Analytics
+- **Sent** – Number of messages sent  
+- **Delivered** – Successfully delivered  
+- **Click** – Number of clicks  
+- **Click-Through Rate** – Percentage of users who clicked  
+- **Conversion** – Number of conversions  
+- **Conversion Rate** – Conversion percentage  
+- **Revenue** – Revenue generated
+
+### Live Stats
+- **Arrived** – Number of users who reached the SMS element  
+- **Reachable** – Users eligible for SMS  
+- **Dropped** – Users not reachable  
+- **Proceeded (Live Actions)** – Users who took no action within 30 days
+
+---
+
+## 🎬 Live Actions & Interaction Check
+
+- **On Click** – Wait for link click  
+  - Max wait time: 30 days  
+- **Check Interaction** – Check user behavior after SMS  
+- **Wait Element** – Allow waiting period for users
+
+---
+
+## 🎯 Use Cases
+
+- Promotions and discounts  
+- Informational messages (appointments, opening hours)  
+- Welcome/onboarding messages  
+- Collecting feedback  
+- Cart reminders  
+- Campaigns/contests  
+- A/B testing scenarios
+
+---
+
+## ⚠️ Important Notes
+
+### Legal Requirements
+- Country-specific regulations – White hours (e.g., no sends between 10 PM – 8 AM)  
+- Opt-in / Opt-out processes  
+- Content restrictions – No illegal, misleading, or obscene content  
+- Sender ID registration may be required  
+- Template approval may be mandatory in some countries
+
+### Technical Limitations
+- Limited multi-country support  
+- GSM 7-bit alphabet – For English and Western European languages  
+- UCS-2 encoding – Required for Chinese, Korean, Japanese  
+- Volume limits – Depend on sender type
+
+---
+
+## ❓ Frequently Asked Questions
+
+- **Can SMS be sent via bulk journey?** → No, only for triggered flows  
+- **What are the volume limits?** → Depends on sender type (Alphanumeric, Shortcode, VLN)  
+- **Is CRM integration possible?** → Yes  
+- **Can CRM attributes be used?** → Yes  
+- **How can messages be sent to opt-out users?** → Use Call an API
