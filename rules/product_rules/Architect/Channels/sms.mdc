@@ -47,14 +47,10 @@ SMS will **not** be sent if any of these conditions fail.
   - Custom Attributes
   - Event Parameter
   - Expressions (if expression toggle enabled)
-  - Cart Items
-  - Browsed Items
-  - Purchased Items
-  - Wishlist Items
   - Coupon (If you select Coupon, You need to add coupon from Coupon List)
+  - Recommendation
   - Product Catalog Attributes (If you select Product Catalog Attributes, You need to add product starter(Price Drop, Back in Stock))
   - Call an API Response (If you select Call an API Response, You need to add **Call an API** element before Email)
-  - Campaign Attributes
 - Use **GSM 7-bit** for most Western languages.
 - Use **UCS-2** for Chinese, Korean, Japanese.
 - Use **AI-generated text** (Generate Text button) if needed.
