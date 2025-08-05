@@ -1,0 +1,45 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Update Static Segment
+The **Update Static Segment** element allows you to **add or remove users** from a **static segment** when they arrive at this journey step.
+This is useful for segmentation purposes, such as retargeting engaged users or excluding unresponsive ones.
+---
+## How It Works
+When a user reaches the element:
+- The user is added to or removed from a **predefined static segment**.
+- This update happens **only once**, even if the user arrives at the element multiple times.
+> Learn more about segments: [Saved Segments](https://insider-portal.atlassian.net/wiki/spaces/ProductKB/pages/2737340450)
+---
+### Add Update Static Segment Element
+- Create the **static segment** via the **Saved Segments** page.
+- In the Canvas, click the `+` button
+- Select the **Update Static Segment** element from the **Action** category.
+- Click on the element:
+   - Select the static segment.
+   - Choose the action: `adding` or `removing`.
+
+### Save Update Static Segment Element
+Click **Save** (no autosave except on Canvas).
+    - If static segment not filled, the Update Static Segment will **not be saved**.
+> Repeated arrivals will not trigger multiple updates for the same user.
+---
+## Stats
+Once the journey is live, you’ll see:
+- **Arrived** – Number of users who reached this step
+- **Processed** – Number of users who were updated in the segment
+- **Dropped** – Users not processed due to deletion, inactivity, or unification
+---
+## Requirements
+- The static segment must be created **before** using this element in a journey.
+---
+## Final Testing Steps
+1. Create a Journey ("Start From Scratch")
+2. Add any starter and update static secment
+3. Select in:
+   - static segment
+   - action
+4. Launch from top right

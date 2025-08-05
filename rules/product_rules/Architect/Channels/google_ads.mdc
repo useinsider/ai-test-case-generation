@@ -1,0 +1,96 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Google Ads Channel
+The **Google Ads Channel** element enables audience management in journeys using Google Ads Customer Match.  
+Users can be added to, removed from, or used to create new Google Ads audiences based on journey behavior.
+---
+## Integration Guide
+### 1. Authentication
+- Go to the **Google Ads Integration Page**
+- Login with a Google Ads-enabled account  
+  - Test Account: `architect@useinsider.com` (credentials via QA team)
+- Logged-in accounts are saved in the `googleAdsAccounts` table
+
+---
+
+### Add Google Ads Element
+- In the Canvas, click the `+` button
+- Select the **Google Ads** element from the Channel category
+- Choose one of the actions:
+  - `Create Audience` or `Select the Google Ads Account and audience list`
+  - If u select `Select the Google Ads Account and audience list` , You must choose one of 2 options
+    - Option 1 : `Add users to selected audience`
+    - Option 2 : `Remove users from selected audience`
+- Audience data is stored in `googleCustomAudiences`
+
+---
+
+### Save Google Ads Element
+Click **Save** (no autosave except on Canvas).
+- If Audience not filled, the Google Ads will **not be saved**.
+
+---
+## Element Types
+### Create Audience
+// prompt: Generate positive and negative test cases for audience creation
+**Description:**  
+Creates a new audience in the connected Google Ads account.
+**Preconditions:**  
+- Authenticated Google Ads account  
+- Unique audience name
+**Postconditions:**  
+- Audience created and listed in Google Ads UI  
+- Row inserted into `googleCustomAudiences` DB table
+**Test Ideas:**  
+// Test duplicate audience name  
+// Test creation without Google auth  
+// DB record validation after creation
+---
+### Add to Audience
+// prompt: Write test cases for adding journey users to an existing audience
+**Description:**  
+Adds current journey users to a selected existing Google Ads audience.
+**Preconditions:**  
+- Audience exists  
+- User qualifies for the journey
+**Postconditions:**  
+- Add action logged in system  
+- Reflected in Google Ads audience logs
+---
+### Remove from Audience
+// prompt: Write test cases for removing users from audience
+**Description:**  
+Removes users from an existing audience based on logic in the journey (e.g., purchase complete).
+**Preconditions:**  
+- Audience exists  
+- User previously added
+**Postconditions:**  
+- User removed from audience  
+- Status updated in log
+**Test Ideas:**  
+// Remove user who was never added  
+// Remove from expired audience  
+// Check fallback if remove fails
+---
+## Analytics & Logs
+To monitor action performance:
+1. Visit [Google Ads Audience Manager](https://ads.google.com/aw/audiences/management)
+2. Navigate to `Tools > Shared Library > Audience Manager`
+3. Logs show:
+   - Add / Remove requests
+   - Status and timestamps
+   - Errors if applicable
+---
+## Final Testing Steps
+1. Create a Journey ("Start From Scratch")
+2. Add any starter and Web Push
+3. Select or Add any Audience
+4. Launch from top right
+5. Check analytics in Google Ads Manager
+## Resources
+- [Google Ads Audience Manager](https://ads.google.com/aw/audiences/management)
+- [QA Docs – Google Ads Channel](https://insider-portal.atlassian.net/wiki/spaces/QA/pages/4144300038)
+- [Business Docs – Google Ads Channel](https://insider-portal.atlassian.net/wiki/spaces/BM1/pages/4181033125)
