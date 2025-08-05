@@ -1,6 +1,130 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
 
+# WhatsApp Element Guide
+
+## What is WhatsApp?
+
+WhatsApp is a communication channel within the Insider platform that allows sending messages to users directly through WhatsApp. This channel supports single and conversational message types, enables automation, personalization, and chatbot integration through templates.
+
+---
+
+## Key Features
+
+* **Single and Conversational Messages**
+  - **Single Message**: Sends one message with no follow-up regardless of user response.
+  - **Conversational Message**: Sends a message with predefined buttons. If the user selects a defined option, a corresponding follow-up message is sent. Includes fallback handling and timeout behavior.
+* **Message Templates**
+  - Templates can include variables (e.g., `{{first_name}}`, `{{last_visited_product}}`).
+  - If required variables are missing, the message will not be sent.
+* **Short URLs**
+  - Automatically shortens URLs (like product pages) to prevent long, unattractive links.
+* **External Platform Response**
+  - For conversational templates, button clicks can send webhook requests to external systems (e.g., chatbots).
+* **Test Messaging**
+  - Messages can be tested by sending to a specific number after enabling the relevant checkbox for authorization.
+* **Preview as User**
+  - Preview message appearance for a selected user using variables from the user profile.
+
+---
+
+## Use Cases
+
+* **Conversational Campaigns**
+  - Engage users with interactive buttons to drive real-time actions (e.g., "View Product", "Talk to Agent").
+* **Promotions**
+  - Share limited-time offers, sales, and product launches directly to WhatsApp.
+* **Notifications**
+  - Order updates, delivery alerts, appointment reminders.
+
+---
+
+## Technical Notes & Tips
+
+* **User Requirements**
+  - Users must have the following attributes:
+    - `whats_app_business_opt_in`: `true`
+    - `wbo`: `true`
+    - `pn` (phone number): not empty
+* **Timeout Handling**
+  - In conversational flows, a timeout action can be defined (e.g., drop user or move to next step).
+* **Variable Handling**
+  - If a template uses variables and the user lacks the required data, the message will not be sent.
+* **Dynamic Content**
+  - Can be previewed for specific users using the "Preview as User" option.
+
+---
+
+## Carousel Templates
+
+### What are Carousel Templates?
+Carousel templates allow you to include **up to six media cards** in one WhatsApp message. Each card can have an image/video header, a message body, and up to two buttons.
+
+---
+
+### Key Elements
+
+* **Message Body**
+  - Maximum 1024 characters, supports emojis and personalization variables.
+* **Cards**
+  - Minimum 2, maximum 6.
+  - Each card includes:
+    - Media Header (image or video)
+    - Body text (max 160 characters)
+    - Up to two buttons (CTA or Quick Reply)
+* **Media Rules**
+  - All cards must have the same header type (either image or video).
+  - Image: 1.91:1 aspect ratio, cropped if taller.
+  - Video: MP4 format, max 16MB.
+* **Button Types**
+  - **Call-to-Action (CTA)**: Fixed URL, dynamic URL, or phone number.
+  - **Quick Reply**: Predefined responses used during campaign creation.
+
+---
+
+### How to Create a Carousel Template
+
+1. Go to **Experience > Message > WhatsApp**
+2. Switch to **Templates** tab and click **Create**
+3. Select **Carousel** as template type under **Marketing**
+4. Choose a language
+5. Add message body (with optional variables and emojis)
+6. Choose header type (image or video)
+7. Add message and buttons for each card
+8. Add 2–6 cards (use Duplicate or Remove options as needed)
+9. Review preview area for consistency
+10. Submit for WhatsApp approval (only Admin or Editor roles)
+
+---
+
+## Generate Text
+
+The **Generate Text** feature helps create message content using AI.
+* **Prompt**: Description of the message's goal.
+* **Use Case**: Choose the style or type of message.
+* **Industry**: Select relevant sector.
+* **Language**: Choose message language.
+* **Include Emojis**: Adds emojis if selected.
+Click **Generate Copy** to create suggestions. Two types appear:
+- **Standard Suggestion**
+- **Advanced Suggestion**
+Click **Generate More** to receive 8+8 more examples. Use **Apply** to add the chosen message to your input field.
+
+---
+
+## Actions
+
+The type of WhatsApp message template selected determines which action is automatically applied in the Journey:
+### Promotional (Single) Templates
+- When a **Single** message template is selected, the Journey action is automatically set to **on send**.
+- The message is sent, and the user immediately continues to the next step.
+- If the user replies, nothing happens — the reply is ignored.
+### Conversational Templates
+- When a **Conversational** (button-based) template is selected and saved, the Journey action is automatically set to **on reply**.
+- The system waits for the user to respond by clicking one of the buttons.
+- If a button is clicked, the corresponding flow continues.
+- This also applies to **Carousel** templates — they use **on reply** as well.
+> The action type is automatically applied based on the selected template.
