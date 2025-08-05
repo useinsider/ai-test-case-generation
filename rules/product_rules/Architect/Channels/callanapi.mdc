@@ -24,7 +24,33 @@ Use cases:
 4. **Optionally store** compressed response in DynamoDB (`call_an_api_responses`) if Response Management is enabled.  
 5. **Proceed** user to next element regardless of outcome.  
 
-### Call an API Templates
+# Defining and Managing Endpoints
+
+To use an endpoint in a Call an API element, define it first in **API Preferences** under **Architect settings**.  
+If you plan to use existing endpoints, no need to visit this page.
+
+> Only administrators and editors with PII access can create, edit, or delete endpoints.
+
+---
+
+### Creating Endpoints
+- Click **Create Endpoint** in API Preferences from Architect Settings.  
+- Enter:
+  - **Name:** Descriptive title shown in Call an API dropdown.  
+  - **Endpoint URL:** Base URL (no dynamic content here).  
+  - **Headers:** Key-value pairs; mark sensitive values to mask them.  
+- Click **Save** to add the endpoint.
+#### Editing Endpoints
+- Update **Name**, **URL**, or **Headers** anytime.  
+- Changes apply automatically to all journeys/templates using this endpoint.  
+- Active journeys stay active. Useful for token updates.
+#### Deleting Endpoints
+- Click delete icon next to an endpoint.  
+- See which journeys/templates use it.  
+- Deleting sets all related running journeys to **passive**.
+#### Viewing Endpoint Details
+- Click the **info (i)** icon to view URL and headers.  
+- Sensitive info is masked. Visible to all roles.
 
 ### Retry & Throttling
 - **Throttling:** limit requests/sec per endpoint (5–5000, multiples of 5)  
@@ -36,7 +62,6 @@ Use cases:
 - Define Variables (name, path, type) for downstream use  
 
 ---
-
 ## Call an API Structure
 
 ### 1. Create a Journey
@@ -63,7 +88,7 @@ Use cases:
 - Use **Add Dynamic Content** to insert user/event data  
 - Support for **fallback values**
 
-```json
+```json```
 {
   "user_id": "{{d_uuid}}",
   "email": "{{em}}",
@@ -88,8 +113,39 @@ Use cases:
 - Use placeholder or real dynamic content
 
 ### 8. Save as Template (Optional)
-- **Click** `Save Template`
-- **Reuse** from `Select Template` dropdown
+
+You can save your Call an API settings — including Method, Headers, and Body — as a template.
+After saving, you can access your templates using the **Select Template** button. When clicked, a modal opens where you can:
+
+- View and select previously saved templates  
+- Re-use templates in your journeys  
+- Edit or delete templates from the template store  
+
+This feature helps you quickly apply commonly used API configurations without re-entering details each time.
+
+#### Template Layout Details
+
+##### Header Area (Title + Chips)
+- **Title**: Displays the template name.
+- **Chips (conditionally shown)**:
+  - If API Response is enabled → show chip next to the title.
+  - If Attribution Channel feature is enabled and selected → show chip next to the title.
+
+##### Description Area
+- Displays the Endpoint URL.
+- No character limit: the container layout dynamically adjusts.
+- If the endpoint has been deleted (via settings), the URL section will be empty in both the preview and the selected state.
+
+##### Actions (Bottom of Template Card)
+- **Select** button: select the template.
+- **Delete** button: delete the saved templated.
+
+##### Expand/Collapse Behavior
+- Each template supports expand/collapse interaction.
+- If the template does not have a Body, the Body section will be hidden when expanded (no placeholder).
+
+##### Dynamic Content Display
+- Instead, show dynamic content in brackets, similar to how it appears in URL previews.
 
 ### 9. Rename Channel Name (Optional)
 - **Edit** the default name at top-right
@@ -157,3 +213,10 @@ Keep users in this step based on:
    - DynamoDB entries for responses  
    - CloudWatch & SQS processing logs  
    - Journey Analytics for metrics  
+
+## Resources
+
+- [Call an API – Confluence](https://insider-portal.atlassian.net/wiki/x/OAAxag)
+- [Fetching Data through Call an API](https://insider-portal.atlassian.net/wiki/x/MQDB6Q)
+- [Call an API Performance Metrics Reporting](https://insider-portal.atlassian.net/wiki/x/2IJc3w)
+
