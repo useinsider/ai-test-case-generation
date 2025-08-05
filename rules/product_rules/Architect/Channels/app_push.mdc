@@ -3,3 +3,190 @@ description:
 globs:
 alwaysApply: false
 ---
+
+# App Push Notification Guide
+
+## What is App Push?
+
+App Push notifications are messages sent to mobile users, even when the app is not active. They include a **title**, **body**, and optionally **rich media**.
+
+- Sent without requiring the app to be open  
+- Ideal for time-sensitive, important updates  
+- Drive user action (e.g., conversion, engagement)
+
+## How It Works
+
+Before sending, the system checks **user reachability**.
+
+### Reachability Conditions  
+User must meet **all** of the following:
+
+- `mpo` = true (App Push Opt-in)  
+- `mpt` is not null (App Push Token exists)  
+- `gdpr` = true (GDPR Opt-in)
+
+### Delivery is **not attempted** if:
+
+- `mpt` is missing or null  
+- App is uninstalled  
+- Notifications disabled in device settings  
+- `gdpr` is false
+
+## App Push Structure
+### Integration
+- SDK must be integrated with your mobile app  
+- iOS/Android certificates must be valid and uploaded in **Mobile App Settings**
+### Step 1: Add App Push Element
+- In the Canvas, click the `+` button
+- Select the **App Push** element from the Channel category
+### 2. Compose Title and Description
+- Add title and message body
+- Use AI Assistant to generate text
+- Click **Add Dynamic Content** if needed.
+  - Default Attributes
+  - Custom Attributes
+  - Event Parameter
+  - Expressions (if expression toggle enabled)
+  - Coupon (If you select Coupon, You need to add coupon from Coupon List)
+  - Product Catalog Attributes (If you select Product Catalog Attributes, You need to add product starter(Price Drop, Back in Stock))
+  - Call an API Response (If you select Call an API Response, You need to add **Call an API** element before Sms)
+- Emojis supported
+### 3. Add Message Link
+Options:
+- **Custom Link** (valid, secure)
+- **Dynamic Link** (based on recent Default/Custom Attributes, Event Parameter, Recommendation, Product Catalog Attribute(if added product starter on canvas), Call an api Response(if added call an api element and response value before app push element))
+> Always include fallback URLs
+- If no added title, description and message link, app push element doesnt save and throws toaster  (Toaster: Fill in all required fields to continue.)
+
+### 5. Configure UTM Parameters
+Define your UTM Parameters to track users' actions on app push. UTM source, medium, and campaign fields will be automatically filled. If needed, you can fill out the UTM term and content fields.
+These parameters will be automatically added to each link in your app push.
+- If you do not want to use UTM parameters or you already have added them manually in your app push, you can disable the Enable UTM Parameters checkbox.
+- If you want to add UTM parameters manually in your app push, the parameters on the UTM Parameters section will be ignored. Only the parameters you add will be taken into consideration.
+
+Define UTM Parameters:
+- `utm_source` (e.g., `insider`)
+- `utm_medium` (e.g., `architect_app`)
+- `utm_campaign` (e.g., `mothers_day_campaign`)
+- `utm_term` (optional)
+- `utm_content` (optional)
+
+**Example:**
+https://partner.com?utm_source=Insider_App_Push&utm_medium=App_Push&utm_campaign=Fathers_Day_Campaign
+
+> Manual UTM overrides values from settings
+### Step 4: Add Deep Link
+
+You can add deep links to your app push notifications to redirect your users to a specific page or use them for different instructions.
+
+**Deep Links** are smart URLs that allow you to send existing and potential users to any location within your iOS or Android app. Users survive the app install process, so even new users see the content they're looking for when they open the app for the first time.
+
+Each notification can include Deep Links to:
+
+- Redirect users to a specific in-app page
+- Pass data to analytics tools
+- Trigger certain in-app behaviors
+
+Deep Links function as **Key-Value Pairs**, and you can use multiple pairs as needed.
+
+You can also insert **dynamic content** into the Deep Link value. This enables you to send each user to a personalized location, such as their last visited product.
+
+If a user does not have a value for the dynamic content, you can set a **fallback value** by clicking on the dynamic content tag.
+
+#### Supported Deep Link Options:
+
+- **Key-Value Pair**
+- **URL Scheme**
+- **JSON Code**
+- **External Browser URL**
+- **Internal Browser URL**
+
+> UTM tags apply to both links and buttons
+### 7. Add Rich Message (Optional)
+Requirements:
+- Max resolution: `1024x512px`
+- Recommended: `1024x512px`
+- Max size: `2MB`
+- Must be HTTPS if dynamic
+### 8. Preview Your Message
+- View on iOS, Android
+- Toggle compact/expanded view
+-##Steps:
+- Click **Preview as User** button above email preview section
+- Choose **User Selection Method** by User Identifier or Recent User
+- If you select User Identifier, select profile ID, email, or phone.
+- Click **Preview as User** again
+- See real values for dynamic content.
+- Click Clear Selection button for new user
+
+### 9. Enable Send Time Optimization
+- Sends when user is most active
+- Ideal for behavioral triggers
+- Enabling also bypasses channel frequency capping
+
+### 10. Bypass Channel Frequency Capping
+- Ensures delivery even if capping is reached
+- If capping limit hit, user proceeds to next step
+### Step 9: Test Email
+Before sending out an app push to your users, you should always test it to see how title, description, rich push like. 
+Click Test Message button at the bottom right corner of the page.
+You can preview your app push on the design step. Remember Phone Numbers checkbox allows you to store the phone numbers you entered to test your App push message.
+
+### 12. Rename Channel Name (Optional)
+- Rename from the top-right of the element
+### 13. Save the Configuration
+> No autosave – **Click Save manually**
+- If message title and message description are not filled, the email will **not be saved**.
+
+### 14. App Push Visibility on Canvas
+- After filling in all required fields (title, description, and message link), click the **Save** button to save the App Push element.
+- Once saved, you will be redirected to the **Canvas** page.
+- On the Canvas, the App Push element appears as **filled**, and the **title field** becomes visible.
+- If the **Preview** button on the Canvas is clicked, a **preview** of the App Push will be generated using the provided content.
+
+---
+## Tips and Best Practices
+- Use **Check Reachability** before sending App Push
+- Add **Dynamic Images** (e.g., abandoned item thumbnails)
+
+
+### Live Actions
+Track clicks on App push link. Max wait is 30 days.
+
+- Options:
+  - `On Send` (default)
+  - `On Click`
+
+---
+
+## Check User Interaction
+To branch based on user action:
+1. Add a **Wait Element**
+2. Add **Check Interaction**
+--
+## Analytics & Monitoring
+### App Push Metrics:
+- Sent  
+- Delivered  
+- Clicks  
+- CTR  
+- Conversions  
+- Revenue
+### Live Stats:
+- **Arrived**: Reached the App Push element  
+- **Reachable**: Eligible for delivery  
+- **Dropped**: Not reachable  
+- **Proceeded**: Continued after inaction (Live Action logic)
+---
+## Use Cases
+- Boost mobile app adoption  
+- Announce promotions or updates  
+- Cart/Browse abandonment  
+- Post-purchase updates  
+- Welcome messages for new users  
+- Re-engage inactive users  
+---
+## Key Features
+- **Live Actions**: Wait up to 30 days for click  
+- **Check Interaction**: Branch logic by user action  
+- **Send Time Optimization**: Deliver when 
