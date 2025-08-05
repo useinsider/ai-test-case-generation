@@ -1,9 +1,6 @@
 ---
 description: 
 globs:
-  - call_api
-  - api
-  - webhook
 alwaysApply: false
 ---
 # Call an API Element Guide
