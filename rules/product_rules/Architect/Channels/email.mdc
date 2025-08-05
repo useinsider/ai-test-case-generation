@@ -1,4 +1,10 @@
-# Architect - Email Channel Guide
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# Email Element Guide
 
 ## Overview
 
@@ -172,6 +178,7 @@ Change the default channel name at the top-right.
 
 ### Step 11: Save Email Element
 Click **Save** (no autosave except on Canvas).
+- If pre-header and email design are not filled, the email will **not be saved**.
 
 ---
 
