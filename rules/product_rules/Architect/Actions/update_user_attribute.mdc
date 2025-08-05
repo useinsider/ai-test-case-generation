@@ -4,7 +4,7 @@ globs:
 alwaysApply: false
 ---
 
-# Update User Attribute
+# Update User Attribute Element Guide
 The **Update User Attribute** element is used to **assign specific attribute values** to users as they pass through a journey step.
 It helps personalize user experiences and enable advanced segmentation based on behaviors, preferences, and actions.
 ---

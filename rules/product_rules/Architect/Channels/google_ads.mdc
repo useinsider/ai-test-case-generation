@@ -3,7 +3,7 @@ description:
 globs:
 alwaysApply: false
 ---
-# Google Ads Channel
+# Google Ads Element Guide
 The **Google Ads Channel** element enables audience management in journeys using Google Ads Customer Match.  
 Users can be added to, removed from, or used to create new Google Ads audiences based on journey behavior.
 ---

@@ -4,7 +4,7 @@ globs:
 alwaysApply: false
 ---
 
-# Update Static Segment
+# Update Static Segment Element Guide
 The **Update Static Segment** element allows you to **add or remove users** from a **static segment** when they arrive at this journey step.
 This is useful for segmentation purposes, such as retargeting engaged users or excluding unresponsive ones.
 ---

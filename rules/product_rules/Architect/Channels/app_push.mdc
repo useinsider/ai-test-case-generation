@@ -4,7 +4,7 @@ globs:
 alwaysApply: false
 ---
 
-# App Push Notification Guide
+# App Push Element Guide
 
 ## What is App Push?
 
@@ -136,7 +136,7 @@ You can preview your app push on the design step. Remember Phone Numbers checkbo
 - Rename from the top-right of the element
 ### 13. Save the Configuration
 > No autosave – **Click Save manually**
-- If message title and message description are not filled, the email will **not be saved**.
+- If message title and message description are not filled, the app push will **not be saved**.
 
 ### 14. App Push Visibility on Canvas
 - After filling in all required fields (title, description, and message link), click the **Save** button to save the App Push element.
