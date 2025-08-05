@@ -28,26 +28,20 @@ Notifications have a **TTL (Time To Live)**. After TTL expires, undelivered noti
 ---
 ## Web Push Structure
 ### 1. Create a Journey
-- Go to Architect
-- Click “Start From Scratch”
-- Add any starter
-- Save the starter
-### 2. Add Web Push Element
-- Click the `+` icon
-- Choose **Web Push** under **Channels**
-- Click the added **Web Push** Element 
-### 3. Set Push Icon
+- In the Canvas, click the + button
+- Select the Web Push element from the Channel category
+### 2. Set Push Icon
 Options:
 - Default Icon from Inone Settings
 - Custom Icon (max `1024x768px`)
 - Dynamic Image (e.g., last abandoned product)
 > Use high-resolution images
-### 4. Compose Title and Description
+### 3. Compose Title and Description
 - Add title and message body
 - Use AI Assistant to generate text
 - Support for dynamic content and fallback values
 - Emojis supported
-### 5. Add Message Link
+### 4. Add Message Link
 Options:
 - **Custom Link** (valid, secure)
 - **Dynamic Link** (based on recent Default/Custom Attributes, Event Parameter, Recommendation, Product Catalog Attribute(if added product starter on canvas), Call an api Response(if added call an api element and response value before web push element))

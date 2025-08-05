@@ -61,18 +61,11 @@ If you plan to use existing endpoints, no need to visit this page.
 ---
 ## Call an API Structure
 
-### 1. Create a Journey
-- Go to **Architect**  
-- Click **Start From Scratch**  
-- Add any **Starter**  
-- **Save** the starter  
+### 1: Add Call an API Element
+-In the Canvas, click the + button
+-Select the Call an API element from the Channel category
 
-### 2. Add Call an API Element
-- Click the `+` icon  
-- Choose **Channels > Call an API**  
-- Click the added **Call an API** element  
-
-### 3. Configure Request
+### 2. Configure Request
 - **Endpoint URL:** select predefined or enter custom URL  
 - **Method:** GET / POST / PUT / DELETE  
 - **Headers:**  
@@ -80,7 +73,7 @@ If you plan to use existing endpoints, no need to visit this page.
   - Add `Authorization`, other dynamic headers  
 - **Path:** use dynamic content (auto-encoded for special chars)  
 
-### 4. Set Body (JSON payload)
+### 3. Set Body (JSON payload)
 - Max size: **100 KB**  
 - Use **Add Dynamic Content** to insert user/event data  
 - Support for **fallback values**
@@ -92,24 +85,24 @@ If you plan to use existing endpoints, no need to visit this page.
   "event": "AbandonedCart"
 }
 
-### 5. Enable Response Management (Optional)
+### 4. Enable Response Management (Optional)
 - **Toggle** `Store API Response`
 - **Define Variables:**
   - `user_city`: `{{response.data.city}}` (string)
   - `order_value`: `{{response.order.total}}` (number)
 
-### 6. Enable Retry & Throttling (Optional)
+### 5. Enable Retry & Throttling (Optional)
 - **Retry:** enable with max attempts (e.g., `3`)
 - **Throttling:** set limit (e.g., `100 req/sec`) & enable bypass option
 
-### 7. Preview & Test
+### 6. Preview & Test
 - **Click** `Test API`
 - **Verify status codes:**
   - `2XX` = Success  
   - `4XX/5XX` = Error  
 - Use placeholder or real dynamic content
 
-### 8. Save as Template (Optional)
+### 7. Save as Template (Optional)
 
 You can save your Call an API settings — including Method, Headers, and Body — as a template.
 After saving, you can access your templates using the **Select Template** button. When clicked, a modal opens where you can:
@@ -144,14 +137,14 @@ This feature helps you quickly apply commonly used API configurations without re
 ##### Dynamic Content Display
 - Instead, show dynamic content in brackets, similar to how it appears in URL previews.
 
-### 9. Rename Channel Name (Optional)
+### 8. Rename Channel Name (Optional)
 - **Edit** the default name at top-right
 
-### 10. Save the Configuration
+### 9. Save the Configuration
 > No autosave – **Click** `Save` manually  
 > Validates JSON if `Content-Type: application/json`
 
-### 11. Visibility on Canvas
+### 10. Visibility on Canvas
 - Element appears **filled** when valid  
 - **Hover** to view summary  
 - **Preview as User** by email/phone/ID
