@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Channel Element First Step Rule
+
+When generating test cases for BrowserStack and the Product Information contains an Architect/Channels MDC file, add these initial steps to each test case:
+
+## Rule Application:
+If the Product Information field contains any MDC file from `Architect/Channels/` path (e.g., email.mdc, push.mdc, sms.mdc, etc.), then:
+
+### Required Initial Steps for Journey Builder Test Cases:
+
+1. **Step 1**: Navigate to Canvas and Add a Starter
+   **Expected Result**: Starter element is added to canvas
+
+2. **Step 2**: Select "Channel" category and add {{CHANNEL_NAME}} element and enter it
+   **Expected Result**: {{CHANNEL_NAME}} element is added to the canvas after the starter
+
+3. **Step 3**: Enter {{CHANNEL_NAME}} element
+   **Expected Result**: {{CHANNEL_NAME}} inner page appears 
+
+## Channel Name Mapping:
+- If `email.mdc` is referenced → Add "Email" channel element
+- If `app-push.mdc` is referenced → Add "App Push" channel element  
+- If `sms.mdc` is referenced → Add "SMS" channel element
+- If `in-app.mdc` is referenced → Add "In-App" channel element
+- If `onsite.mdc` is referenced → Add "Onsite" channel element
+- If `web-push.mdc` is referenced → Add "Web Push" channel element
+- If `google.mdc` is referenced → Add "Google Ads" channel element
+- If `facebook.mdc` is referenced → Add "Facebook" channel element
+- If `whatsapp.mdc` is referenced → Add "WhatsApp" channel element
+
+
+## Implementation Notes:
+- These steps should be prepended to the existing test case steps
+- Replace {{CHANNEL_NAME}} with the actual channel name based on the MDC file referenced
+- This rule applies only when Architect/Channels MDC files are present in Product Information
+- The subsequent test steps should continue with the specific functionality being tested
