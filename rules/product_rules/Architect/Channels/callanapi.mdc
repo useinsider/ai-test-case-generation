@@ -141,8 +141,35 @@ This feature helps you quickly apply commonly used API configurations without re
 - **Edit** the default name at top-right
 
 ### 9. Save the Configuration
-> No autosave – **Click** `Save` manually  
-> Validates JSON if `Content-Type: application/json`
+- No autosave – **Click** `Save` manually  
+- Validates JSON if `Content-Type: application/json`
+- When configuring a **Call an API** element in a Journey, the following fields are mandatory. If any of them are left empty, clicking the **Save** button will trigger validation messages and the configuration cannot be saved.
+
+#### Required Fields and Validation Messages
+
+- **Endpoint URL**  
+  Validation: `Select an API Endpoint URL to continue`  
+  Must select a valid API endpoint before saving.
+
+- **Response Variable Name**  
+  Validation: `The Variable Name field is required.`  
+  Required to store the value extracted from the API response.
+
+- **Response Snippet**  
+  Validation: `The Response Snippet field is required.`  
+  Required to define how the response value will be extracted (e.g., JSON path).
+
+- **Header Key**  
+  Validation: `Enter a Key to continue.`  
+  If headers are added, the key cannot be left empty.
+
+- **Header Value**  
+  Validation: `Enter a Value to continue.`  
+  A value must be provided for each header key.
+
+- When all required fields are empty, validation messages appear as expected.
+- After filling each field with valid input (e.g., valid URL, variable name), the corresponding validation message disappears.
+- The element cannot be saved until all required fields are properly filled.
 
 ### 10. Visibility on Canvas
 - Element appears **filled** when valid  
