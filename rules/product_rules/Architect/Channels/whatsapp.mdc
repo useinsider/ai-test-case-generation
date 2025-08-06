@@ -62,7 +62,7 @@ If any of these checks fail, the user is dropped from the journey.
   - Expressions (if expression toggle enabled)
   - Coupon (If you select Coupon, You need to add coupon from Coupon List)
   - Product Catalog Attributes (If you select Product Catalog Attributes, You need to add product starter(Price Drop, Back in Stock))
-  - Call an API Response (If you select Call an API Response, You need to add **Call an API** element before Sms)
+  - Call an API Response (If you select Call an API Response, You need to add **Call an API** element before WhatsApp)
 - Assign **fallbacks** for missing dynamic values
 - Add files (documents, videos) if needed
 - Use:

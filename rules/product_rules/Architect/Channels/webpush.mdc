@@ -3,8 +3,11 @@ description:
 globs: 
 alwaysApply: false
 ---
+
 # Web Push Element Guide
+
 ## What is Web Push?
+
 Web push notifications are **actionable messages** sent from a website to a visitor’s device via the browser.
 - Contextual, timely, and personalized
 - Appear immediately on the screen

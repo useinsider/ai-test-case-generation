@@ -1,0 +1,152 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# On-Site Element Guide
+
+## What is On-Site?
+
+The On-Site channel allows you to deliver real-time, personalized experiences on your website based on user actions. It enables you to display campaigns when users visit your site, providing context and enhancing engagement.
+
+There are no limitations such as having to send a message before displaying on-site personalization. One On-Site channel element in Architect supports all 3 device types: Desktop, Mobile, and Tablet.
+
+Templates for Desktop Web Suite and Mobile Web Suite can be used for:
+
+### Desktop:
+- Increase Conversion Rate
+- Increase Engagement
+- Collect Leads
+- Decrease Cart Abandonment Rate
+- Increase Average Order Value
+
+### Mobile and Tablet:
+- Increase Conversion Rate
+- Increase Engagement
+- Collect Leads
+- Collect Feedback
+- Decrease Cart Abandonment Rate
+- Increase Average Order Value
+- Increase App Install Rate
+
+> Note: Some templates like Social Proof are not suitable for use in journey flows and are not included in the Architect On-Site channel.
+
+## How Does It Work?
+
+When a user reaches the On-Site step in the journey:
+- The system checks for reachability (activity in the past 30 days).
+- If reachable, the campaign may be shown in the partner website.
+- If unreachable, they are dropped from the journey.
+
+Campaign visibility depends on campaign priority and user platform. Cross-platform templates can be used to cover all device types.
+
+## Time Out
+
+Unlike messaging channels, On-Site waits for the user to visit the site.
+
+- **Duration**: Min 30 minutes, Max 2 weeks
+- **Actions**:
+  - Proceed to next step
+  - Drop from journey
+
+### Defer Engagement Timeout
+
+Allows background waiting. Users who meet the conditions later will still see the campaign. However, the campaign won't display if:
+- User exits the journey
+- Journey becomes inactive
+- Timeout expires
+
+## On-site Campaign Creation
+
+Key differences from standard web templates:
+- No segment step: Users are pre-qualified.
+- No campaign-specific trigger settings.
+- No A/B testing (use A/B split instead).
+- No browser storage or language settings (managed at journey level).
+- Campaign activates only when journey is live.
+
+## How to Set Up On-Site
+
+### Integration
+
+Ensure Insider Tag Integration is completed. If done for Desktop and Mobile Web Suite, no need to repeat for Architect.
+
+### Steps
+
+### Step 1: Add On-Site Element
+- In the Canvas, click the `+` button
+- Select the **On-Site** element from the Channel category
+
+### Step 2: Create Campaign
+- Choose between Desktop, Mobile, or Tablet campaigns. Select a template or Smart Recommender.
+
+### Step 3 : Name Campaign & Select Template  
+- For Smart Recommender, choose device and proceed and write a campaign name.  
+- For web templates, write a campaign name, select device and template (cross-platform supported).
+
+### Step 4 : Design & Settings
+- Design in Builder in Action Builder Page and Save it
+- Set rules in Rule Page and save it
+- Launch schedule, advanced settings, priority (default: 0) and save it in Launch Page 
+
+### Step 5: Save Campaign 
+ - Save on On-Site Inner page. You can edit, delete or add other devices later(for Web Templates)
+
+### Step 6: Test Campaign 
+-Use "Test Link" on the main page. Satisfy rule conditions or use "Show Now".
+
+### Step 7: Set Time Out
+ - Define how long to keep users and what action to take.
+    - If the user does not take action within the given time after coming to the On-site element, if you want it to be a drop from the journey, select **Drop from the journey**.
+    - If the user does not take action within the given time after coming to the On-site element, **Proceed to the next step** is selected if you want it to move on to the next element.
+
+### Step 8: Rename Channel Name
+   Edit name from top-right if needed.
+
+### Step 9: Save On-Site Element
+Click **Save** (no autosave except on Canvas).
+- If web template are not created, the On-site will **not be saved**.
+
+> Note: Duplicating the journey or On-Site element resets the configuration. Language is selected at journey level.
+
+## Live Actions & Checking Interactions
+
+### Live Actions
+- Options:
+  - `On View` (default)
+  - `On Click`
+- **Interaction Branching**: After On-Site, actions can be based on user behavior.
+
+## Analytics
+
+- Evaluate campaign performance per journey.
+- Metrics:
+  - Impression
+  - Click
+  - Click-Through Rate (CTR)
+  - Conversion
+  - Conversion Rate
+  - Revenue
+
+**Live Stats**:
+- Arrived
+- Reachable
+- Impressions
+- Dropped
+- Wait for Action
+- Proceeded (Time Out)
+- Dropped (Time Out)
+
+Only one of "Proceeded (Time Out)" or "Dropped (Time Out)" appears depending on configuration.
+
+## Use Cases
+
+- Guide new users to lead forms
+- Collect emails/phone numbers for follow-ups
+- Promote app downloads to uninstallers/non-installers
+- Retarget non-clickers of discount banners
+- Collect post-purchase feedback
+- Recommend products based on mobile app behavior
+- Encourage registration via conversion trigger template
+- Send follow-up SMS to unregistered yet engaged users

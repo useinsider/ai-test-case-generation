@@ -1,0 +1,99 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Facebook Element Guide
+
+The **Facebook Channel** element allows you to manage user audiences on Facebook Ads via journeys.  
+Users can be added to or removed from Facebook Custom Audiences through this element.
+---
+## Integration Guide
+### Account Integration
+- Use the test account: `bytemastersqa@gmail.com`  
+  - Password: contact `@Enes Yenidogan` or `@Pelin Tok`
+- Go to the Facebook integration page
+- Log in and **click "Add Account"**
+- Accept the terms of service if prompted
+- The account is stored in `facebookAdAccounts` table
+---
+### Create Facebook Audience
+// prompt: Generate test cases for creating a Facebook audience
+**Description:**  
+Create a new Facebook Ads Custom Audience through the connected account.
+**Preconditions:**  
+- Facebook integration is complete  
+- Authenticated Ads account  
+- Audience name provided
+**Postconditions:**  
+- Entry is created in `facebookCustomAudiences` table  
+- Audience appears in Facebook Ads Manager
+**Test Ideas:**  
+// Attempt creation with empty name  
+// Check DB for correct entry  
+// Validate Facebook UI reflects the audience
+---
+### Add to Audience
+// prompt: Write test scenarios for adding users to a Facebook audience
+**Description:**  
+Adds current user to an existing audience list.
+**Preconditions:**  
+- Audience must exist  
+- User must have `email` and `email_sha256`
+**Postconditions:**  
+- Add action logged in system  
+- Action appears in Facebook Ads history tab
+---
+
+### Add Facebook Element
+- In the Canvas, click the `+` button
+- Select the **Facebook** element from the Channel category
+- Choose one of the actions:
+  - `Create Audience` or `Select the Facebook Account and audience list`
+  - If u select `Select the Facebook Account and audience list` , You must choose one of 2 options
+    - Option 1 : `Add users to selected audience`
+    - Option 2 : `Remove users from selected audience`
+
+### Save Facebook Element
+Click **Save** (no autosave except on Canvas).
+- If Audience not filled, the Facebook will **not be saved**.
+
+### Remove from Audience
+// prompt: Write test scenarios for removing users from a Facebook audience
+**Description:**  
+Removes user from a specified audience list.
+**Preconditions:**  
+- Audience exists  
+- User is part of the audience
+**Postconditions:**  
+- Remove action logged  
+- Reflected in Ads Manager history tab
+---
+## User Requirements
+To qualify for audience syncing, the user must have:
+- `email` or `phone number`
+> These are generated automatically when users register on the partner site.
+---
+## Tips & Best Practices
+// prompt: What are edge cases for Facebook audience sync?
+- Always check token validity before syncing
+- Audience list names must be unique
+- Use test logs in Facebook Ads Manager to verify actions
+- Make sure `email_sha256` is always hashed correctly
+---
+## Analytics & Logs
+- Visit [Facebook Ads Manager](https://www.facebook.com/adsmanager)
+- Go to the **Audience** tab
+- Select the created list
+- Click **History** to view:
+  - Add / Remove actions
+  - Timestamps
+  - Account responsible
+---
+## Final Testing Steps
+1. Create a Journey ("Start From Scratch")
+2. Add any starter and Facebook
+3. If facebook isn't enabled, a warning appears
+4. Select or Add any Audience
+5. Launch from top right
+6. Check analytics in Facebook Ads Manager
