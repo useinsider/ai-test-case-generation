@@ -7,44 +7,249 @@ alwaysApply: false
 
 ## What is Check API Response?
 
-The **Check API Response** element allows the journey to evaluate the result of an API call and make routing decisions based on the response.
+Personalization is key to any automation, and orchestrating the journey according to unique attributes and events of a user is essential. Although the Check Conditions element enables you to access those written in UCD, you might also want to use external data to orchestrate your journeys. This is where Check API Response comes in.
 
-It enables **dynamic personalization** and **external system integration** by branching the journey depending on the API’s output.
+You can access external data by enabling the API Response in the Call an API Element.
+
+After you get that data in your journey, you can use Check API Response to evaluate the users' fetched attributes and direct users to different paths.
+
+For example:  
+From the Call an API element, you obtained the user’s loyalty points information. Using that, you can direct users to different paths depending on the amount of points they have.
 
 ---
 
-## How It Works
+## How Does it Work?
 
-- When a user reaches this element, Architect checks the response of a previously defined API call.
-- The system evaluates the response content based on preconfigured conditions (e.g., value equals, contains, success/failure).
-- Users are then routed:
-  - ✅ **If condition is met** → Proceed down one path.
-  - ❌ **If condition is not met** → Proceed down an alternate path.
+The Check API Response element divides users into **Matching** and **Not Matching** paths based on their fetched attributes. You create a true or false query that evaluates users and directs them accordingly.
 
+- **Matching path:** Users who meet the specified conditions proceed down the matching path.
+- **Not matching path:** Users who don’t meet the criteria proceed down the not matching path.
+
+If there is no element following one of the paths after the Check API Response element, users will go down that path and exit the journey. The journey is then counted as completed.
+
+Conditions are evaluated when users arrive at the Check API Response element.
+
+---
+
+## Adding More Paths for Check API Response
+
+You can add more than two paths to your journey by clicking the "+" button after the Check API Response element. Each tab represents a different condition path. There is always a **Not Matching** path for users who do not meet any conditions.
+
+- You can rename or delete condition paths via the dropdown menu.
+- Renaming condition paths updates the path name on the canvas.
+- Paths are evaluated in the order you arrange the tabs. You can drag and drop tabs to prioritize conditions.
+- If paths are connected after Check API Response, dragging tabs is disabled until you disconnect them.
+- Each condition path must have at least one element; only the Not Matching path can be empty.
+- The last element of each path must be a channel or action element.
+- You can add up to 10 condition paths (excluding the Not Matching path).
+
+**Example:**  
+If the first condition checks if loyalty points > 100 and the second checks if points > 50, users with points > 100 will go down the first path, those with points between 51 and 100 go down the second, and others down the Not Matching path.
+
+---
+
+## Tips and Tricks
+
+- Use any attribute fetched through Call an API inside Check API Response.
+- Available operators depend on the data type (Number, String, Date). For example:
+  - Numbers: greater than, less than, equals, etc.
+  - Strings: contains, does not contain, is exactly, is empty.
+  - Dates: is, between, before, on date.
+- Although UCD segments cannot be used inside Check API Response, you can combine with Check Conditions before or after it.
+
+---
+
+## How to Test it
+
+Since this element depends on external API data, ensure the Call an API element with response enabled is configured properly in your journey.
+
+The **Call an API** element is not only limited to sending information or requests to your endpoints — you can also retrieve information from them.
+
+---
+
+### Setting up the Call an API element
+
+1. Set up your Call an API element as described in the documentation.
+2. The HTTP method you use does not matter as long as you configure a response to be returned.
+3. Check the **Enable Call an API Response** checkbox underneath the payload area.
+4. Fill in the following fields:
+   - **Variable Name:** A name you give to refer to the user-based property fetched from your endpoint.
+   - **Response Snippet:** The JSON path snippet from the payload to pinpoint the value location.
+   - **Data Type:** The type of the variable, which can be string, number, or date.
+5. To add multiple variables, click **Add Another Response** (up to 30 responses allowed).
+6. Save the configuration.
+
+---
+
+### Using the Variable in Journey
+
+Once you create a **Call an API** element with the Response enabled, you can use the variables within your journey in these ways:
+
+- **Message Content:** Add Response Variables via the Dynamic Content dropdown in Email, Web Push, App Push, WhatsApp, and SMS messages.
+- **Update User Attribute:** Update existing user attributes with Response Variables.
+- **Checking Response Value:** Use response variables to divide users into different paths based on variable values.
+
+---
+
+### Response Format
+
+The API response must be in **JSON format** and comply with these data formats:
+
+### Date format
+Dates must be in one of the following formats and enclosed in quotation marks:
+
+Date formats supported (must be enclosed in quotation marks):
+
+- MM/DD/YYYY  
+  Example: `"08/31/2023"`
+
+- YYYY/MM/DD  
+  Example: `"2023/08/31"`
+
+- YYYY-MM-DD  
+  Example: `"2023-08-31"`
+
+- DD-MM-YYYY  
+  Example: `"31-08-2023"`
+
+- You can append time with `"HH:MM:SS"` or `"HH:MM"`, e.g., `"2023/09/08 17:10:32"`.
+- Long form timestamps like `"2023/09/08T17:10:32.518290Z"` are supported.
+
+### String format
+Text must be enclosed in quotation marks:  
+`"lorem ipsum"`
+
+### Number format
+Numbers can be integers or decimals:  
+`123`, `3.14556`, `45000`
+
+
+---
+
+### Usage
+
+1. **Call an API:** Send a request using the Call an API element.
+2. **Enable Call an API Response:** Activate the response feature to store and use the response data.
+3. **Define Response Variables:** Map specific keys from the API response to variables.
+4. **Define Conditions:** Evaluate these variables with conditions in the Check API Response element.
+5. **Action Execution:** Users proceed on paths depending on whether the conditions are met.
+
+---
+
+### Configuration
+
+- **Response Variable Selection:** Choose which response object properties to check.
+- **Supported Data Types:** Number, String, Date.
+- **Condition Definition:** Use filters depending on data type (e.g., contains, greater than, between).
+- **Redis Key Check:**  
+  Example Redis key format:  
+  `partnerName:{{partnerName}}:journeyId:{{journeyId}}:event:AC:1742352728:checks`
 ---
 
 ## Use Cases
 
-- Check if a user’s **payment was approved** before continuing.
-- Verify **stock availability** or **delivery eligibility** via a third-party service.
-- Validate **CRM or loyalty system status** before offering benefits.
-- Confirm **registration or form submission** success before sending follow-ups.
+- Retrieve coupon codes from internal or external tools for messaging channels.
+- Fetch localized email content according to user language (only text, date, number supported; HTML is not supported).
+- Generate and send unique referral links.
+- Use NPS or satisfaction scores from external tools to segment users (e.g., send coupons to detractors).
+- Check if users' loyalty points are above a threshold.
+- Check if users' NPS score is below a certain level and send a coupon.
+- Send different email content depending on users' favorite brand.
 
 ---
 
-## Best Practices & Tips
+## Requirements
 
-- Ensure API calls are **idempotent** and consistently structured.
-- Use **fallback branches** for failed or missing responses to keep the journey reliable.
-- Combine with a **Wait** element if you expect delayed responses or polling.
-- Monitor timeout behavior to avoid user stalling.
+- A Call an API element with Response enabled must be placed before the Check API Response element in the journey.
+- Proper API response configurations must be made to pass data to Insider.
+- The data type field must be correctly set in the Call an API element.
+
+---
+
+## Overview
+
+The Check API Response element evaluates API call responses and defines conditions based on specific values in the response object. It is used alongside the Call an API element to take actions based on API response values.
 
 ---
 
 ## Example
 
+API returns:
 ```json
 {
-  "status": "success",
-  "membership_level": "gold"
+    "status": "success",
+    "code": 200
 }
+Define a response variable as api_status = {{status}}.
+
+Set Check API Response to verify if api_status is exactly "success".
+If true, user goes down the matching path.
+
+
+## FAQ
+
+**Q:** Can I use fetched variables in other journeys or products?  
+**A:** No. Variables exist only during the user’s current journey session.
+
+**Q:** Can response variables be used in Check Conditions?  
+**A:** No. Use **Check API Response** for response variables. Combine with **Check Conditions** element if needed.
+
+**Q:** What happens if I update a variable name?  
+**A:** Variables are automatically updated everywhere.
+
+**Q:** What if I delete the Call an API element with responses?  
+**A:** Dynamic content in messages turns to “variable removed” and errors occur. Update or remove affected elements.
+
+**Q:** Why use Call an API for data ingestion over UCD?  
+**A:** Suitable when data is temporary, changes frequently, or integrations with many external tools would be too complex.
+
+**Q:** Can I see variable values after the user leaves the journey?  
+**A:** No, data is deleted as soon as the user exits the journey.
+
+**Q:** Can I update user events with response variables?  
+**A:** No, only user attributes can be updated.
+
+**Q:** Is there a limit on responses retrieved per second?  
+**A:** No limit, but it may take some time to record data internally. The maximum number of response variables per Call an API element is **150**.
+
+**Q:** Can I test the API Response?  
+**A:** Yes. The **Test API** button sends a call to your endpoint and shows the response.
+
+**Q:** Can I preview Response Variables using “Preview as User”?  
+**A:** No. The response depends on live API calls, which are not triggered during preview.
+
+**Q:** Can I bulk update user data via Call an API and Update User Attribute?  
+**A:** No. Bulk updates require usual data ingestion methods like Upsert API. This method is for targeted segments only.
+
+## Final Testing Steps for Check API Response
+
+1. Create a new Journey ("Start From Scratch").  
+2. Add a **Call an API** element with **Response enabled**, configured to fetch the expected data.  
+3. Add a **Check API Response** element after the Call an API element.  
+4. Define the condition(s) in Check API Response to evaluate response variables correctly.  
+5. Add different paths (Matching, Not Matching, or additional condition paths) with appropriate channel or action elements.  
+6. Launch the journey from the top right corner.  
+7. Trigger the journey with a test user whose API response matches one of the conditions.  
+8. Verify the user is routed to the correct path according to the API response value.  
+9. Check that dynamic content in messages reflects the fetched response variables.  
+10. Test negative or edge cases by using test users with non-matching API responses and verify routing to Not Matching path.  
+11. Review journey logs to confirm conditions are evaluated as expected and variables are correctly retrieved.  
+12. Confirm that the journey completes properly for all test scenarios.
+
+### Verify the Testing
+
+- Confirm that users with API responses matching the defined conditions are routed to the correct matching path.  
+- Ensure users with non-matching API responses proceed down the Not Matching path.  
+- Verify dynamic content in messages correctly displays the fetched response variables.  
+- Check that all paths lead to appropriate channel or action elements without errors.  
+- Review journey execution logs to confirm that the Check API Response element evaluates conditions properly.  
+- Validate that the journey completes successfully for all test cases without unexpected exits or failures.
+
+
+## Resources
+
+- [Check API Response - QA Documentation](https://insider-portal.atlassian.net/wiki/spaces/QA/pages/3949265029/Check+API+Response)  
+- [Check API Response - Product Knowledge Base](https://insider-portal.atlassian.net/wiki/spaces/ProductKB/pages/4094197761/Check+API+Response)  
+- [Call an API Performance Metrics Reporting](https://insider-portal.atlassian.net/wiki/spaces/ProductKB/pages/3747381976/Call+an+API+Performance+Metrics+Reporting)
+
+
