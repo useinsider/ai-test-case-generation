@@ -3,47 +3,130 @@ description:
 globs: 
 alwaysApply: false
 ---
-# Next Best Channel
+# Next Best Channel Element Guide
 
 ## What is Next Best Channel?
+**Next Best Channel** determines the most effective messaging channel for each user and automatically routes them to that channel to maximize engagement. Instead of guessing who will respond to which channel, you leverage data-driven decisions to reach goals more efficiently.
 
-**Next Best Channel** is an intelligent element that determines the most effective communication channel to reach a user based on their availability and engagement history.
+**Considered channels:**
+- Web Push  
+- App Push  
+- Email  
+- SMS  
+- WhatsApp  
 
-It ensures that the user receives the message through the channel they are most likely to engage with — automatically optimizing communication.
+> *(Optional)* You can include a link to a walkthrough video here.
 
 ---
 
 ## How It Works
+Next Best Channel uses **machine learning (ML)** to estimate each user’s **probability of engagement** per channel. It uses the same core logic as Insider’s *Likelihood to Engage* predictive segments.
 
-- When a user reaches this element, Architect checks:
-  - Which channels the user is **reachable** on (Email, SMS, Web Push, App Push, WhatsApp).
-  - Which channel has shown **better performance** for that user (based on previous behavior).
-- The message is sent through the **best-performing reachable channel**.
-- If delivery via the first channel fails, Architect can **fallback** to secondary channels (if configured).
+- Models use **hundreds of signals** from the last **6 months** across your website, mobile app, and messaging channels (including Architect Journeys and single-channel campaigns).
+- Models are updated regularly by Insider’s AutoML platform **Delphi** and adapt to seasonal changes and evolving user behavior.
+- The weight and even the set of input signals vary by channel and change over time to stay aligned with recent behavior.
+
+**Example input signals include:**
+- First time a user received/opened a message  
+- Average time to receive/open a message  
+- Number of received/opened messages  
+- User’s click-through rate per channel  
+- Total sessions and page views (web & app)  
+- Total purchases (web, app, CRM)  
+- Average purchase frequency and recency  
+- Average session duration  
+- **Reachability** status for the channel
+
+---
+
+## Channel Decision Logic
+The platform writes per-channel attributes daily (by the **Minerva** team), such as:
+
+- `app_push_engage_probability_bin`  
+- `web_push_engage_probability_bin`  
+- `sms_engage_probability_bin`  
+- `email_lto_probability_bin`  
+- `whatsapp_engage_probability_bin`
+
+Users are routed to the **channel with the highest value** among these attributes **on that day**.
+
+**No attributes available?**  
+If a user has none of the above attributes, they’re **randomly** assigned to one of the available channels.
+
+**Ties between channels?**  
+If multiple channels have equally strong scores, Next Best Channel either:
+- randomly selects among the tied channels, **or**
+- uses the **Fallback Channel** if you configured one.
+
+---
+
+## Attribution Channel (Optional)
+In **Gachapon**, under the **Architect** tab, enable **“Call an API for Next Best Channel.”**  
+This allows you to add a **Call an API** element **under** the Next Best Channel and assign an **Attribution Channel** to it.
+
+**Setup:**
+1. Add **Call an API** after Next Best Channel.  
+2. Select an **Attribution Channel** within the Call an API element. *(If you don’t, you’ll get a validation error at launch.)*  
+3. By checking the attribution checkbox, the Call an API element **behaves as that channel** for attribution.  
+   - *Example:* Selecting **Email** makes the request act like a partner email service call.
+
+---
+
+## Advantages of the Engagement Probability Algorithm
+- Uses **all** messaging data (single-channel campaigns + Architect Journeys).
+- Incorporates **Reachability** into decision-making.
+- Channel-specialized models (Web Push, App Push, Email, SMS, WhatsApp).
+- Adapts to partner usage and changing user base to normalize data.
+- **Daily** updates of channel scores.
+- Trained on **6 months** of historical user data.
+
+For more on the ML approach, see **Likelihood to Engage Algorithms**.
+
+---
+
+## How to Use Next Best Channel
+
+
+1.  Add Next Best Channel Element
+- In the Canvas, click the `+` button
+- Select the **Next Best Channel** element from the Element category
+- Enter **Next Best Channel** element
+
+2. Select Channels
+Add your desired channels **after** Next Best Channel.  
+- If only **two** paths are present, selecting channels on the canvas **auto-saves** the element.  
+- You may place a **Wait** or **A/B Split** element **before** the channel element, but a **Channel** element must follow Next Best Channel to continue.  
+- If using A/B Split, the **channel type per path should match**.
+
+3. Add More Channels (Optional)
+Click the Next Best Channel element to add more channels and **Save**. Selected channels are **colored** on the canvas.
+
+4. Configure Fallback Channel (Optional)  
+Open **Fallback Channel** → check **Enable Fallback Channel**.  
+- Only channels selected in Next Best Channel are eligible as fallback.  
+- Fallback is used when:
+  - There’s **no behavioral data** to predict a best channel, **or**
+  - All selected channels are predicted to have the **same weight**.
+
+5. Save & Launch  
+Save the element. You **cannot launch** without adding channels for **all** paths following Next Best Channel.  
+Upon launch, the system calculates the best channel **in real time** for each user.
+
+---
+
+## Editing Paths (Warnings)
+- If you try to **change/delete** a channel designated as the **Fallback**, you’ll see a warning that removing it **disables** the fallback feature.
+- Changing the currently selected fallback channel also triggers a warning.
+
+---
+
+## Viewing Live Statistics
+Once the journey is live, **statistics populate on the canvas**.  
+On Next Best Channel, you’ll see metrics by **channel name** to analyze how users are being routed across paths.
 
 ---
 
 ## Use Cases
+- Engage users via the **most appropriate channel** to drive toward your goal.  
+- Evaluate which channel is **generally best** for your user base and feed that learning into your broader messaging strategy.
 
-- Maximize engagement by sending messages via the **most effective channel**.
-- Reach users even when their primary contact method is unavailable.
-- Personalize communication strategies based on **channel preference and interaction data**.
-
----
-
-## Best Practices
-
-- Define fallback channels to ensure message delivery even if the first attempt fails.
-- Combine with personalization rules to fine-tune message content per channel.
-- Monitor reporting to understand which channels are performing better per segment.
-
----
-
-## Example
-User reaches → Next Best Channel:
-
-1)Reachable via: SMS, Email, App Push
-
-2)SMS has highest open rate → Message sent via SMS
-
-3)If SMS fails → fallback to App Push

@@ -1,0 +1,188 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+# WhatsApp Element Guide
+
+## What is WhatsApp?
+
+WhatsApp is a widely used messaging channel known for its high engagement and interactive communication. Through personalized and dynamic content, it provides a strong and immediate connection with users via their mobile devices.
+
+WhatsApp messages are composed of:
+- Pre-approved message templates
+- Dynamic variables
+- Action buttons
+- Response messages
+
+---
+
+## How Does It Work?
+
+Before sending a WhatsApp message, the system checks if the user:
+- Has WhatsApp Opt-in = true
+- Has GDPR Opt-in = true
+- Has not opted out from WhatsApp
+
+If any of these checks fail, the user is dropped from the journey.
+
+---
+
+## Tips and Tricks
+
+- Use **Check Reachability** before WhatsApp element to avoid losing users in the flow.
+- Combine with other messaging channels for non-reachable users.
+- Use templates with buttons and dynamic variables for interaction.
+
+---
+
+## How to Set up WhatsApp
+
+### Integration
+
+1. Register a **WhatsApp Business Account**.
+2. Register **Message Templates** for use.
+3. If integration is already done for single WhatsApp product, no need to repeat for Architect.
+
+---
+
+## Create a WhatsApp Channel in Journey
+
+### Step 1: Add WhatsApp Element
+- In the Canvas, click the `+` button
+- Select the **WhatsApp** element from the Channel category
+
+### Step 2: Add WhatsApp Message Content
+- Select a pre-approved template (single/conversational)
+- Click **Add Dynamic Content** if needed.
+  - Default Attributes
+  - Custom Attributes
+  - Event Parameter
+  - Expressions (if expression toggle enabled)
+  - Coupon (If you select Coupon, You need to add coupon from Coupon List)
+  - Product Catalog Attributes (If you select Product Catalog Attributes, You need to add product starter(Price Drop, Back in Stock))
+  - Call an API Response (If you select Call an API Response, You need to add **Call an API** element before WhatsApp)
+- Assign **fallbacks** for missing dynamic values
+- Add files (documents, videos) if needed
+- Use:
+  - Text-only messages
+  - Image + Text messages
+  - Media Header + Buttons
+- Add coupon codes, CTA buttons (“Visit website”, “Call phone number”)
+- Assign **response messages** for buttons
+- Connect **External Platforms** for conversations 
+  - For the external response part to appear, **Conversational API** checkbox must be open in Gachapon.
+
+---
+
+### Step 3: Enable UTM Parameters
+
+- Track WhatsApp messages in **Google Analytics**
+Define your UTM Parameters to track users' actions on whatsapp. UTM source, medium, and campaign fields will be automatically filled. If needed, you can fill out the UTM term and content fields.
+These parameters will be automatically added to each link in whatsapp message.
+- If you do not want to use UTM parameters or you already have added them manually in whatsapp message, you can disable the Enable UTM Parameters checkbox.
+- If you want to add UTM parameters manually in your whatsapp message, the parameters on the UTM Parameters section will be ignored. Only the parameters you add will be taken into consideration.
+
+Define UTM Parameters:
+- `utm_source` (e.g., `insider`)
+- `utm_medium` (e.g., `architect_whatsapp`)
+- `utm_campaign` (e.g., `mothers_day_campaign`)
+- `utm_term` (optional)
+- `utm_content` (optional)
+
+Example:
+```
+https://partner.com/partners-page?utm_source=Insider_Whatsapp&utm_medium=Whatsapp&utm_campaign=Welcome_Journey_Whatsapp
+```
+
+---
+
+### Step 4: Preview the Content
+
+- For **Promotional Messages**: See the full template
+- For **Conversational Messages**: Preview responses for button actions:
+  - First, Second, Third, and Other Responses
+- Use **Preview as User** for real dynamic values
+
+---
+
+### Step 5: Enable Send Time Optimization
+
+Optimizes the time to deliver your messages to the end-users. It helps you engage your users more effectively and draw their attention when they are most likely to interact with your messages.
+- If you set Channel Frequency Capping before, when you enable Send Time Optimization, Bypass Channel Frequency Capping will be automatically enabled.
+
+---
+
+### Step 6: Bypass Channel Frequency Capping
+
+- Prevent overwhelming users with too many messages
+- Limit per-user messages per day (e.g., max 5/day)
+- Architect can override if needed for real-time actions
+
+---
+
+### Step 7: Test Your WhatsApp Message
+
+- Use **Test Message** button
+- Only **promotional** messages are testable
+- Conversational messages require real user interaction
+- Dynamic values appear as placeholders
+- Use **Preview as User** for real data testing
+
+---
+
+### Step 8: Set Time Out (Conversational Messages Only)
+
+If users don’t respond:
+- **Wait Duration**: 30 minutes to 2 weeks
+- Actions:
+  - Proceed to next step
+  - Drop from journey
+
+---
+
+### Step 9: Enable URL Shortener
+
+Automatically shortens URLs inside WhatsApp message content.
+
+---
+
+### Step 10: Rename Channel Name
+
+Default name is auto-generated. Can be changed at the top-right corner.
+
+---
+
+### Step 11: Save WhatsApp Element
+
+- Click **Save** (no autosave on this page)
+- The journey canvas does autosave
+- After template selected, If required fields are not filled, the whatsapp will not be saved.
+
+---
+
+## Live Actions & User Interactions
+
+### Live Actions
+
+- **On Send** (default)
+- **On Click** can be selected
+- **On Reply** (if selected conversational template)
+- Users remain in flow until interaction or timeout
+- Clicking any link in the message proceeds the flow
+
+---
+
+## How to Create a Carousel Template
+
+1. Navigate to **Experience > Message > WhatsApp**
+2. Go to **Templates** tab and click **Create**
+3. Select **Carousel** under Marketing
+4. Choose a language
+5. Add message body, emojis, variables
+6. Set header (image/video)
+7. Add content and buttons for each card (2–6)
+8. Use **Duplicate/Remove** for cards
+9. Preview the full carousel
+10. Submit for approval (Admin or Editor role required)

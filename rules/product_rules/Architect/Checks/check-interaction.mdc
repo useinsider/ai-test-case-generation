@@ -7,46 +7,186 @@ alwaysApply: false
 
 ## What is Check Interaction?
 
-The **Check Interaction** element evaluates whether a user has interacted with a specific message or action in the journey.
+You can send lots of messages or emails or display a banner to end-users but how can you track their actions on those messages? The Check Interaction functionality helps you track users' interactions in real-time and it enables you to take any action on users accordingly.
 
-It helps personalize the flow based on real-time user engagement such as opening an email, clicking a notification, or replying to an SMS.
+You can check users' actions on the following channels that messages are sent from:
+
+- Web Push  
+- App Push  
+- Email  
+- SMS  
+- WhatsApp  
+- In-App  
+- On-Site  
+
+What is the difference between the Check Interaction and Channel Interactions segment that is in On Past Behavior and Check Conditions?
+
+Channel Interactions is one of the predefined segments in the On Past Behavior and Check Conditions element. Check Interactions tracks the interactions to the messages within the respective journey while Channel Interactions tracks the actions taken in the channels no matter if the messages were sent in a different journey.
+
+Check Interaction checks user’s interactions on channels that are added to the same journey flow.
+
+Check Interaction is another check element type. Channel Interactions is a segment option.
 
 ---
 
-## How It Works
+## How Does it Work?
 
-- When a user reaches this element, Architect checks their interaction with a prior channel message or campaign.
-- Based on the result, users are routed into separate paths:
-  - ✅ **Interacted** (e.g., opened, clicked, replied)
-  - ❌ **Not Interacted**
+Insider tracks users' actions and collects all of them instantly. Interactions are linked to a particular channel and they can include opens, clicks, views, close.
 
-Supported interactions include:
-- Email Open or Click
-- Push Notification Open or Click
-- SMS Reply
-- WhatsApp Response
+The Check Interaction element splits users into the Matching and Not Matching paths based on their interaction(s) in a selected channel. Check Interaction checks users' interactions in a channel included in the journey flow. In other words, it doesn’t check actions for channels that are not included in the journey flow.
+
+**For example:**  
+You designed your journey which includes an email campaign and also added a ‘Check Interaction' element to verify users' clicks in the email included in the same journey. You set the action as “clicked” in the Check Interaction element. If the email campaign is sent to the user and then the user clicks on the URL in the email, the user proceeds to the matching path.
+
+- Note: Users don’t take action right away after receiving the message. You need to give them time to take action on channels by adding a *Wait* element before Check Interaction element.
+
+If there is no element following one of the paths after the Check Interaction element, users can go down that path and will complete the journey. In this case, the user will be counted as completed.
+
+- Note: There can be a delay in passing the users to the next step due to the queue size.
+
+---
+
+## Interactions You Can Track Per Channel
+
+### Web Push
+- **Viewed:** Tracks if the user has seen the web push
+- **Clicked:** Tracks if the user has clicked the web push
+- **Closed:** Tracks if the user has closed the web push
+
+### App Push
+- **Viewed:** Tracks if the user has seen the app push
+- **Opened:** Tracks if the user has opened the app push
+
+### Email
+- **Opened:** Tracks if the user has opened the email
+- **Clicked:** Tracks if the user has clicked any URL in the email
+
+### SMS
+- **Clicked:** Tracks if the user has clicked any URL in the SMS
+
+### WhatsApp
+- **Viewed:** Tracks if the user has seen the WhatsApp message
+- **Clicked:** Tracks if the user has clicked any URL in the WhatsApp message
+- **Replied:** Tracks if the user has replied to the first WhatsApp message
+
+### In-App
+- **Viewed:** Tracks if the user has seen the in-app campaign
+- **Clicked:** Tracks if the user has clicked the in-app campaign
+
+### On-Site
+- **Viewed:** Tracks if the user has seen the on-site campaign
+- **Clicked:** Tracks if the user has clicked the on-site campaign
+
+### Call an API
+- **Successful:** Tracks if the API request for the user has been successfully sent on the Call an API channel
+- **Failed:** Tracks if the API request for the user has failed on the Call an API channel
+
+## Data Flow & Tracking
+
+### Event Logs from Collector API
+
+- The Collector API logs interactions when a user engages with a message.  
+- Logs can be monitored in Kubernetes by accessing the `journey-builder-collector-api` pod and pressing `L` to open the console.
+
+### Finding the Correct campaignId in the Database
+
+1. Locate the channel element in the `journeyBuilderElements` table and retrieve `campaignBuilderId`.  
+2. Query the `BuilderCamps` table using `builderId`.  
+3. The resulting `variationId` is the `campaignId`.
+
+### Finding the Correct campaignId in the Channel Pages
+
+- Go to the channels inner page on a launched journey; the channel will display the campaign id.
+
+---
+
+## Integration with Journey Builder
+
+- The Check Interaction element functions similarly to action buttons on Canvas.  
+- It evaluates whether users have performed a specific action (viewed, clicked, etc.) before proceeding to the next step in a journey.  
+- Users can set multiple conditions with AND/OR logic to refine targeting.  
+- There should be a channel element before the Check Interaction element.
+
+---
+
+
+## How to Use Check Interaction
+
+You can use Check Interaction after your Channel and Wait element on your journey canvas following the steps below:
+
+1. Add Check Interaction element after the Channel and Wait element on the canvas.  
+2. Select the channel that you would like to check interactions on.  
+3. Select the “have” or “have not” operator according to your business case.  
+4. Select the interaction that you would like to track.  
+5. Select the channel name that you added before onto the canvas.  
+6. You can add more than one 'interaction’ block if you would like to track more than one action or channel.  
+7. Save the element.
+
+To prevent logical mistakes:  
+- If there is no channel between starter and check interaction, you cannot select the channel name inside the check interaction.  
+- You cannot select the channels that are on a parallel path of check interaction.
+
+---
+
+## Tips and Tricks
+
+- You can add a *Wait* element before the Check Interaction element and set a minimum of one hour to wait for users to take the desired action.  
+- You can check multiple users' interactions in the same Check Interaction element.  
+
+**For example:**  
+You can check if the user has opened the email but not clicked on the URL in email.
+
+---
+
+## How to Test it
+
+- You can't test your journey on dry run status when the journey includes the Check Interaction element since any message will not be sent to the end-user on the dry run status and the Check Interaction element cannot check users' interactions.
 
 ---
 
 ## Use Cases
 
-- After sending an email, check if it was opened — and follow up accordingly.
-- Detect if a user clicked a push notification, and only proceed if they did.
-- Check for SMS replies before sending additional messages.
-- Separate users into engaged vs. unengaged segments for follow-up logic.
+- Send a message to end-users – if they don’t respond or are not interested, you can use another channel and introduce a different experience.  
+- End journey for users who have taken the specified interaction in the channel that meets the end goal.  
+- Score users' interactions to create a segment for each user as an attribute value. Tracking users' interactions with Check Interaction element and assigning an attribute value with the Update User Attribute element to score them.
 
 ---
 
-## Best Practices & Tips
+## Requirements
 
-- Combine with **Wait** elements to give users time to interact before checking.
-- Use this element to create reminder paths for unresponsive users.
-- Design fallback content for users who didn’t engage with the original message.
-- Always define both paths (Yes/No) to maintain journey continuity.
+- Insider Tag integration should be completed for the website.  
+- SDK Integration should be completed for mobile app data collection.
 
 ---
+## Final Testing Steps for Check Interaction
+
+1. Create a Journey ("Start From Scratch").  
+2. Add any starter element and the channel you want to test (e.g., Web Push, Email).  
+3. Add a Wait element after the channel to allow users time to interact.  
+4. Add the Check Interaction element after the Wait element.  
+5. Configure Check Interaction:  
+   - Select the channel to track (e.g., Web Push).  
+   - Choose the interaction type to check (e.g., Viewed, Clicked).  
+   - Set operator (“have” or “have not”) based on your test case.  
+6. Launch the journey from the top right corner.  
+7. Perform the relevant user action (e.g., click the Web Push notification).  
+
+### Make sure these attributes exist after interaction:
+
+- Relevant user attributes or flags set by Check Interaction (depends on your journey setup).  
+- Event logs in Collector API confirm the interaction is recorded.  
+
+### Verify the Testing:
+
+- In browser DevTools Network tab, look for requests to Collector API endpoints (e.g., `"store"`).  
+- Check logs in `journey-builder-collector-api` pod if accessible.  
+- Use Journey Analytics or Live Stats dashboards to monitor interaction counts.  
+- Confirm that users proceed down the Matching or Not Matching paths as expected in the journey flow.  
+
 
 ## Resources
 
-- [Check Interaction – Confluence](mdc:#)
-- [Engagement Metrics & Channel Tracking – Confluence](mdc:#)
+- [Check Interaction - ProductKB](https://insider-portal.atlassian.net/wiki/spaces/ProductKB/pages/1973223663/Check+Interaction)  
+- [Check Interaction - QA](https://insider-portal.atlassian.net/wiki/spaces/QA/pages/3158802433/Check+Interaction)
+
+

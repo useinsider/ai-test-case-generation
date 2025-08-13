@@ -1,0 +1,52 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+
+# Update User Attribute Element Guide
+The **Update User Attribute** element is used to **assign specific attribute values** to users as they pass through a journey step.
+It helps personalize user experiences and enable advanced segmentation based on behaviors, preferences, and actions.
+---
+## How It Works
+When a user arrives at this element:
+- The selected user attribute is updated with the defined value.
+- If the attribute doesn't exist yet, the value will be **initialized**.
+- Both **default** and **custom** user attributes can be updated.
+- Opt-in attributes (like web push or email) **cannot** be updated through this element.
+---
+### Add Update User Attribute Element
+- In the Canvas, click the `+` button
+- Select the **Update User Attribute** element from the **Action** category.
+- Click on the element to configure:
+   - Choose the **user attribute** from the dropdown.
+   - Action type varies by attribute data type:
+     - **String, Boolean, DateTime** → Only `change to`
+     - **Number** → `change to`, `increase by`, `decrease by`
+3. Enter the **value** to assign.
+   - Numbers accept only numeric input.
+   - DateTime fields accept date format.
+---
+
+### Save Update User Attribute Element
+Click **Save** (no autosave except on Canvas).
+    - If attribute not filled, the Update User Attribute will **not be saved**.
+> Note: Attribute must be pre-created. Contact your account manager for new attributes.
+---
+## Stats
+After launching a journey, the following stats are visible on the element:
+- **Arrived** – Number of users who reached the element
+- **Processed** – Number of users whose attributes were successfully updated
+- **Dropped** – Number of users skipped due to deletion, unification, or inactivity
+---
+## Requirements
+- Required attribute must already exist.
+- New version of **Architect** must be enabled on the account.
+---
+## Final Testing Steps
+1. Create a Journey ("Start From Scratch")
+2. Add any starter and update user attribute
+3. Fill in:
+   - attribute
+   - new value for attribute
+4. Launch from top right

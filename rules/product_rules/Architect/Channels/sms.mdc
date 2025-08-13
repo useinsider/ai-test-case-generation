@@ -1,72 +1,154 @@
+
 ---
 description: 
 globs: 
 alwaysApply: false
 ---
-# SMS Channel
+# Sms Element Guide
 
 ## What is SMS?
 
-**SMS** is a communication channel used within Insider’s Architect platform to send short text messages directly to a user’s mobile phone number.
+SMS (Short Messaging Service) is a direct communication channel that allows sending text messages to users' mobile phones using their personal phone numbers. It enables broad reach, including to offline users, and is known for high engagement rates.
 
-It is often used for time-sensitive, personalized, or transactional notifications that require high visibility.
+- **Read Rate:** 90% of SMS messages are read within 3 minutes.
+- **Open Rate:** Estimated at 99%.
+- **Channel Type:** Available in the Architect as a journey flow element.
 
----
+## How Does It Work?
 
-## Key Features
+When users reach the SMS element in a journey, a personalized SMS is sent individually. The system first checks:
 
-- **Personalization**  
-  Use dynamic fields (e.g., name, discount code) to customize SMS content for each user.
+- If the user has a valid phone number
+- If the phone number is in E.164 format
+- If the user has opted-in to SMS
+- If the user has GDPR consent
 
-- **Trigger-Based Automation**  
-  Send SMS messages automatically at specific steps in the journey or in response to user actions (e.g., cart abandonment, registration).
+SMS will **not** be sent if any of these conditions fail.
 
-- **Delivery & Reporting**  
-  Track message delivery status and user engagement (e.g., link clicks) in real time.
+### Message Rules:
 
-- **Alternative Channel Support**  
-  Use SMS as a fallback when users are unreachable via other channels like email or push.
+- Max 160 characters per message.
+- Messages >160 chars are split and charged as multiple SMS.
+- URL links can be shortened with the **Shorten URL** function.
+- Multi-country sending is limited by regulations and requires SMS provider approval.
 
----
+## Tips and Tricks
+
+- Use **Check Reachability** before SMS to avoid user loss.
+- Use **Wait Until a Time Slot** to respect silent hours (e.g., no SMS between 10PM-8AM in some countries).
+- Avoid prohibited content (e.g., pornographic, misleading, gambling in some areas).
+- Pre-approval might be required for content or sender ID.
+
+## Creating SMS in Journey
+
+### Step 1: Add SMS Element
+- In the Canvas, click the `+` button
+- Select the **Sms** element from the Channel category
+
+### Step 2: Compose Message
+- Write your text.
+- Click **Add Dynamic Content** if needed.
+  - Default Attributes
+  - Custom Attributes
+  - Event Parameter
+  - Expressions (if expression toggle enabled)
+  - Coupon (If you select Coupon, You need to add coupon from Coupon List)
+  - Recommendation
+  - Product Catalog Attributes (If you select Product Catalog Attributes, You need to add product starter(Price Drop, Back in Stock))
+  - Call an API Response (If you select Call an API Response, You need to add **Call an API** element before SMS)
+- Use **GSM 7-bit** for most Western languages.
+- Use **UCS-2** for Chinese, Korean, Japanese.
+- Use **AI-generated text** (Generate Text button) if needed.
+  - Click the Generate Text button to see the side modal.
+  - Enter a prompt you want to generate the text about.
+  - The language option will be the default selected language of your panel.
+  - Select your industry and use case to define the context for the text to be generated. 
+  - Enable emoji option if desired
+  - Click the Generate Copy button. The modal displays 5 suggestions. To see more, you can click the Generate More Suggestions button. To use any suggestion, you can select it and click the Apply button, or copy it via the Copy button against the suggestion you want to use.Once you click the Apply button, the copy will be added to the respective field.You can use default and custom user attributes, event parameters, coupon code in the content to personalize it for your users.
+- You can enable:
+  - Emoji generation
+- Track links automatically.
+- Include opt-out sentence or link (based on regulations).
+
+### Step 3: Enable Tracking Parameters
+
+Define your UTM Parameters to track users' actions on sms. UTM source, medium, and campaign fields will be automatically filled. If needed, you can fill out the UTM term and content fields.
+These parameters will be automatically added to each link in your sms.
+- If you do not want to use UTM parameters or you already have added them manually in your sms, you can disable the Enable UTM Parameters checkbox.
+- If you want to add UTM parameters manually in your sms, the parameters on the UTM Parameters section will be ignored. Only the parameters you add will be taken into consideration.
+
+Define UTM Parameters:
+- `utm_source` (e.g., `insider`)
+- `utm_medium` (e.g., `architect_sms`)
+- `utm_campaign` (e.g., `mothers_day_campaign`)
+- `utm_term` (optional)
+- `utm_content` (optional)
+
+### Step 4: Preview Content
+Check message details including sender ID, content, UTM, and emojis. Preview for specific users.
+
+### Step 5: SMS Silent Hours
+Prevent sending during restricted times. Options:
+
+- Delay until silent hours end
+- Drop message
+- Bypass silent hours for urgent flows
+
+### Step 6: Enable Send Time Optimization
+Optimizes the time to deliver your messages to the end-users. It helps you engage your users more effectively and draw their attention when they are most likely to interact with your messages.
+- If you set Channel Frequency Capping before, when you enable Send Time Optimization, Bypass Channel Frequency Capping will be automatically enabled.
+
+### Step 7: Bypass Frequency Capping
+Insider provides sending sms out from the sms campaigns as well as from Architect. The risk of subscribers getting too many sms is getting higher, which can be very disruptive and may result in unsubscribing from your brand. With the Sms Frequency Capping, you can limit the number of sms a user can receive in a specified period like sending a maximum of 5 sms to a user in one day.Architect enables you to bypass the sms frequency capping if you have configured any.
+
+Journeys are for real-time cases and they require users to receive sms based on their actions. Therefore, you may want to override the global frequency capping you set for your sms.
+If a user reaches the limit of the sms they can receive, they will proceed to the next step without receiving another one when they arrive at the sms channel in the journey.
+
+### Step 8: Test Your SMS
+Before sending out an sms to your users, you should always test it to see how your messages, dynamics
+Click Test Message button at the bottom right corner of the page. You can add up to 15 users for sending your test sms. Enter each user’s phone number and press Enter or Tab to add. 
+Remember Phone Numbers checkbox allows you to store the phone numbers you entered to test your SMS message.
+
+**Preview as User:**
+You can preview the dynamic content in messages as a user by clicking on ‘Preview as User’ button, which will open a new settings component to select users to preview the message with their values of dynamic content. You can either search for a user with an identifier of your choice as profile ID, Email Address, or Phone Number or select among recently searched 10 users. Once you select your user, click on ‘Preview as User’ button to load the channel preview with real values of dynamic content for the user. 
+- Click **Preview as User** button above email preview section
+- Choose **User Selection Method** by User Identifier or Recent User
+- If you select User Identifier, select profile ID, email, or phone.
+- Click **Preview as User** again
+- See real values for dynamic content.
+- Click Clear Selection button for new user
+
+### Step 9: Rename Channel
+Change channel name (default is journey+channel type).
+
+### Step 10: Save Element
+Click **Save** to preserve changes. No auto-save on SMS page.
+- If message are not filled, the sms will **not be saved**.
+
+
+## Live Actions & User Interaction
+
+### Live Actions
+Track clicks on SMS link. Max wait is 30 days.
+
+- Options:
+  - `On Send` (default)
+  - `On Click`
+
+### Check Interactions
+Add a **Wait** step before **Check Interaction** to allow users time to respond.
+
+## Analytics
+
+- **Metrics:** Sent, Delivered, Clicks, CTR, Conversion, Revenue
+- **Live Stats:** Arrived, Reachable, Dropped, Proceeded (Live Actions)
 
 ## Use Cases
 
-- **Promotional Campaigns**  
-  Announce sales, discounts, or special events to large user segments.
-
-- **Reminders**  
-  Send action-based messages like cart abandonment alerts, appointment reminders, or form completion nudges.
-
-- **Time-Sensitive Notifications**  
-  For urgent updates or limited-time offers that require immediate visibility.
-
----
-
-## Technical Notes & Tips
-
-- **Valid Phone Numbers**  
-  Users must have a valid and verified mobile phone number to receive SMS.
-
-- **Character Limits**  
-  A single SMS is typically limited to 160 characters. Longer messages may be split into multiple SMS.
-
-- **Reachability Check**  
-  Ensure the user is eligible to receive SMS before sending (can be automated via Check Reachability).
-
-- **Compliance**  
-  Adhere to GDPR, KVKK, and local SMS marketing regulations for consent and content.
-
----
-
-## Integration & Management
-
-- SMS sending requires integration with an approved **SMS service provider**.
-- Message scheduling, audience targeting, and content configuration are managed directly through the **Canvas** journey flow.
-
----
-
-## Resources
-
-- [SMS – Confluence](mdc:#)
-- [Check Reachability – Confluence](mdc:#)
-- [SMS Best Practices – Confluence](mdc:#)
+- Discount offers & promotions
+- Appointment reminders
+- Onboarding/welcome messages
+- Feedback collection
+- Cart abandonment reminders
+- Reward-based competitions
+- Experimental engagement (e.g., quiz + coupon)

@@ -3,49 +3,173 @@ description:
 globs: 
 alwaysApply: false
 ---
-    # Check Reachability
+## Check Reachability
 
-    ## What is Check Reachability?
+### Overview
 
-    The **Check Reachability** element checks whether a user is reachable via specific communication channels such as Email, SMS, Push, or WhatsApp.
+We strive to reach our users in the most effective way in our journeys. This could be through SMS, email, or web push notifications. But what if our user is not reachable via SMS? Should we give up on them? Of course not! With Check Reachability, we can assess users’ accessibility and reach them in the most suitable way.
 
-    It helps optimize journeys by preventing message attempts to unreachable users and offering fallback paths.
+Check Reachability is one of the check elements, and it essentially verifies users’ eligibility for the selected channels and directs them to the appropriate paths.
 
-    ---
+Adding multiple channels provides us with two benefits:  
+1. It serves the primary purpose of this element — if a user is not eligible for the selected channel, it attempts the next channel to ensure reachability.  
+2. It allows us to prioritize the preferred channel for users who are eligible for multiple channels. For example, if a user is eligible for both SMS and email, they will receive the notification from the channel that is selected first.
 
-    ## How It Works
+In Check Reachability, only messaging channels can be selected. These include:
 
-    - When a user reaches this element, Architect verifies if they can be reached via the selected channel(s).
-    - If the user is reachable via any of the selected channels, they proceed down one path.
-    - If not, they are routed to an alternate path.
+- Web Push  
+- App Push  
+- Email  
+- SMS  
+- WhatsApp  
+- Facebook  
+- Google Ads  
 
-    Supported channels include:
-    - 📧 Email
-    - 📱 SMS
-    - 🔔 Web Push
-    - 📲 App Push
-    - 💬 WhatsApp
+For testing, it is sufficient to check the `formData` inside style.
 
-    ---
+The channels selected within Check Reachability are automatically added to the paths.  
+Channels' order can be changed on the inner page by drag and drop.
 
-    ## Use Cases
+A channel can only be selected once. For example, if Email, WhatsApp, and App Push are already selected, they won’t appear in the dropdown for the next selection.
 
-    - Ensure email reachability before sending a campaign message.
-    - Avoid push attempts for users who haven’t opted in to push notifications.
-    - Route unreachable users to a fallback channel (e.g., web push instead of SMS).
-    - Personalize flows based on preferred or available channels.
+In a launched journey, new paths cannot be added or deleted in Check Reachability, but the selected channels can be changed.
 
-    ---
+---
 
-    ## Best Practices
+### How Does it Work?
 
-    - Always use this check before critical communication steps to avoid bounce or delivery errors.
-    - Design fallback journeys for users who are not reachable on the intended channel.
-    - Combine with **Next Best Channel** to dynamically choose the most effective option.
+Insider constantly updates and processes users' data related to reachability as data comes. That’s why users' reachability is always updated on time.
 
-    ---
+For example;  
+If the user allows web push opt-in, then the user will automatically be reachable through Web Push. And if the user blocks receiving web push notifications, it will automatically be unreachable through Web Push.
 
-    ## Resources
+The Check Reachability element distinguishes users to the **Reachable** and **Not reachable** paths based on their reachability on a selected channel.
 
-    - [Check Reachability – Confluence](mdc:#)
-    - [Channel Configuration Guide – Confluence](mdc:#)
+If there is no element following one of the paths after the Check Reachability element, users can go down that path and exit the journey, and users are counted as **Dropped**.
+
+You can see the number of reachable users for each selected channel in the Check Reachability and ‘not reachable’ path as well as the drop rate on the element.
+
+- Drop Rate is shown only if the ‘not reachable’ path has no element.
+
+There can be a delay to pass users to the next step due to the big queue size.
+
+---
+
+### Detailed Channel Reachability Criteria
+**Web Push**  
+To be reachable via Web Push, the user must have:  
+- A non-empty Web Push Token (`wpt`)  
+- GDPR consent (`gdpr`) as true or null  
+- Web Push Opt-in (`wpo`) as true  
+- A non-empty Web Push Token Data (`wp_token_data`)  
+- A non-null Web Push Language (`wpl`)  
+
+**Facebook & Google Ads**  
+To be reachable via Facebook or Google Ads, the user must have:  
+- A non-empty email (`em`)  or (`pn`)
+- GDPR consent (`gdpr`) as true or null  
+
+**WhatsApp**  
+To be reachable via WhatsApp, the user must have:  
+- A non-empty phone number (`pn`)  
+- WhatsApp Business Opt-in (`wbo`) as true  
+- Not opted out of WhatsApp (`wa_opt_out_user` is false or null)  
+- GDPR consent (`gdpr`) as true or null  
+
+**SMS**  
+To be reachable via SMS, the user must have:  
+- A non-empty phone number (`pn`)  
+- SMS Opt-in (`so`) as true  
+- Not opted out of SMS (`sms_opt_out_user` is false or null)  
+- Not an invalid phone number (`is_invalid_sms_pn` is false or null)  
+- Not blacklisted (`is_blacklisted_sms_pn` is false or null)  
+- GDPR consent (`gdpr`) as true or null  
+
+**Email**  
+To be reachable via Email, the user must have:  
+- A non-empty email (`em`)  
+- Email Opt-in (`eo`) as true  
+- Not globally unsubscribed (`global_unsubscribe` is false or null)  
+- Not bounced (`bounce` is false or null)  
+- Not marked as spam (`spam` is false or null)  
+- Not an invalid email (`has_invalid_email` is false or null)  
+- GDPR consent (`gdpr`) as true or null  
+
+
+---
+
+### Multi-Branching
+
+- You can check the user’s reachability for more than one channel at the same time with a single Check Reachability element.  
+- Each reachability creates a different path, so the journey flow can branch into more than 2 paths.  
+- There is always a ‘Not Reachable’ path for users who don't meet any reachability criteria.  
+- Channels are evaluated in order of priority, which can be changed via drag & drop.  
+- Reachability paths cannot be empty except the Not Reachable path.  
+- The last element on each path must be a Channel or Action element.  
+- Deleting a channel reachability deletes the related path completely.  
+- When saving, selected channels are added as reachability paths on the canvas. Existing channels remain if paths are changed from inner page.
+
+---
+
+### How does Reachability Work on Unification?
+
+- New users might be reachable on web push but not email or SMS if they haven’t submitted contact info yet.  
+- Bulk data passed via CRM API can update reachability (e.g., making user reachable via email).  
+- Merging of personas (web, app, CRM) changes reachability dynamically as users provide more info.  
+
+---
+
+### Tips and Tricks
+
+- Use sequential Check Reachability elements if you want to try multiple channels in order.  
+- If reachability for a channel is already checked earlier in the journey, no need to add another Check Reachability for that channel later.  
+- Multiple channels can be checked in one Check Reachability element to split users based on availability.
+
+---
+
+### Use Cases
+
+- Identify users unreachable via a channel, engage them through another channel with a similar message.
+
+---
+
+### Requirements
+
+- Insider Tag integration completed.  
+- SDK X integration completed for mobile app data reading.  
+- Required user data (opt-in, email, phone, etc.) passed to Insider through respective integrations.
+
+---
+
+### Final Testing
+
+1. **Create a new Journey**  
+   - Select "Start From Scratch" template.
+
+2. **Add a Starter element**  
+   - This could be any event that triggers the journey.
+
+3. **Add Check Reachability element**  
+   - Place it right after the Starter on the canvas.
+
+4. **Configure Check Reachability**  
+   - Select one or more channels to check user reachability.
+
+5. **Add Channel elements for each reachable path**  
+   - For example, Web Push, Email, SMS, etc., connected to corresponding paths.
+
+6. **Add a Wait element (optional)**  
+   - To allow time for user actions before the next check or message.
+
+7. **Launch the journey**  
+   - Monitor user flow and verify that users follow paths based on reachability.
+
+### Verify the Testing
+   - Check live stats or analytics dashboards to confirm expected splits and conversions.
+
+## Resources
+
+- [Check Reachability - ProductKB](https://insider-portal.atlassian.net/wiki/spaces/ProductKB/pages/1947501847/Check+Reachability)
+- [Check Reachability - QA](https://insider-portal.atlassian.net/wiki/spaces/QA/pages/3157033033/Check+Reachability)
+
+
