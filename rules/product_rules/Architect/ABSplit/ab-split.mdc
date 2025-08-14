@@ -246,3 +246,8 @@ When Control Group is enabled, the **A/B Split Analytics** page reports:
 - **Average Order Value (AOV)**  
 - **Average Order Value Uplift**
 
+## Visual Example
+User Flow:
+                              ┌───── %20 A(20 user): SMS Element
+Start(100 user) ───▶ A/B Split
+                              └───── %80 B(80 user): Email Element
