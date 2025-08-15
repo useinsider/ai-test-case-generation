@@ -3,53 +3,252 @@ description:
 globs: 
 alwaysApply: false
 ---
-# A/B Split
+# A/B Split Element Guide
 
-## What is A/B Split?
+**Architect** enables you to compare channels, content, and paths in journeys to see which option performs better while journeys are running.
 
-The **A/B Split** element is used to randomly distribute users into two or more branches within a journey.
+With the **A/B Split** element, you can branch a journey into 2 or more paths, test alternatives, and pick the best option for your business goals (e.g., higher conversion or revenue). This lets you continuously experiment, optimize strategies, and improve the customer journey. For example, you can change a messaging channel or personalization strategy and switch to the top-performing variant by editing your journey.
 
-Each branch represents a variation of the experience (e.g., different message content, channels, timing).  
-The distribution is controlled by customizable percentage ratios.
+> **Purpose:** A/B Split supports the idea of *“sending the right content to the right users at the right time via the right channel.”*
 
 ---
 
 ## How It Works
 
-- When a user reaches the A/B Split element, they are randomly assigned to one of the available paths based on the configured ratios.
-- Each path can trigger unique actions, channels, or content.
-- This enables controlled experimentation and performance comparison between branches.
+- The A/B Split element initially creates **Path A**, **Path B**, **Path C**, **Path D**.  
+- Set an **allocation percentage** for each path; users are then routed **randomly** according to these allocations.  
+- You can add more paths (up to 4 when equal distribution is enabled) with **Add Path**.
+
+**Recommendation:** Start with a **50/50** split to get statistically meaningful results.
+
+**Example**
+- Allocation: 50% / 50%  
+- 1,000 users arrive at the A/B Split → ~500 users go to Path A and ~500 to Path B.
+
+> **Note:** Allocations are **approximate**. Journeys process users in real time, so the exact count per path can vary. This is different from pre-defined segments where totals are known in advance.
 
 ---
+
+## User Allocation Options
+
+- Under **User Allocation**, set percentages per path.  
+- To evenly distribute users across all paths, select **Distribute user allocation equally across paths**.  
+  - When checked, allocations update automatically and **cannot be edited manually**.  
+  - You may add or remove paths (up to 4); allocations are recalculated to total **100%**.
+  - **A/B Split** element opens with a 2-path option by default. Up to 4 paths can be added using the **Add Path** button. If more than 2 paths are added, a delete icon will appear, allowing you to delete the desired paths (at least 2 paths must remain, and Control Group must not be open).
+
+## Winner and Expended Functionality 
+
+
+
+**Constraints**
+- The **sum of allocations must be 100%**.  
+- The A/B Split **cannot be the last element** of a journey.
+
+---
+
+## A/B Split Statistics
+
+On the A/B Split **Statistics** page, choose a goal to compare performance across paths/channels/content:
+
+- **Conversion**
+- **Conversion Rate**
+- **Total Opens/Clicks**
+- **Revenue**
+
+---
+
+## How to Use the A/B Split Element
+
+1. Add A/B Split Element
+- In the Canvas, click the `+` button
+- Select the **A/B Split** element from the Element category
+- Enter **A/B Split** element
+2. Set allocations **or** select **Distribute user allocation equally across paths**; then **Save**.  
+3. Add the channels you want to test after the A/B Split.(required)  
+4. Launch the journey. Users arriving at the A/B Split will be split to your paths **in real time** according to allocation.
+5. The percentages we give in the **A/B Split** element are seen as A/B Split labels on the canvas after saving the element, including the **Control Group**.
+
+---
+
+# A/B Winner Autoselection
+
+## What is A/B Winner Autoselection?
+**A/B Winner Autoselection** automatically identifies the best-performing path based on your selected inputs and routes subsequent users to that **winner path**. With Autoselection enabled, you don’t need to manually review A/B Split results or rebuild journeys—Architect will determine the winner within a defined period and direct users accordingly.
+
+> A/B Split supports *“sending the right content to the right users at the right time via the right channel.”* Winner Autoselection directly serves this by automatically choosing the best path to maximize engagement.
+
+---
+
+## How It Works
+- You enable **Autowinner** on an **A/B Split** element.
+- Architect evaluates paths using two parameters:
+  - **Winner Metric** (e.g., Conversions)
+  - **Calculation Duration** (e.g., 30 days)
+- After the duration elapses (or when your chosen limit is met), Architect determines the **winner path** and automatically routes future users to it.
+- You can still set **path allocations** in the A/B Split; users follow these allocations until a winner is selected.
+- Winner calculation runs **4 times per day** (every **6 hours** starting **00:00 UTC**).
+
+**Example**
+- Winner Metric: **Conversions**  
+- Calculation Duration: **30 days**  
+- After 30 days, the path with the most conversions is selected as the **winner** and future users are directed to it.
+
+---
+
+## Extended Path Allocation (Optional)
+If you enable **Extended Path Allocation**, you can keep routing a **small percentage** of users equally across **non-winner** paths **after** a winner is selected.  
+- If a non-winner path later outperforms the current winner, Architect will **reselect** the winner.  
+- The small exploration traffic continues on remaining paths, ensuring ongoing learning.
+
+> Once enabled, Architect distributes users **equally** across the non-winner paths based on the percentage you selected.
+
+---
+
+## A/B Winner Autoselection Statistics
+- The A/B Split **Statistics** page reflects Autoselection results according to the **selected metric** (e.g., Conversions, Conversion Rate, Total Opens & Clicks, Revenue).
+- Use this page to monitor how paths perform and verify the current winner.
+
+---
+
+## How to Use A/B Winner Autoselection
+
+1. Add A/B Split Element
+- In the Canvas, click the `+` button
+- Select the **A/B Split** element from the Element category
+- Enter **A/B Split** element
+
+2. Enable A/B Winner Autoselection
+Check the **Winner Autoselection** option.
+
+3. Select Autoselection Metric
+Choose one of: **Total Opens & Clicks**, **Opens & Clicks Rate**, **Conversion**, **Conversion Rate**, **Revenue**.
+
+4. Select Autoselection Limit
+Choose **Time Limit** or **User Limit** and enter a value.  
+- **Time Limit**: Hours/Days/Weeks (max **30 days**)  
+- **User Limit**: max **1,000,000 users**
+
+> **Best Practice:** Pick a duration suited to the channel’s engagement pattern.  
+> For example, **Web Push** typically sees faster engagement than **SMS**; using a too-short Time Limit for SMS could bias the outcome by under-sampling.
+
+5. Enable Extended Path Allocation (Optional)  
+Keep a small percentage of traffic exploring non-winner paths after the winner is chosen to allow **continuous optimization**.
+
+6. Add Channels & Launch
+Click **Save** and add your channels after the A/B Split. When the journey launches, users are split in **real time** according to allocation; once a winner is selected, future users are routed to the **winner path**.
+
+---
+
+## Visual & Live Indicators
+- After a winner is defined, the **winner path is highlighted** on the canvas.
+- The **live stats** of the A/B Split element show the current winner.
+
+---
+
+## Constraints & Notes
+- Path allocations must sum to **100%**.
+- The **A/B Split cannot be the last element** of a journey.
+- Autoselection evaluation occurs **every 6 hours starting 00:00 UTC**.
+- **Time Limit** ≤ **30 days**; **User Limit** ≤ **1,000,000**.
+
+---
+
 
 ## Use Cases
 
-- Compare the effectiveness of two different **email subject lines**.
-- Test **SMS vs. Push Notification** as a communication channel.
-- Evaluate the impact of **different discounts or incentives**.
-- Optimize journey structure by analyzing user behavior across branches.
+### 1) Compare Entire Paths
+Create different line-ups and compare end-to-end performance.
+
+- **Path A:** Email → Email → Web Push  
+- **Path B:** App Push → Email → SMS
+
+### 2) Compare Content Variations (Same Channel)
+Test different wordings/emojis/attributes on the same channel and read results in A/B Split Statistics.
+
+Examples:
+- “Hello [Jane], you have items in your cart—don’t miss the discount!”  
+- “You forgot items in your cart; the discount expires in 24 hours. 🙂”
+
+### 3) Compare Channels
+Place different channels after the A/B Split and see which performs better for users who reach the split.
+
+### 4) Compare Send Times
+Add a **Wait** element before a channel to test different **timeslots** and identify when messages get the most attention.
+
+### 5) Best Channel / Channel Mix: Add different messaging scenarios per path (e.g., Email vs. App Push vs. SMS) and let Autoselection choose the best.  
+### 6) Optimal Frequency:** Add different **Wait** durations before sending to identify the most effective cadence.  
+### 7) Best Flow: Test alternative end-to-end flows and automatically direct users to the top-performing scenario.
 
 ---
 
-## Configuration
+# A/B Split Control Group
 
-- You can create **2 to 4 paths** (A, B, C, D).
-- Each path must have an associated **percentage** (e.g., 25%, 25%, 25%, 25%).
-- Percentages must add up to **100%**.
+The **Control Group** feature allocates a random percentage of users who **will not be targeted further** within the journey. This lets you measure the **true incremental impact** of your marketing by comparing test paths against users who received no journey messages.
+
+## How It Works
+
+- When Control Group is enabled, Architect randomly assigns a portion of users arriving at the A/B Split to the **Control Group** path.(Distributes according to the Control Group % of all users entering A/B Split)
+- Control Group users’ conversions are tracked based on the journey’s **attribution window**; they **complete the journey after the window ends**.  
+- Once assigned to Control Group, users **do not receive any messages** from the journey.  
+- Randomization is per journey: a user in Control Group for one journey can still enter another journey and may not be assigned to Control Group there.  
+- If a user is eligible to enter the **same** journey multiple times, Architect assigns them to the **same A/B Split path** each time to preserve experiment validity and data consistency.
+
+With Control Group enabled, you can measure the effect of **send times, intervals, creative variations, or channel combinations** on conversions.
 
 ---
 
-## Best Practices
+## Setting Up Control Group
 
-- Label each path clearly to track and analyze outcomes.
-- Ensure each variation has meaningful differences for better insights.
-- Regularly review branch performance to identify the most effective journey design.
-- Combine with **reporting tools** to measure metrics like CTR, conversion, and revenue impact.
+1. Add A/B Split Element
+- In the Canvas, click the `+` button
+- Select the **A/B Split** element from the Element category
+- Enter **A/B Split** element
+2. Set the percentages for your paths and control group, and **Save**.  
+   - After saving the **A/B Split** element, a default **Control Group** element is added under the control group path and no element can be added after the control group element.
+   - You can distribute allocation across all paths (must total **100%**).  
+   - While the journey is **Active**, you can modify allocations; changes affect **future entrants** only (existing assignments remain unchanged).
+   - If the Control Group checkbox is checked, the delete option for paths is enabled. A minimum of 1 path + control group can be set. The Distribute equally button also works accordingly.
+
+
+> **Compatibility:** Control Group can be used together with **Extended Path Allocation** and **A/B Winner Autoselection**.
 
 ---
+
+## Exporting Control Group Users
+
+You can export Control Group users from the A/B Split element:
+
+1. On the canvas, Hover to the **Control Group** element and click to open **User Profiles** Page.  
+2. In **User Profiles**, All users entering the **Control Group** are visible.  
+3. Users who enter the Control Group remain in the **Control Group** for the goal time set by the partner when launching the journey.
+4. To display these users, use the **Journey Control Group Enter** event and filter with:  
+   - **Type:** `ab-split`  
+   - **Group:** `control`  
+   - **Journey ID:** *your journey ID*  
+   - **Campaign ID:** *A/B Split element campaign ID*  
+   - (Optionally add attributes/events to narrow further.)
+5. After the goal time is up, the **Journey Control Group Exit** event is assigned to the users and they exit the journey.
+6. All click, conversion and revenue information of the remaining users until this goal time is kept and written to the **Control Group** field on the analytics page. In this way, the metrics of users going to other paths can be compared with the metrics of users going to the **Control Group**.
+
+---
+
+## Control Group Statistics
+
+When Control Group is enabled, the **A/B Split Analytics** page reports:
+
+- **Number of Users**  
+- **Incremental Conversions**  
+- **Conversion Rate Uplift**  
+- **Conversion Rate**  
+- **Conversions**  
+- **Incremental Revenue**  
+- **Average Order Value (AOV)**  
+- **Average Order Value Uplift**
 
 ## Visual Example
 User Flow:
-                     ┌───── A: SMS + 10% Discount
-Start ───▶ A/B Split
-                     └───── B: Email + 5% Discount
+                              ┌───── %20 A(20 user): SMS Element
+Start(100 user) ───▶ A/B Split
+                              └───── %80 B(80 user): Email Element
+

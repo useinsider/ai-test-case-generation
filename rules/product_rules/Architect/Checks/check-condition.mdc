@@ -3,48 +3,159 @@ description:
 globs: 
 alwaysApply: false
 ---
-# Check Conditions
+
+# Check Conditions Element Guide
 
 ## What is Check Conditions?
 
-The **Check Conditions** element adds logic to a journey by evaluating whether a user meets certain predefined rules.
+Check Conditions is used to evaluate users based on their attributes, events, and segments, and route them accordingly within a journey.
 
-It enables personalized flows by routing users differently depending on their attributes, actions, or segment memberships.
+- Enables real-time, conditional flow logic
+- Supports up to 10 matching paths + 1 not matching path
+- Platform-independent: data from web, app, and offline is evaluated
+- Example: User viewed a product on mobile and purchased on web → qualifies for condition.
 
 ---
-
 ## How It Works
 
-- When the user reaches this element, Architect checks the specified condition(s):
-  - Has a certain event occurred?
-  - Does a user attribute have a specific value?
-  - Is the user part of a specific segment?
-- If the condition is met, the user follows one path.
-- If not, they are directed down an alternate path.
+- Evaluation happens when the user arrives at the element
+- First matching condition path is selected
+- If no condition matches, user follows the not matching path
+- If a path has no following element, user exits the journey and it is marked as completed
 
-You can define multiple conditions and combine them using logical operators (**AND / OR**).
+- Matching path: user meets defined conditions  
+- Not matching path: user does not meet any of the conditions
 
----
+### Race Condition Note
+If Check Conditions is placed right after a starter (especially On Event), user data (e.g., attributes) may not be updated in time.
 
-## Use Cases
-
-- Check if a user completed a purchase before sending a follow-up message.
-- Route high-value users differently based on their RFM score.
-- Send different messages depending on whether the user opted in for SMS or Email.
-- Show different promotions to users in different predictive segments.
+- Add a **Wait Element (min. 5 mins)** before Check Conditions to avoid this issue.
 
 ---
+## Adding More Paths
 
-## Tips & Best Practices
+You can create up to **10 matching paths** to customize user flows.
 
-- Combine multiple condition types for advanced logic: event + attribute + segment.
-- Use **negation logic** for "is not" or "does not contain" checks.
-- Ensure your event tracking and segment setup is up-to-date and reliable.
-- Use for branching logic, A/B testing conditions, or re-engagement funnels.
+- Click the **➕ button** inside the Check Conditions element
+- Each path contains its own unique condition(s)
+- Paths are evaluated in order (top-down)
+- First matching path is selected, others are ignored
+
+### Path Management
+- Rename tabs using the **Rename** button
+- Duplicate existing condition tabs for faster setup
+- Drag & drop to reorder path priority  
+- Delete paths via the tab menu
+- The **Not Matching** path always remains and cannot be deleted.
 
 ---
+## Supported Conditions
 
-## Resources
+### Events (user actions)
+- Page view  
+- Add to cart  
+- Purchase  
+- Form submission  
 
-- [Check Conditions – Confluence](mdc:#)
-- [Journey Logic Best Practices – Confluence](mdc:#)
+### Attributes (user data)
+- Language  
+- Country  
+- Last purchase amount  
+- Device type  
+- Subscription status  
+
+### Segments
+- Saved Segments (static & dynamic)  
+- Standard Segments (custom logic)  
+- Predefined Segments (system-generated)  
+- Predictive Segments  
+- RFM Segments  
+- Email Engagement Segments  
+- Combine events, attributes, and segments in a single condition.
+
+---
+## Requirements
+
+- Insider Tag integrated for web
+- SDK integrated for mobile
+- Relevant events activated in the panel
+- Events must be sent from:
+  - Website  
+  - Mobile app  
+  - Upsert User API
+- System rules must be configured
+
+---
+## Tips and Best Practices
+
+- Use event parameters to narrow down user actions
+- Use segments when evaluating behavior over time
+- Use dynamic grouping: “Viewed page X AND NOT purchased”
+- Personalize branches based on language, location, etc.
+- Multi-path branching enables contextual messaging
+- Only the **Not Matching** path may remain empty. All others must end in an action/channel element.
+
+---
+## How to Test It
+
+### Using Debug Mode:
+1. Open the journey containing the Check Conditions element
+2. Replace `/architect` with `/journey-builder` in the URL
+3. Remove everything after `?`, then add `/debug`
+4. Hit Enter → This opens the Check Condition payload
+
+You can modify this payload and POST to the vertical endpoint to fetch matching users.
+
+- In multi-path cases, paths are indexed as 1, 2, 3, etc.
+
+## Live Behavior
+
+Users continue based on the first matching condition they satisfy. Use condition branches to create targeted flows.
+
+### Common Use Cases:
+- Language or country-based targeting  
+- Lead form submitters vs non-submitters  
+- Cart abandoners vs converters  
+- High-value vs low-value users  
+
+Each path should end with an action: Email, Web Push, SMS, etc.
+
+---
+## Analytics
+
+Each Check Conditions element tracks the following:
+
+- Arrived – number of users who reached the element  
+- Matching – number of users who matched a condition  
+- Not Matching – number of users who matched none  
+- Dropped – users who exited due to no next step  
+- Completed – users who completed the journey after this point
+
+Use Journey Analytics to monitor the performance across paths.
+
+---
+## Final Testing Steps
+
+Follow these steps to ensure the element works as expected:
+
+1. Create a journey with any starter (e.g., On Event)
+2. Add a Wait Element (minimum 5 mins recommended)
+3. Add a Check Conditions element
+4. Create one or more paths using:
+   - Events  
+   - Attributes  
+   - Segments  
+5. Add an action (e.g., Web Push) at the end of each path
+6. Launch the journey
+
+### Verify in Testing:
+
+- Events are arriving correctly (check browser Network tab)  
+- Segment previews return expected user counts  
+- Debug endpoint shows the correct payload  
+- Live Stats reflect expected matching and not matching counts  
+
+## Resource
+
+- [Check Conditions](https://insider-portal.atlassian.net/wiki/spaces/QA/pages/2304673475/Check+Conditions)
+- [Check Conditions](https://insider-portal.atlassian.net/wiki/spaces/ProductKB/pages/1947238765/Check+Conditions)
