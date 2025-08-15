@@ -96,7 +96,7 @@ For more on the ML approach, see **Likelihood to Engage Algorithms**.
 Add your desired channels **after** Next Best Channel.  
 - If only **two** paths are present, selecting channels on the canvas **auto-saves** the element.  
 - You may place a **Wait** or **A/B Split** element **before** the channel element, but a **Channel** element must follow Next Best Channel to continue.  
-- If using A/B Split, the **channel type per path should match**...
+- If using A/B Split, the **channel type per path should match**.
 
 3. Add More Channels (Optional)
 Click the Next Best Channel element to add more channels and **Save**. Selected channels are **colored** on the canvas.
@@ -111,7 +111,7 @@ Open **Fallback Channel** → check **Enable Fallback Channel**.
 
 5. Save & Launch  
 Save the element. You **cannot launch** without adding channels for **all** paths following Next Best Channel.  
-Upon launch, the system calculates the best channel **in real time** for each user.
+Upon launch, the system calculates the best channel **in real time** for each user..
 
 ---
 
