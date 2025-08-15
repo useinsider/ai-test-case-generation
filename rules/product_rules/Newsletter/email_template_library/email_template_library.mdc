@@ -1,0 +1,147 @@
+---
+description: Email template library for creating and managing promotional and transactional email templates
+globs:
+alwaysApply: false
+---
+# Email Template Library Page
+
+## What is Email Template Library Page?
+
+The Email Template Library is functionality that provides the ability to choose from a variety of pre-built templates or create your own from scratch to enhance your email campaigns. The library can be accessed through **Email > Templates**.
+
+The library supports both promotional and transactional emails and allows you to create emails using either the HTML editor or the Drag & Drop editor.
+
+---
+
+## What is an Email Template?
+
+An email template is a pre-designed email layout that can be used as a foundation for creating email campaigns. Templates include:
+
+- **Promotional Templates** - for marketing campaigns, announcements, and promotional activities
+- **Transactional Templates** - for automated notifications through Transactional API
+- **Custom Templates** - created and saved by the user
+
+---
+
+## How It Works
+- User navigates to **Email > Templates** to access the library
+- Chooses between promotional and transactional templates
+- Can use a pre-built template or create a new one from scratch
+- Customizes the template using HTML Editor or Drag & Drop Editor
+- Saves as a custom template for future use
+
+---
+
+### Promotional Templates
+- Access and customize promotional templates for marketing campaigns
+- Ability to adapt existing templates to specific needs
+- Create unique templates from scratch
+- Organize by categories and add to favorites
+
+---
+
+### Transactional Templates
+- Create templates for Transactional API without HTML knowledge
+- Use Drag & Drop Editor for design
+- Copy Template ID for use in API requests
+- Reduce risk of errors when sending transactional emails
+
+---
+
+#### Template Management
+- **Search** - search templates by name
+- **Favorites** - add frequently used templates to Favorites list
+- **Categories** - organize templates by predefined or custom categories
+- **Copy Template ID** - through three-dot menu > Copy Template ID
+
+---
+
+#### Creating Custom Templates
+- Click **Save as Template** button during the design stage
+- Add template name and select category
+- Create new category if needed
+- Reuse saved templates in future campaigns
+
+---
+
+### Default Templates
+
+The Template Library offers a variety of predesigned default templates that you can use as a starting point for your email campaigns. These templates are categorized based on their goals, such as promotional or transactional purposes, allowing you to select one that best fits your needs.
+
+---
+
+### Saving Templates from Design Step
+
+After designing your email, you can save it as a template for future use:
+
+1. Click the **Save as Template** button at the top of the page
+2. Enter a template name and choose a category from the predefined list, or create a new category
+
+This feature enables you to reuse your designs efficiently in subsequent campaigns.
+
+---
+
+### Three-Dot Menu Functions for Promotional Custom Templates
+
+For promotional custom templates, the three-dot menu provides the following options:
+
+- **Duplicate** - Create a copy of the template
+- **Add to Favorites** - Add the template to your favorites list for quick access
+- **Rename** - Change the template's name
+- **Export** - Download the template for external use
+- **Delete** - Remove the template from the library
+
+---
+
+### Three-Dot Menu Functions for Transactional Custom Templates
+
+For transactional custom templates, the three-dot menu includes:
+
+- **Copy Template ID** - Copy the template's unique ID for use in API requests
+- **Duplicate** - Create a copy of the template
+- **Add to Favorites** - Add the template to your favorites list for quick access
+- **Rename** - Change the template's name
+- **Export** - Download the template for external use
+- **Delete** - Remove the template from the library
+
+---
+
+### Template Preview Pop-Up
+
+Clicking on any template opens a preview pop-up window that allows you to:
+
+- View the template's design and content before selecting it
+- Preview both desktop and mobile versions
+- Edit the template design
+- Save as a new template
+- Ensure you choose the most appropriate template for your campaign needs
+
+The preview shows the complete email layout including personalization variables, order details, and interactive elements as they would appear to recipients.
+
+---
+
+## Usage Examples
+
+- **Promotional Campaign**: Select template from "Promo" category, customize content and save as custom template
+- **Transactional Email**: Create order confirmation template using Drag & Drop Editor, copy Template ID for API
+- **Library Organization**: Add frequently used templates to favorites and create categories for different campaign types
+- **Quick Access**: Use search function to find needed template by name
+
+---
+
+## Requirements
+
+To use this starter:
+
+- ✅ Email product should be opened for partner
+- ✅ Email onboarding process should be completed
+- ✅ Access to Email > Templates section in the control panel
+- ✅ Understanding of differences between promotional and transactional templates
+
+---
+
+## Resources
+
+- [Email Template Library – academy](https://academy.useinsider.com/docs/email-campaigns-page)
+- [HTML Editor – academy](https://academy.useinsider.com/docs/using-email-html-editor)
+- [Drag & Drop Editor – academy](https://academy.useinsider.com/docs/email-drag-drop-editor)

@@ -1,0 +1,135 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Email Campaings Do List Page
+
+## What is Email Campaings Do List Page?
+
+Email Campaigns Do list page lists all users previously created email campaigns. User can navigate to Experience > Message > Email and directly land on this page. This is the page where user can manage email campaigns. From list user could see information about campaigns, interact with campaigns, filter, sort and search campaigns. At the same time from do list page user can create new campaign by clicking on Create button. Also on this page user have redirecting to some other pages.
+
+---
+
+## What is an Email Campaign?
+
+Email campaign - it's a set of rules that aim to configure who will receive email (recipients), the appearance of email (email design) and the way how user wants to deliver email (launch settings).
+
+---
+
+## How It Works
+- User creates email campaign and after it appeares in do list page.
+- By clicking on `Create` button it opens create pop-up
+- From do list page user could see information about campaign: `Status`, `Name`, `Type`, `Created On`, `Send Date`, `Tags`, `Actions`.
+- By cicking on campaign name user is redirected to `Recipients step`.
+- Campaigns could be filtered by `Status`, `Type`, `Tags` and `Search`.
+- Campaigns could be sorted by `Name`, `Created on` and `Send date`.
+- Campaign actions: `See Analytics`, `See Details`
+- Three-dots menu actions: `Pin to top`/ `Unpin`, `Edit Tags`, `Duplicate`, `Delete`, `Duplicate to another account`.
+- Do list page has pagination.
+- If any campaign in list it shows `No Email Campaigns` state.
+- Email do list page contains extra tabs like `Analytics` and `Templates` that redirect to following pages **overall email statistic page** and **email template library page**
+- By clicking on `Settings` user can go to the Settings page to configure Email Settings.
+
+---
+
+### Create pop-up
+- User should enter campaign name up to 255 chars, and it couldn't be empty
+- Select campaign type **Single** or **Recurring**
+- Click on create or cancel buttons
+- Create button redirects to **Recipients Step**
+
+---
+
+### Filter rules on do list page
+- By default all campaigns are visible in list, any filters are applied.
+- Filter it's dropdown with multiselection component.
+- User could filter by `Status`: `Draft`, `Completed`, `Scheduled`, `Running`, `Awaiting Next Run`, `Paused` or `Select All`.
+- User could filter by `Type`: `Single`, `Experiment`, `Recurring`, `Select All`.
+- User could filter by `Tags`: User can filter and list your email campaigns based on the tags that you assigned to them before by selecting them from dropdown with search or select all. Tags are uniq per partner.
+- Search it's an input field that apply search instantly.
+- User could search campaign by `Name`.
+- Multiple filters could be applied at the same time.
+
+---
+
+#### Statuses
+- Draft: Email campaigns that you work on and make changes on. These campaigns are editable.
+- Completed: Email campaigns that are sent to the recipients. These campaigns are not editable.
+- Scheduled: Email campaigns that will be sent at a future date and time. These campaigns are editable till they are completed. If you edit them, you should re-configure their scheduling settings.
+- Running: Email campaigns that are being sent to the recipients at the time being. These campaigns are not editable.
+- Awaiting Next Run: Recurring campaigns that await the next time they will be sent. These campaigns are editable. If you edit them, you should re-configure their scheduling settings.
+- Paused: Email campaigns that are no longer active. These campaigns are editable. If you edit them, you should re-configure their scheduling settings.
+
+---
+
+#### Types
+- Single email: One-time emails that you send to the recipients
+- Experiment email: Emails that you can create as A/B testings
+- Recurring email: Emails that you can send on a daily, weekly or monthly basis
+
+---
+
+### Campaign actions
+- By clicking on `See Analytics` it redirects to **Campaign analytics page** for each campaign.
+- By clicking on `See Details` it opens right side pop-up with **Campaign details**
+- By clicking on `Pin to top` it pint campaign to the top of email campaign do list and shows green toaster message. Up to 6 campaigns can be pinned to top, otherwise it shows yellow toaster. 
+- By clicking on `Unpin` it unpins campaings from top and shows green toaster message.
+- By clicking on `Edit Tags` it opens right side pop-up with **Edit Tags** option.
+- By clicking on `Duplicate` it duplicates email campaign and shouws green toaster.
+- By clicking on `Delete` it opens **Delete Campaign?** confirmation pop-up.
+- By clickung on `Duplicate to another account` it openes right side pop-up with **Duplicate to another account** options
+
+---
+
+#### See details pop-up
+- User can see the following details of your campaign: Schedule details, campaign details, time zone, tags, include/exclude recipients, segments, design, variations, email subject, and notes.
+
+---
+
+#### Edit tags pop-up
+- Click the menu and select Edit Tags. User will be prompted with the Edit Tags page.
+- Start typing your tag name to create it or select a previous tag from the dropdown.
+- If any tags are added to your campaign, you can use this prompt to remove them too.
+
+---
+
+#### Delete Campaign confirmation pop-up
+- Buttons `Delete`, `Cancel`, `Close`
+- `Delete` button deletes campaign and shows green toaster
+---
+
+#### Duplicate to another account pop-up
+- The "Duplicate to Other Accounts" option allows user to duplicate an email campaign from one of your panels to your other linked panels.
+- Once you click the Duplicate to Other Accounts button, a side modal will open from the right side of the panel. The modal provides the necessary options and information for duplicating your campaign.
+- Select your target account(s) to transfer your campaign to. The Target Accounts dropdown lists the sub-accounts linked to your Inone account. You can select one account or more, or choose the option to duplicate your campaign to all accounts. The accounts you select will be highlighted.
+- If you do not select any account, you will see an error message stating, "Select one or more Target Accounts to continue.".
+- The Duplicate Campaign Name displays the name of your campaign after duplication. You can edit this name and rename your campaign on the target account.
+- Click the Duplicate button. A toaster notification will appear to inform you that your request has been received.
+- Once the duplication process is completed, you will receive an email notification in your mailbox.
+- If the duplication is not completed or partially completed, you will receive emails stating "Email Campaign Duplication Not Completed" or "Email Campaign Duplication Partially Completed," respectively.
+
+---
+
+## Usage Examples
+
+- User wants to edit existing campaign or check campaign details
+- User created several campaigns and wants to filter or search some specific campaign
+- User wants to open **Campaign analitycs page**
+- User wants to organised campaigns by pin or delete etc
+
+
+---
+
+## Requirements
+
+To use this starter:
+
+- ✅ Email product should be opened for partner
+- ✅ Email onboarding process should be completed
+
+---
+
+## Resources
+
+- [Email Campaigns Page – academy](mdc:#)
