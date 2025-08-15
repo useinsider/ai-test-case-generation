@@ -107,6 +107,7 @@ Open **Fallback Channel** → check **Enable Fallback Channel**.
 - Fallback is used when:
   - There’s **no behavioral data** to predict a best channel, **or**
   - All selected channels are predicted to have the **same weight**.
+  -   - In a journey with a Next Best Channel element, **In-App** and **On-Site** elements cannot be added under it. The fallback channel list and the channel change dropdown also do not include these elements. 
 
 5. Save & Launch  
 Save the element. You **cannot launch** without adding channels for **all** paths following Next Best Channel.  
